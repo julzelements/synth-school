@@ -49,7 +49,9 @@ export class Knob extends React.Component<KnobProps, KnobState> {
     };
     const moveHandler = (e: { clientX: number; clientY: number }) => {
       this.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
-      if (this.currentDeg === this.startAngle) this.currentDeg--;
+      if (this.currentDeg === this.startAngle) {
+        this.currentDeg--;
+      }
       let newValue = Math.floor(
         this.convertRange(
           this.startAngle,
@@ -119,12 +121,12 @@ export class Knob extends React.Component<KnobProps, KnobState> {
   };
 
   render() {
-    let kStyle = {
+    let knobStyle = {
       width: this.props.size,
       height: this.props.size,
     };
-    let iStyle = this.dcpy(kStyle);
-    let oStyle = this.dcpy(kStyle);
+    let iStyle = this.dcpy(knobStyle);
+    let oStyle = this.dcpy(knobStyle);
     oStyle.margin = this.margin;
     if (this.props.color) {
       oStyle.backgroundImage =
@@ -141,7 +143,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
     iStyle.transform = "rotate(" + this.state.deg + "deg)";
 
     return (
-      <div className="knob" style={kStyle}>
+      <div className="knob" style={knobStyle}>
         <div className="ticks">
           {this.props.numTicks
             ? this.renderTicks().map((tick, i) => (
