@@ -8,6 +8,7 @@ interface KnobProps {
   degrees: number;
   value: number;
   color: boolean;
+  onChange: (newValue: number) => void;
 }
 
 interface KnobState {
@@ -60,7 +61,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
       );
       this.setState({ deg: this.currentDeg });
       console.log(newValue);
-      //   this.props.onChange(newValue);
+      this.props.onChange(newValue);
     };
     document.addEventListener("mousemove", moveHandler);
     document.addEventListener("mouseup", (e) => {
@@ -95,7 +96,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
 
   renderTicks = () => {
     let ticks = [];
-    const incr = Knob.fullAngle / this.props.numTicks;
+    const incr = this.fullAngle / this.props.numTicks;
     const size = this.margin + this.props.size / 2;
     for (let deg = this.startAngle; deg <= this.endAngle; deg += incr) {
       const tick = {
@@ -141,7 +142,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
 
     return (
       <div className="knob" style={kStyle}>
-        {/* <div className="ticks">
+        <div className="ticks">
           {this.props.numTicks
             ? this.renderTicks().map((tick, i) => (
                 <div
@@ -153,7 +154,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
                 />
               ))
             : null}
-        </div> */}
+        </div>
         <div className="knob outer" style={oStyle} onMouseDown={this.startDrag}>
           <div className="knob inner" style={iStyle}>
             <div className="grip" />

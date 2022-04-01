@@ -14,6 +14,7 @@ function App() {
         max={100}
         value={30}
         color={true}
+        onChange={(value) => console.log(value)}
       />
       <Knob
         size={50}
@@ -23,6 +24,7 @@ function App() {
         max={100}
         value={30}
         color={true}
+        onChange={(value) => console.log(value)}
       />
     </div>
   );
