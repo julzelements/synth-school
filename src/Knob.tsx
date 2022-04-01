@@ -15,28 +15,28 @@ interface KnobState {
 }
 
 export class Knob extends React.Component<KnobProps, KnobState> {
-  static fullAngle = 0;
-  static startAngle = 0;
-  static endAngle = 0;
-  static margin = 0;
-  static currentDeg = 0;
+  public fullAngle: number;
+  public startAngle: number;
+  public endAngle: number;
+  public margin: number;
+  public currentDeg: number;
 
   constructor(props: KnobProps) {
     super(props);
-    Knob.fullAngle = props.degrees;
-    Knob.startAngle = (360 - props.degrees) / 2;
-    Knob.endAngle = Knob.startAngle + props.degrees;
-    Knob.margin = props.size * 0.15;
-    Knob.currentDeg = Math.floor(
+    this.fullAngle = props.degrees;
+    this.startAngle = (360 - props.degrees) / 2;
+    this.endAngle = this.startAngle + props.degrees;
+    this.margin = props.size * 0.15;
+    this.currentDeg = Math.floor(
       this.convertRange(
         props.min,
         props.max,
-        Knob.startAngle,
-        Knob.endAngle,
+        this.startAngle,
+        this.endAngle,
         props.value
       )
     );
-    this.state = { deg: Knob.currentDeg };
+    this.state = { deg: this.currentDeg };
   }
 
   startDrag = (e: React.MouseEvent<HTMLElement>) => {
@@ -47,18 +47,18 @@ export class Knob extends React.Component<KnobProps, KnobState> {
       y: knob.top + knob.height / 2,
     };
     const moveHandler = (e: { clientX: number; clientY: number }) => {
-      Knob.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
-      if (Knob.currentDeg === Knob.startAngle) Knob.currentDeg--;
+      this.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
+      if (this.currentDeg === this.startAngle) this.currentDeg--;
       let newValue = Math.floor(
         this.convertRange(
-          Knob.startAngle,
-          Knob.endAngle,
+          this.startAngle,
+          this.endAngle,
           this.props.min,
           this.props.max,
-          Knob.currentDeg
+          this.currentDeg
         )
       );
-      this.setState({ deg: Knob.currentDeg });
+      this.setState({ deg: this.currentDeg });
       console.log(newValue);
       //   this.props.onChange(newValue);
     };
@@ -77,7 +77,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
     } else {
       deg += 270;
     }
-    let finalDeg = Math.min(Math.max(Knob.startAngle, deg), Knob.endAngle);
+    let finalDeg = Math.min(Math.max(this.startAngle, deg), this.endAngle);
     return finalDeg;
   };
 
@@ -96,8 +96,8 @@ export class Knob extends React.Component<KnobProps, KnobState> {
   renderTicks = () => {
     let ticks = [];
     const incr = Knob.fullAngle / this.props.numTicks;
-    const size = Knob.margin + this.props.size / 2;
-    for (let deg = Knob.startAngle; deg <= Knob.endAngle; deg += incr) {
+    const size = this.margin + this.props.size / 2;
+    for (let deg = this.startAngle; deg <= this.endAngle; deg += incr) {
       const tick = {
         deg: deg,
         tickStyle: {
@@ -124,17 +124,17 @@ export class Knob extends React.Component<KnobProps, KnobState> {
     };
     let iStyle = this.dcpy(kStyle);
     let oStyle = this.dcpy(kStyle);
-    oStyle.margin = Knob.margin;
+    oStyle.margin = this.margin;
     if (this.props.color) {
       oStyle.backgroundImage =
         "radial-gradient(100% 70%,hsl(210, " +
-        Knob.currentDeg +
+        this.currentDeg +
         "%, " +
-        Knob.currentDeg / 5 +
+        this.currentDeg / 5 +
         "%),hsl(" +
         Math.random() * 100 +
         ",20%," +
-        Knob.currentDeg / 36 +
+        this.currentDeg / 36 +
         "%))";
     }
     iStyle.transform = "rotate(" + this.state.deg + "deg)";
@@ -147,7 +147,7 @@ export class Knob extends React.Component<KnobProps, KnobState> {
                 <div
                   key={i}
                   className={
-                    "tick" + (tick.deg <= Knob.currentDeg ? " active" : "")
+                    "tick" + (tick.deg <= this.currentDeg ? " active" : "")
                   }
                   style={tick.tickStyle}
                 />
