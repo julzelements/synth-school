@@ -100,7 +100,7 @@ export default class Knob extends React.Component<KnobProps, KnobState> {
       event.preventDefault();
       // Find the center of rotation
       const boundingBox =
-        Knob.knobElement?.getBoundingClientRect() || removeThisBox;
+        event.currentTarget.getBoundingClientRect() || removeThisBox;
       console.log(boundingBox);
       const center = [
         boundingBox.left + boundingBox.width / 2,
