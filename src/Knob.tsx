@@ -1,193 +1,167 @@
-/**
- * A rotary knob component.
- */
 import React from "react";
-import "./Knob.css";
-
-const mapToRange = (
-  value: number,
-  inLow: number,
-  inHigh: number,
-  outLow: number,
-  outHigh: number
-) => {
-  const fromRange = inHigh - inLow;
-  const toRange = outHigh - outLow;
-  const scale = (value - inLow) / fromRange;
-  return Math.round(toRange * scale + outLow);
-};
-
-const coerceToStep = (
-  value: number,
-  low: number,
-  high: number,
-  step: number
-) => {
-  const adjusted = value - low;
-  const nearestStep = Math.round(adjusted / step) * step;
-  return Math.max(low, Math.min(high, low + nearestStep));
-};
 
 interface KnobProps {
-  value: number;
+  size: number;
   min: number;
   max: number;
-  angleOffset: number;
-  arc: number;
-  step: number;
-  onChange?: (value: number) => {};
+  numTicks: number;
+  degrees: number;
+  value: number;
+  color: boolean;
 }
 
 interface KnobState {
-  value: number;
+  deg: number;
 }
 
-// angle arc - the number of degrees of travel [0, 360]
-// angle offset - the start point for the value [-180, 180]
-// minValue - 0 - the minimum for the value represented by this component
-// maxValue - 1023 - the maximum  for the value represented by this component
-// step - 1 - the amount to
-export default class Knob extends React.Component<KnobProps, KnobState> {
-  static min = 0;
-  static max = 1023;
-  static angleOffset = -135;
-  static arc = 270;
-  static step = 1;
-  static knobElement: HTMLDivElement | null;
+export class Knob extends React.Component<KnobProps, KnobState> {
+  static fullAngle = 0;
+  static startAngle = 0;
+  static endAngle = 0;
+  static margin = 0;
+  static currentDeg = 0;
 
   constructor(props: KnobProps) {
     super(props);
-    Knob.min = props.min;
-    Knob.max = props.max;
-    Knob.angleOffset = props.angleOffset;
-    Knob.arc = props.arc;
-    Knob.step = props.step;
+    Knob.fullAngle = props.degrees;
+    Knob.startAngle = (360 - props.degrees) / 2;
+    Knob.endAngle = Knob.startAngle + props.degrees;
+    Knob.margin = props.size * 0.15;
+    Knob.currentDeg = Math.floor(
+      this.convertRange(
+        props.min,
+        props.max,
+        Knob.startAngle,
+        Knob.endAngle,
+        props.value
+      )
+    );
+    this.state = { deg: Knob.currentDeg };
   }
 
-  state = {
-    value: this.props.value,
-  };
-
-  // componentWillReceiveProps = (nextProps) => {
-  //   if (this.state.value !== nextProps.value) {
-  //     this.setState({
-  //       value: nextProps.value,
-  //     });
-  //   }
-  // };
-
-  onMouseDown = (event: React.MouseEvent<HTMLElement>) => {
-    // Update the value location to where the click occurred
-    this.onMouseMove(event);
-    // Connect the mouse events to the component
-    event.preventDefault();
-    // document.addEventListener("mousemove", this.onMouseMove);
-    document.addEventListener("mouseup", this.onMouseUp);
-  };
-
-  onMouseMove = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    // Store mouse pointer location
-    const { clientX, clientY } = event;
-
-    const removeThisBox = {
-      width: 10,
-      left: 10,
-      top: 10,
-      height: 10,
+  startDrag = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const knob = e.currentTarget.getBoundingClientRect();
+    const pts = {
+      x: knob.left + knob.width / 2,
+      y: knob.top + knob.height / 2,
     };
-
-    this.setState((prevState, props) => {
-      event.preventDefault();
-      // Find the center of rotation
-      const boundingBox =
-        event.currentTarget.getBoundingClientRect() || removeThisBox;
-      console.log(boundingBox);
-      const center = [
-        boundingBox.left + boundingBox.width / 2,
-        boundingBox.top + boundingBox.height / 2,
-      ];
-      // Find where the mouse pointer is in relation to the center of rotation
-      const dX = clientX - center[0];
-      const dY = clientY - center[1];
-      // Compute the angle in degrees
-      let angle = Math.atan2(dY, dX) * (180 / Math.PI);
-      // Transform the angle to have 0 at 12 o'clock
-      if (dX <= 0 && dY >= 0) {
-        angle -= 270;
-      } else {
-        angle += 90;
-      }
-      const minAngle = props.angleOffset;
-      const maxAngle = props.angleOffset + props.arc;
-      const clamped = Math.max(minAngle, Math.min(maxAngle, angle));
-      const mapped = mapToRange(
-        clamped,
-        minAngle,
-        maxAngle,
-        props.min,
-        props.max
+    const moveHandler = (e: { clientX: number; clientY: number }) => {
+      Knob.currentDeg = this.getDeg(e.clientX, e.clientY, pts);
+      if (Knob.currentDeg === Knob.startAngle) Knob.currentDeg--;
+      let newValue = Math.floor(
+        this.convertRange(
+          Knob.startAngle,
+          Knob.endAngle,
+          this.props.min,
+          this.props.max,
+          Knob.currentDeg
+        )
       );
-      const newValue = coerceToStep(mapped, props.min, props.max, props.step);
-      if (newValue !== prevState.value && props.onChange) {
-        props.onChange(newValue);
-      }
-      return {
-        value: newValue,
+      this.setState({ deg: Knob.currentDeg });
+      console.log(newValue);
+      //   this.props.onChange(newValue);
+    };
+    document.addEventListener("mousemove", moveHandler);
+    document.addEventListener("mouseup", (e) => {
+      document.removeEventListener("mousemove", moveHandler);
+    });
+  };
+
+  getDeg = (cX: number, cY: number, pts: { x: any; y: any }) => {
+    const x = cX - pts.x;
+    const y = cY - pts.y;
+    let deg = (Math.atan(y / x) * 180) / Math.PI;
+    if ((x < 0 && y >= 0) || (x < 0 && y < 0)) {
+      deg += 90;
+    } else {
+      deg += 270;
+    }
+    let finalDeg = Math.min(Math.max(Knob.startAngle, deg), Knob.endAngle);
+    return finalDeg;
+  };
+
+  convertRange = (
+    oldMin: number,
+    oldMax: number,
+    newMin: number,
+    newMax: number,
+    oldValue: number
+  ) => {
+    return (
+      ((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin) + newMin
+    );
+  };
+
+  renderTicks = () => {
+    let ticks = [];
+    const incr = Knob.fullAngle / this.props.numTicks;
+    const size = Knob.margin + this.props.size / 2;
+    for (let deg = Knob.startAngle; deg <= Knob.endAngle; deg += incr) {
+      const tick = {
+        deg: deg,
+        tickStyle: {
+          height: size + 10,
+          left: size - 1,
+          top: size + 2,
+          transform: "rotate(" + deg + "deg)",
+          transformOrigin: "top",
+        },
       };
-    });
+      ticks.push(tick);
+    }
+    return ticks;
   };
 
-  onMouseUp = () => {
-    // document.removeEventListener("mousemove", this.onMouseMove);
-    document.removeEventListener("mouseup", this.onMouseUp);
-    // document.removeEventListener("keyup", this.onKeyUp);
-  };
-
-  onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const { deltaY } = event;
-    this.setState((prevState, props) => {
-      let delta = props.step;
-      delta = deltaY >= 0 ? -delta : delta;
-      const newValue = Math.max(
-        props.min,
-        Math.min(prevState.value + delta, props.max)
-      );
-      if (newValue !== prevState.value && props.onChange) {
-        props.onChange(newValue);
-      }
-      return { value: newValue };
-    });
+  dcpy = (o: { width: number; height: number }) => {
+    return JSON.parse(JSON.stringify(o));
   };
 
   render() {
-    const { min, max, angleOffset, arc } = this.props;
-    const angle = mapToRange(
-      this.state.value,
-      min,
-      max,
-      angleOffset,
-      angleOffset + arc
-    );
-    const style = {
-      transform: `rotate(${angle}deg)`,
+    let kStyle = {
+      width: this.props.size,
+      height: this.props.size,
     };
+    let iStyle = this.dcpy(kStyle);
+    let oStyle = this.dcpy(kStyle);
+    oStyle.margin = Knob.margin;
+    if (this.props.color) {
+      oStyle.backgroundImage =
+        "radial-gradient(100% 70%,hsl(210, " +
+        Knob.currentDeg +
+        "%, " +
+        Knob.currentDeg / 5 +
+        "%),hsl(" +
+        Math.random() * 100 +
+        ",20%," +
+        Knob.currentDeg / 36 +
+        "%))";
+    }
+    iStyle.transform = "rotate(" + this.state.deg + "deg)";
+
     return (
-      <div
-        className="knob-container"
-        onMouseDown={this.onMouseDown}
-        onWheel={this.onWheel}
-      >
-        <div
-          className="knob-value"
-          ref={(el: HTMLDivElement | null) => {
-            Knob.knobElement = el;
-          }}
-          style={style}
-        >
-          <div className="knob-value-inner" />
+      <div className="knob" style={kStyle}>
+        {/* <div className="ticks">
+          {this.props.numTicks
+            ? this.renderTicks().map((tick, i) => (
+                <div
+                  key={i}
+                  className={
+                    "tick" + (tick.deg <= Knob.currentDeg ? " active" : "")
+                  }
+                  style={tick.tickStyle}
+                />
+              ))
+            : null}
+        </div> */}
+        <div className="knob outer" style={oStyle} onMouseDown={this.startDrag}>
+          <div className="knob inner" style={iStyle}>
+            <div className="grip" />
+          </div>
         </div>
       </div>
     );
   }
 }
+
+export {};

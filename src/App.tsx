@@ -1,13 +1,12 @@
 import "./App.css";
 import { NameForm } from "./Form";
-import Knob from "./Knob";
-import { OldKnob } from "./OldKnob";
+import { Knob } from "./Knob";
 
 function App() {
   return (
     <div className="App">
       <NameForm name="Julian" />
-      <OldKnob
+      <Knob
         size={100}
         numTicks={25}
         degrees={260}
@@ -16,7 +15,7 @@ function App() {
         value={30}
         color={true}
       />
-      <OldKnob
+      <Knob
         size={50}
         numTicks={25}
         degrees={260}
@@ -24,14 +23,6 @@ function App() {
         max={100}
         value={30}
         color={true}
-      />
-      <Knob
-        min={0}
-        max={1023}
-        angleOffset={-135}
-        arc={270}
-        step={1}
-        value={200}
       />
     </div>
   );
