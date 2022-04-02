@@ -37,7 +37,8 @@
   }
 }
 
-html, body {
+html,
+body {
   height: 100vh;
 }
 body {
@@ -85,11 +86,11 @@ body {
 .knob.inner .grip {
   position: absolute;
   width: 5%;
-  height: 5%;
-  bottom: 2%;
+  height: 40%;
+  bottom: 0%;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 50%;
-  background: #509eec;
+  /* border-radius: 50%; */
+  background: #ffffff;
   box-shadow: 0 0 3px 1px black;
 }

@@ -5,6 +5,7 @@ interface KnobProps {
   size: number;
   paramMin: number;
   paramMax: number;
+  paramName: string;
   fullAngle: number;
   initialParam: number;
   color: boolean;
@@ -70,10 +71,13 @@ const Knob = (props: KnobProps) => {
   iStyle.transform = "rotate(" + degrees + "deg)";
 
   return (
-    <div className="knob" style={knobStyle}>
-      <div className="knob outer" style={oStyle} onMouseDown={startDrag}>
-        <div className="knob inner" style={iStyle}>
-          <div className="grip" />
+    <div>
+      <div>{props.paramName}</div>
+      <div className="knob" style={knobStyle}>
+        <div className="knob outer" style={oStyle} onMouseDown={startDrag}>
+          <div className="knob inner" style={iStyle}>
+            <div className="grip" />
+          </div>
         </div>
       </div>
     </div>

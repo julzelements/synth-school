@@ -1,9 +1,9 @@
 {
-  "patchName": "<afx acid3>\u0000",
-  "drive": { "name": "Drive", "value": 0 },
+  "patchName": "StomachWave\u0000",
+  "drive": { "name": "Drive", "value": 535 },
   "oscilators": [
     {
-      "wave": { "name": "Wave", "value": 2, "oscilator": 0 },
+      "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },
       "level": { "name": "Level", "value": 1023 },
       "pitch": { "name": "Pitch", "value": 0 },
@@ -11,70 +11,70 @@
       "octave": { "name": "Octave", "value": 0 }
     },
     {
-      "wave": { "name": "Wave", "value": 2, "oscilator": 1 },
+      "wave": { "name": "Wave", "value": 1, "oscilator": 1 },
       "shape": { "name": "Shape", "value": 0 },
-      "level": { "name": "Level", "value": 1023 },
-      "pitch": { "name": "Pitch", "value": 1023 },
+      "level": { "name": "Level", "value": 844 },
+      "pitch": { "name": "Pitch", "value": 456 },
       "duty": { "name": "Duty", "value": 1 },
       "octave": { "name": "Octave", "value": 0 }
     }
   ],
   "filter": {
-    "cutoff": { "name": "Cutoff", "value": 488 },
-    "resonance": { "name": "Resonance", "value": 909 }
+    "cutoff": { "name": "Cutoff", "value": 692 },
+    "resonance": { "name": "Resonance", "value": 1023 }
   },
   "envelope": {
     "type": { "name": "Envelope Type", "value": 0 },
-    "attack": { "name": "Attack", "value": 0 },
-    "decay": { "name": "Decay", "value": 485 },
-    "intensity": { "name": "Intensity", "value": 343 },
+    "attack": { "name": "Attack", "value": 67 },
+    "decay": { "name": "Decay", "value": 124 },
+    "intensity": { "name": "Intensity", "value": 0 },
     "target": { "name": "Target", "value": 0, "type": 0 }
   },
   "lfo": {
-    "wave": { "name": "Wave", "value": 1, "oscilator": 2 },
-    "mode": { "name": "LFO Mode", "value": 1 },
-    "rate": { "name": "Rate", "value": 512 },
+    "wave": { "name": "Wave", "value": 2, "oscilator": 2 },
+    "mode": { "name": "LFO Mode", "value": 2 },
+    "rate": { "name": "Rate", "value": 740 },
     "intensity": { "name": "Intensity", "value": 0 },
-    "target": { "name": "Target", "value": 2, "type": 1 }
+    "target": { "name": "Target", "value": 0, "type": 1 }
   },
   "misc": {
     "bpmSync": { "name": "BPM Sync", "value": 0 },
     "portamentMode": { "name": "Portament Mode", "value": 0 },
     "portamentTime": { "name": "Potament Time", "value": 0 },
-    "cutoffVelocity": { "name": "Cutoff Velocity", "value": 2 },
-    "cutoffKeyTrack": { "name": "Cutoff Key Track", "value": 0 },
-    "sliderAssign": { "name": "Slider Assign", "value": "PITCH BEND" }
+    "cutoffVelocity": { "name": "Cutoff Velocity", "value": 0 },
+    "cutoffKeyTrack": { "name": "Cutoff Key Track", "value": 2 },
+    "sliderAssign": { "name": "Slider Assign", "value": "CUTOFF" }
   },
   "sequencer": {
-    "bpm": { "name": "BPM", "value": 120 },
+    "bpm": { "name": "BPM", "value": 115 },
     "stepLength": { "name": "Step Length", "value": 16 },
-    "stepResolution": { "name": "Step Resolution", "value": 0 },
+    "stepResolution": { "name": "Step Resolution", "value": 1 },
     "swing": { "name": "Swing", "value": 0 },
     "defaultGateTime": { "name": "Default Gate Time", "value": 0.75 },
     "motionSlotParams": [
       {
         "slotNumber": 1,
-        "active": { "name": "On/Off", "value": 0 },
-        "smooth": { "name": "Smooth On/Off", "value": 0 },
-        "parameter": { "name": "Parameter", "value": "CUTOFF" }
+        "active": { "name": "On/Off", "value": 1 },
+        "smooth": { "name": "Smooth On/Off", "value": 1 },
+        "parameter": { "name": "Parameter", "value": "LFO RATE" }
       },
       {
         "slotNumber": 2,
-        "active": { "name": "On/Off", "value": 0 },
-        "smooth": { "name": "Smooth On/Off", "value": 0 },
-        "parameter": { "name": "Parameter", "value": "RESONANCE" }
+        "active": { "name": "On/Off", "value": 1 },
+        "smooth": { "name": "Smooth On/Off", "value": 1 },
+        "parameter": { "name": "Parameter", "value": "LFO INT" }
       },
       {
         "slotNumber": 3,
         "active": { "name": "On/Off", "value": 1 },
         "smooth": { "name": "Smooth On/Off", "value": 1 },
-        "parameter": { "name": "Parameter", "value": "DECAY" }
+        "parameter": { "name": "Parameter", "value": "CUTOFF" }
       },
       {
         "slotNumber": 4,
-        "active": { "name": "On/Off", "value": 1 },
-        "smooth": { "name": "Smooth On/Off", "value": 1 },
-        "parameter": { "name": "Parameter", "value": "EG INT" }
+        "active": { "name": "On/Off", "value": 0 },
+        "smooth": { "name": "Smooth On/Off", "value": 0 },
+        "parameter": { "name": "Parameter", "value": "None" }
       }
     ],
     "steps": [
@@ -82,38 +82,38 @@
         "stepNumber": 1,
         "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
-        "slideActive": { "name": "Slide On/Off", "value": 1 },
+        "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 40 },
-            "velocity": { "name": "Velocity", "value": 37 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 55 },
+            "velocity": { "name": "Velocity", "value": 108 },
+            "gateTime": { "name": "GateTime", "value": 127 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 0 },
-              { "name": "Motion Slot 1 Data 2", "value": 0 },
-              { "name": "Motion Slot 1 Data 3", "value": 0 },
-              { "name": "Motion Slot 1 Data 4", "value": 0 }
+              { "name": "Motion Slot 1 Data 1", "value": 184 },
+              { "name": "Motion Slot 1 Data 2", "value": 184 },
+              { "name": "Motion Slot 1 Data 3", "value": 184 },
+              { "name": "Motion Slot 1 Data 4", "value": 184 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 3 },
-              { "name": "Motion Slot 3 Data 2", "value": 3 },
-              { "name": "Motion Slot 3 Data 3", "value": 3 },
-              { "name": "Motion Slot 3 Data 4", "value": 3 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
-              { "name": "Motion Slot 4 Data 1", "value": 128 },
-              { "name": "Motion Slot 4 Data 2", "value": 128 },
-              { "name": "Motion Slot 4 Data 3", "value": 128 },
-              { "name": "Motion Slot 4 Data 4", "value": 128 }
+              { "name": "Motion Slot 4 Data 1", "value": 0 },
+              { "name": "Motion Slot 4 Data 2", "value": 0 },
+              { "name": "Motion Slot 4 Data 3", "value": 0 },
+              { "name": "Motion Slot 4 Data 4", "value": 0 }
             ]
           ]
         }
@@ -122,38 +122,38 @@
         "stepNumber": 2,
         "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
-        "slideActive": { "name": "Slide On/Off", "value": 1 },
+        "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 75 },
-            "velocity": { "name": "Velocity", "value": 70 },
-            "gateTime": { "name": "GateTime", "value": 54 },
-            "trigger": { "name": "Trigger", "value": 1 }
+            "key": { "name": "Key", "value": 55 },
+            "velocity": { "name": "Velocity", "value": 108 },
+            "gateTime": { "name": "GateTime", "value": 67 },
+            "trigger": { "name": "Trigger", "value": 0 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 171 },
-              { "name": "Motion Slot 1 Data 2", "value": 171 },
-              { "name": "Motion Slot 1 Data 3", "value": 171 },
-              { "name": "Motion Slot 1 Data 4", "value": 171 }
+              { "name": "Motion Slot 1 Data 1", "value": 184 },
+              { "name": "Motion Slot 1 Data 2", "value": 184 },
+              { "name": "Motion Slot 1 Data 3", "value": 184 },
+              { "name": "Motion Slot 1 Data 4", "value": 184 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 0 },
-              { "name": "Motion Slot 3 Data 2", "value": 0 },
-              { "name": "Motion Slot 3 Data 3", "value": 0 },
-              { "name": "Motion Slot 3 Data 4", "value": 0 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
-              { "name": "Motion Slot 4 Data 1", "value": 160 },
-              { "name": "Motion Slot 4 Data 2", "value": 160 },
-              { "name": "Motion Slot 4 Data 3", "value": 160 },
-              { "name": "Motion Slot 4 Data 4", "value": 160 }
+              { "name": "Motion Slot 4 Data 1", "value": 0 },
+              { "name": "Motion Slot 4 Data 2", "value": 0 },
+              { "name": "Motion Slot 4 Data 3", "value": 0 },
+              { "name": "Motion Slot 4 Data 4", "value": 0 }
             ]
           ]
         }
@@ -165,75 +165,75 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 29 },
-            "velocity": { "name": "Velocity", "value": 90 },
-            "gateTime": { "name": "GateTime", "value": 127 },
+            "key": { "name": "Key", "value": 67 },
+            "velocity": { "name": "Velocity", "value": 96 },
+            "gateTime": { "name": "GateTime", "value": 68 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 255 },
-              { "name": "Motion Slot 1 Data 2", "value": 255 },
-              { "name": "Motion Slot 1 Data 3", "value": 255 },
-              { "name": "Motion Slot 1 Data 4", "value": 255 }
+              { "name": "Motion Slot 1 Data 1", "value": 230 },
+              { "name": "Motion Slot 1 Data 2", "value": 225 },
+              { "name": "Motion Slot 1 Data 3", "value": 219 },
+              { "name": "Motion Slot 1 Data 4", "value": 213 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 1 },
-              { "name": "Motion Slot 3 Data 2", "value": 1 },
-              { "name": "Motion Slot 3 Data 3", "value": 1 },
-              { "name": "Motion Slot 3 Data 4", "value": 1 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
-              { "name": "Motion Slot 4 Data 1", "value": 174 },
-              { "name": "Motion Slot 4 Data 2", "value": 174 },
-              { "name": "Motion Slot 4 Data 3", "value": 174 },
-              { "name": "Motion Slot 4 Data 4", "value": 174 }
+              { "name": "Motion Slot 4 Data 1", "value": 0 },
+              { "name": "Motion Slot 4 Data 2", "value": 0 },
+              { "name": "Motion Slot 4 Data 3", "value": 0 },
+              { "name": "Motion Slot 4 Data 4", "value": 0 }
             ]
           ]
         }
       },
       {
         "stepNumber": 4,
-        "active": { "name": "On/Off", "value": 0 },
+        "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 0 },
-            "velocity": { "name": "Velocity", "value": 0 },
-            "gateTime": { "name": "GateTime", "value": 0 },
-            "trigger": { "name": "Trigger", "value": 0 }
+            "key": { "name": "Key", "value": 55 },
+            "velocity": { "name": "Velocity", "value": 108 },
+            "gateTime": { "name": "GateTime", "value": 74 },
+            "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 0 },
-              { "name": "Motion Slot 1 Data 2", "value": 0 },
-              { "name": "Motion Slot 1 Data 3", "value": 0 },
-              { "name": "Motion Slot 1 Data 4", "value": 0 }
+              { "name": "Motion Slot 1 Data 1", "value": 213 },
+              { "name": "Motion Slot 1 Data 2", "value": 210 },
+              { "name": "Motion Slot 1 Data 3", "value": 209 },
+              { "name": "Motion Slot 1 Data 4", "value": 209 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 255 },
-              { "name": "Motion Slot 2 Data 2", "value": 255 },
-              { "name": "Motion Slot 2 Data 3", "value": 255 },
-              { "name": "Motion Slot 2 Data 4", "value": 255 }
+              { "name": "Motion Slot 2 Data 1", "value": 141 },
+              { "name": "Motion Slot 2 Data 2", "value": 141 },
+              { "name": "Motion Slot 2 Data 3", "value": 141 },
+              { "name": "Motion Slot 2 Data 4", "value": 141 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 1 },
-              { "name": "Motion Slot 3 Data 2", "value": 1 },
-              { "name": "Motion Slot 3 Data 3", "value": 1 },
-              { "name": "Motion Slot 3 Data 4", "value": 1 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
-              { "name": "Motion Slot 4 Data 1", "value": 206 },
-              { "name": "Motion Slot 4 Data 2", "value": 206 },
-              { "name": "Motion Slot 4 Data 3", "value": 206 },
-              { "name": "Motion Slot 4 Data 4", "value": 206 }
+              { "name": "Motion Slot 4 Data 1", "value": 0 },
+              { "name": "Motion Slot 4 Data 2", "value": 0 },
+              { "name": "Motion Slot 4 Data 3", "value": 0 },
+              { "name": "Motion Slot 4 Data 4", "value": 0 }
             ]
           ]
         }
@@ -245,35 +245,35 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 30 },
-            "velocity": { "name": "Velocity", "value": 59 },
-            "gateTime": { "name": "GateTime", "value": 22 },
+            "key": { "name": "Key", "value": 62 },
+            "velocity": { "name": "Velocity", "value": 76 },
+            "gateTime": { "name": "GateTime", "value": 71 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 0 },
-              { "name": "Motion Slot 1 Data 2", "value": 0 },
-              { "name": "Motion Slot 1 Data 3", "value": 0 },
-              { "name": "Motion Slot 1 Data 4", "value": 0 }
+              { "name": "Motion Slot 1 Data 1", "value": 209 },
+              { "name": "Motion Slot 1 Data 2", "value": 217 },
+              { "name": "Motion Slot 1 Data 3", "value": 227 },
+              { "name": "Motion Slot 1 Data 4", "value": 236 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 255 },
-              { "name": "Motion Slot 2 Data 2", "value": 255 },
-              { "name": "Motion Slot 2 Data 3", "value": 255 },
-              { "name": "Motion Slot 2 Data 4", "value": 255 }
+              { "name": "Motion Slot 2 Data 1", "value": 163 },
+              { "name": "Motion Slot 2 Data 2", "value": 163 },
+              { "name": "Motion Slot 2 Data 3", "value": 163 },
+              { "name": "Motion Slot 2 Data 4", "value": 163 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 105 },
-              { "name": "Motion Slot 3 Data 2", "value": 105 },
-              { "name": "Motion Slot 3 Data 3", "value": 105 },
-              { "name": "Motion Slot 3 Data 4", "value": 105 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
-              { "name": "Motion Slot 4 Data 1", "value": 255 },
-              { "name": "Motion Slot 4 Data 2", "value": 255 },
-              { "name": "Motion Slot 4 Data 3", "value": 255 },
-              { "name": "Motion Slot 4 Data 4", "value": 255 }
+              { "name": "Motion Slot 4 Data 1", "value": 0 },
+              { "name": "Motion Slot 4 Data 2", "value": 0 },
+              { "name": "Motion Slot 4 Data 3", "value": 0 },
+              { "name": "Motion Slot 4 Data 4", "value": 0 }
             ]
           ]
         }
@@ -282,32 +282,32 @@
         "stepNumber": 6,
         "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
-        "slideActive": { "name": "Slide On/Off", "value": 1 },
+        "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 29 },
-            "velocity": { "name": "Velocity", "value": 43 },
-            "gateTime": { "name": "GateTime", "value": 22 },
+            "key": { "name": "Key", "value": 65 },
+            "velocity": { "name": "Velocity", "value": 84 },
+            "gateTime": { "name": "GateTime", "value": 127 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 178 },
-              { "name": "Motion Slot 1 Data 2", "value": 178 },
-              { "name": "Motion Slot 1 Data 3", "value": 178 },
-              { "name": "Motion Slot 1 Data 4", "value": 178 }
+              { "name": "Motion Slot 1 Data 1", "value": 236 },
+              { "name": "Motion Slot 1 Data 2", "value": 244 },
+              { "name": "Motion Slot 1 Data 3", "value": 250 },
+              { "name": "Motion Slot 1 Data 4", "value": 252 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 163 },
+              { "name": "Motion Slot 2 Data 2", "value": 163 },
+              { "name": "Motion Slot 2 Data 3", "value": 163 },
+              { "name": "Motion Slot 2 Data 4", "value": 163 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 120 },
-              { "name": "Motion Slot 3 Data 2", "value": 120 },
-              { "name": "Motion Slot 3 Data 3", "value": 120 },
-              { "name": "Motion Slot 3 Data 4", "value": 120 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -325,29 +325,29 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 50 },
-            "velocity": { "name": "Velocity", "value": 52 },
-            "gateTime": { "name": "GateTime", "value": 22 },
-            "trigger": { "name": "Trigger", "value": 1 }
+            "key": { "name": "Key", "value": 65 },
+            "velocity": { "name": "Velocity", "value": 84 },
+            "gateTime": { "name": "GateTime", "value": 63 },
+            "trigger": { "name": "Trigger", "value": 0 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 221 },
-              { "name": "Motion Slot 1 Data 2", "value": 221 },
-              { "name": "Motion Slot 1 Data 3", "value": 228 },
-              { "name": "Motion Slot 1 Data 4", "value": 237 }
+              { "name": "Motion Slot 1 Data 1", "value": 252 },
+              { "name": "Motion Slot 1 Data 2", "value": 254 },
+              { "name": "Motion Slot 1 Data 3", "value": 254 },
+              { "name": "Motion Slot 1 Data 4", "value": 254 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 163 },
+              { "name": "Motion Slot 2 Data 2", "value": 163 },
+              { "name": "Motion Slot 2 Data 3", "value": 163 },
+              { "name": "Motion Slot 2 Data 4", "value": 163 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 34 },
-              { "name": "Motion Slot 3 Data 2", "value": 34 },
-              { "name": "Motion Slot 3 Data 3", "value": 34 },
-              { "name": "Motion Slot 3 Data 4", "value": 34 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -365,35 +365,35 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 33 },
-            "velocity": { "name": "Velocity", "value": 61 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 55 },
+            "velocity": { "name": "Velocity", "value": 90 },
+            "gateTime": { "name": "GateTime", "value": 127 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 113 },
-              { "name": "Motion Slot 1 Data 2", "value": 113 },
-              { "name": "Motion Slot 1 Data 3", "value": 113 },
-              { "name": "Motion Slot 1 Data 4", "value": 113 }
+              { "name": "Motion Slot 1 Data 1", "value": 254 },
+              { "name": "Motion Slot 1 Data 2", "value": 254 },
+              { "name": "Motion Slot 1 Data 3", "value": 254 },
+              { "name": "Motion Slot 1 Data 4", "value": 254 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 162 },
-              { "name": "Motion Slot 2 Data 2", "value": 162 },
-              { "name": "Motion Slot 2 Data 3", "value": 162 },
-              { "name": "Motion Slot 2 Data 4", "value": 162 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 133 },
-              { "name": "Motion Slot 3 Data 2", "value": 133 },
-              { "name": "Motion Slot 3 Data 3", "value": 133 },
-              { "name": "Motion Slot 3 Data 4", "value": 133 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
-              { "name": "Motion Slot 4 Data 1", "value": 170 },
-              { "name": "Motion Slot 4 Data 2", "value": 170 },
-              { "name": "Motion Slot 4 Data 3", "value": 170 },
-              { "name": "Motion Slot 4 Data 4", "value": 170 }
+              { "name": "Motion Slot 4 Data 1", "value": 0 },
+              { "name": "Motion Slot 4 Data 2", "value": 0 },
+              { "name": "Motion Slot 4 Data 3", "value": 0 },
+              { "name": "Motion Slot 4 Data 4", "value": 0 }
             ]
           ]
         }
@@ -402,32 +402,32 @@
         "stepNumber": 9,
         "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
-        "slideActive": { "name": "Slide On/Off", "value": 1 },
+        "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 30 },
-            "velocity": { "name": "Velocity", "value": 52 },
-            "gateTime": { "name": "GateTime", "value": 54 },
-            "trigger": { "name": "Trigger", "value": 1 }
+            "key": { "name": "Key", "value": 55 },
+            "velocity": { "name": "Velocity", "value": 90 },
+            "gateTime": { "name": "GateTime", "value": 51 },
+            "trigger": { "name": "Trigger", "value": 0 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 37 },
-              { "name": "Motion Slot 1 Data 2", "value": 37 },
-              { "name": "Motion Slot 1 Data 3", "value": 37 },
-              { "name": "Motion Slot 1 Data 4", "value": 37 }
+              { "name": "Motion Slot 1 Data 1", "value": 254 },
+              { "name": "Motion Slot 1 Data 2", "value": 254 },
+              { "name": "Motion Slot 1 Data 3", "value": 254 },
+              { "name": "Motion Slot 1 Data 4", "value": 254 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 6 },
-              { "name": "Motion Slot 3 Data 2", "value": 6 },
-              { "name": "Motion Slot 3 Data 3", "value": 6 },
-              { "name": "Motion Slot 3 Data 4", "value": 6 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -442,32 +442,32 @@
         "stepNumber": 10,
         "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
-        "slideActive": { "name": "Slide On/Off", "value": 1 },
+        "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 65 },
-            "velocity": { "name": "Velocity", "value": 61 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 55 },
+            "velocity": { "name": "Velocity", "value": 84 },
+            "gateTime": { "name": "GateTime", "value": 67 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 87 },
-              { "name": "Motion Slot 1 Data 2", "value": 87 },
-              { "name": "Motion Slot 1 Data 3", "value": 87 },
-              { "name": "Motion Slot 1 Data 4", "value": 87 }
+              { "name": "Motion Slot 1 Data 1", "value": 254 },
+              { "name": "Motion Slot 1 Data 2", "value": 253 },
+              { "name": "Motion Slot 1 Data 3", "value": 250 },
+              { "name": "Motion Slot 1 Data 4", "value": 245 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 201 },
-              { "name": "Motion Slot 2 Data 2", "value": 201 },
-              { "name": "Motion Slot 2 Data 3", "value": 201 },
-              { "name": "Motion Slot 2 Data 4", "value": 201 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 57 },
-              { "name": "Motion Slot 3 Data 2", "value": 61 },
-              { "name": "Motion Slot 3 Data 3", "value": 69 },
-              { "name": "Motion Slot 3 Data 4", "value": 76 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -485,29 +485,29 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 30 },
-            "velocity": { "name": "Velocity", "value": 44 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 67 },
+            "velocity": { "name": "Velocity", "value": 102 },
+            "gateTime": { "name": "GateTime", "value": 127 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 43 },
-              { "name": "Motion Slot 1 Data 2", "value": 43 },
-              { "name": "Motion Slot 1 Data 3", "value": 43 },
-              { "name": "Motion Slot 1 Data 4", "value": 43 }
+              { "name": "Motion Slot 1 Data 1", "value": 245 },
+              { "name": "Motion Slot 1 Data 2", "value": 235 },
+              { "name": "Motion Slot 1 Data 3", "value": 227 },
+              { "name": "Motion Slot 1 Data 4", "value": 220 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 161 },
+              { "name": "Motion Slot 2 Data 2", "value": 161 },
+              { "name": "Motion Slot 2 Data 3", "value": 161 },
+              { "name": "Motion Slot 2 Data 4", "value": 161 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 76 },
-              { "name": "Motion Slot 3 Data 2", "value": 84 },
-              { "name": "Motion Slot 3 Data 3", "value": 89 },
-              { "name": "Motion Slot 3 Data 4", "value": 93 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -520,34 +520,34 @@
       },
       {
         "stepNumber": 12,
-        "active": { "name": "On/Off", "value": 0 },
+        "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 28 },
-            "velocity": { "name": "Velocity", "value": 68 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 62 },
+            "velocity": { "name": "Velocity", "value": 90 },
+            "gateTime": { "name": "GateTime", "value": 77 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 100 },
-              { "name": "Motion Slot 1 Data 2", "value": 100 },
-              { "name": "Motion Slot 1 Data 3", "value": 100 },
-              { "name": "Motion Slot 1 Data 4", "value": 100 }
+              { "name": "Motion Slot 1 Data 1", "value": 220 },
+              { "name": "Motion Slot 1 Data 2", "value": 217 },
+              { "name": "Motion Slot 1 Data 3", "value": 215 },
+              { "name": "Motion Slot 1 Data 4", "value": 211 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 93 },
-              { "name": "Motion Slot 3 Data 2", "value": 99 },
-              { "name": "Motion Slot 3 Data 3", "value": 105 },
-              { "name": "Motion Slot 3 Data 4", "value": 112 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -565,29 +565,29 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 34 },
-            "velocity": { "name": "Velocity", "value": 70 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 65 },
+            "velocity": { "name": "Velocity", "value": 96 },
+            "gateTime": { "name": "GateTime", "value": 73 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 74 },
-              { "name": "Motion Slot 1 Data 2", "value": 74 },
-              { "name": "Motion Slot 1 Data 3", "value": 74 },
-              { "name": "Motion Slot 1 Data 4", "value": 74 }
+              { "name": "Motion Slot 1 Data 1", "value": 211 },
+              { "name": "Motion Slot 1 Data 2", "value": 207 },
+              { "name": "Motion Slot 1 Data 3", "value": 204 },
+              { "name": "Motion Slot 1 Data 4", "value": 200 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 161 },
+              { "name": "Motion Slot 2 Data 2", "value": 161 },
+              { "name": "Motion Slot 2 Data 3", "value": 161 },
+              { "name": "Motion Slot 2 Data 4", "value": 161 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 112 },
-              { "name": "Motion Slot 3 Data 2", "value": 120 },
-              { "name": "Motion Slot 3 Data 3", "value": 129 },
-              { "name": "Motion Slot 3 Data 4", "value": 138 }
+              { "name": "Motion Slot 3 Data 1", "value": 165 },
+              { "name": "Motion Slot 3 Data 2", "value": 161 },
+              { "name": "Motion Slot 3 Data 3", "value": 151 },
+              { "name": "Motion Slot 3 Data 4", "value": 143 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -602,32 +602,32 @@
         "stepNumber": 14,
         "active": { "name": "On/Off", "value": 1 },
         "motionActive": { "name": "Motion On/Off", "value": 1 },
-        "slideActive": { "name": "Slide On/Off", "value": 1 },
+        "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 41 },
-            "velocity": { "name": "Velocity", "value": 61 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 69 },
+            "velocity": { "name": "Velocity", "value": 108 },
+            "gateTime": { "name": "GateTime", "value": 127 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 34 },
-              { "name": "Motion Slot 1 Data 2", "value": 34 },
-              { "name": "Motion Slot 1 Data 3", "value": 34 },
-              { "name": "Motion Slot 1 Data 4", "value": 34 }
+              { "name": "Motion Slot 1 Data 1", "value": 200 },
+              { "name": "Motion Slot 1 Data 2", "value": 196 },
+              { "name": "Motion Slot 1 Data 3", "value": 192 },
+              { "name": "Motion Slot 1 Data 4", "value": 189 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 253 },
-              { "name": "Motion Slot 2 Data 2", "value": 253 },
-              { "name": "Motion Slot 2 Data 3", "value": 253 },
-              { "name": "Motion Slot 2 Data 4", "value": 253 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 138 },
-              { "name": "Motion Slot 3 Data 2", "value": 147 },
-              { "name": "Motion Slot 3 Data 3", "value": 155 },
-              { "name": "Motion Slot 3 Data 4", "value": 164 }
+              { "name": "Motion Slot 3 Data 1", "value": 143 },
+              { "name": "Motion Slot 3 Data 2", "value": 134 },
+              { "name": "Motion Slot 3 Data 3", "value": 134 },
+              { "name": "Motion Slot 3 Data 4", "value": 138 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -645,29 +645,29 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 33 },
-            "velocity": { "name": "Velocity", "value": 59 },
-            "gateTime": { "name": "GateTime", "value": 54 },
-            "trigger": { "name": "Trigger", "value": 1 }
+            "key": { "name": "Key", "value": 69 },
+            "velocity": { "name": "Velocity", "value": 108 },
+            "gateTime": { "name": "GateTime", "value": 69 },
+            "trigger": { "name": "Trigger", "value": 0 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 36 },
-              { "name": "Motion Slot 1 Data 2", "value": 36 },
-              { "name": "Motion Slot 1 Data 3", "value": 36 },
-              { "name": "Motion Slot 1 Data 4", "value": 36 }
+              { "name": "Motion Slot 1 Data 1", "value": 189 },
+              { "name": "Motion Slot 1 Data 2", "value": 187 },
+              { "name": "Motion Slot 1 Data 3", "value": 185 },
+              { "name": "Motion Slot 1 Data 4", "value": 184 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 175 },
+              { "name": "Motion Slot 2 Data 2", "value": 175 },
+              { "name": "Motion Slot 2 Data 3", "value": 175 },
+              { "name": "Motion Slot 2 Data 4", "value": 175 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 164 },
-              { "name": "Motion Slot 3 Data 2", "value": 172 },
-              { "name": "Motion Slot 3 Data 3", "value": 180 },
-              { "name": "Motion Slot 3 Data 4", "value": 188 }
+              { "name": "Motion Slot 3 Data 1", "value": 138 },
+              { "name": "Motion Slot 3 Data 2", "value": 160 },
+              { "name": "Motion Slot 3 Data 3", "value": 171 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
@@ -685,29 +685,29 @@
         "slideActive": { "name": "Slide On/Off", "value": 0 },
         "event": {
           "note": {
-            "key": { "name": "Key", "value": 75 },
-            "velocity": { "name": "Velocity", "value": 50 },
-            "gateTime": { "name": "GateTime", "value": 54 },
+            "key": { "name": "Key", "value": 62 },
+            "velocity": { "name": "Velocity", "value": 80 },
+            "gateTime": { "name": "GateTime", "value": 72 },
             "trigger": { "name": "Trigger", "value": 1 }
           },
           "motionSlotsData": [
             [
-              { "name": "Motion Slot 1 Data 1", "value": 118 },
-              { "name": "Motion Slot 1 Data 2", "value": 118 },
-              { "name": "Motion Slot 1 Data 3", "value": 118 },
-              { "name": "Motion Slot 1 Data 4", "value": 118 }
+              { "name": "Motion Slot 1 Data 1", "value": 184 },
+              { "name": "Motion Slot 1 Data 2", "value": 184 },
+              { "name": "Motion Slot 1 Data 3", "value": 184 },
+              { "name": "Motion Slot 1 Data 4", "value": 184 }
             ],
             [
-              { "name": "Motion Slot 2 Data 1", "value": 0 },
-              { "name": "Motion Slot 2 Data 2", "value": 0 },
-              { "name": "Motion Slot 2 Data 3", "value": 0 },
-              { "name": "Motion Slot 2 Data 4", "value": 0 }
+              { "name": "Motion Slot 2 Data 1", "value": 128 },
+              { "name": "Motion Slot 2 Data 2", "value": 128 },
+              { "name": "Motion Slot 2 Data 3", "value": 128 },
+              { "name": "Motion Slot 2 Data 4", "value": 128 }
             ],
             [
-              { "name": "Motion Slot 3 Data 1", "value": 188 },
-              { "name": "Motion Slot 3 Data 2", "value": 194 },
-              { "name": "Motion Slot 3 Data 3", "value": 196 },
-              { "name": "Motion Slot 3 Data 4", "value": 196 }
+              { "name": "Motion Slot 3 Data 1", "value": 173 },
+              { "name": "Motion Slot 3 Data 2", "value": 173 },
+              { "name": "Motion Slot 3 Data 3", "value": 173 },
+              { "name": "Motion Slot 3 Data 4", "value": 173 }
             ],
             [
               { "name": "Motion Slot 4 Data 1", "value": 0 },
