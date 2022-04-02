@@ -7,18 +7,18 @@ function App() {
       <Knob
         size={100}
         fullAngle={260}
-        min={1}
-        max={100}
-        value={50}
+        paramMin={1}
+        paramMax={100}
+        initialParam={30}
         color={true}
         onChange={(value) => console.log(value)}
       />
       <Knob
         size={100}
         fullAngle={180}
-        min={1}
-        max={100}
-        value={0}
+        paramMin={1}
+        paramMax={100}
+        initialParam={0}
         color={true}
         onChange={(value) => console.log(value)}
       />

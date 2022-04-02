@@ -1,26 +1,15 @@
 import { useState } from "react";
+import { getDegrees } from "./utils";
 
 interface KnobProps {
   size: number;
-  min: number;
-  max: number;
+  paramMin: number;
+  paramMax: number;
   fullAngle: number;
-  value: number;
+  initialParam: number;
   color: boolean;
   onChange: (newValue: number) => void;
 }
-
-const convertRange = (
-  oldMin: number,
-  oldMax: number,
-  newMin: number,
-  newMax: number,
-  oldValue: number
-) => {
-  return Math.floor(
-    ((oldValue - oldMin) * (newMax - newMin)) / (oldMax - oldMin) + newMin
-  );
-};
 
 const dcpy = (o: { width: number; height: number }) => {
   return JSON.parse(JSON.stringify(o));
@@ -30,9 +19,17 @@ const Knob = (props: KnobProps) => {
   const startAngle: number = (360 - props.fullAngle) / 2;
   const endAngle: number = startAngle + props.fullAngle;
   const margin: number = props.size * 0.15;
-  const [currentDegrees, setCurrentDegrees] = useState(
-    convertRange(startAngle, endAngle, props.min, props.max, props.value)
-  );
+  const [degrees, setDegrees] = useState(() => {
+    const initialDegrees = getDegrees(
+      props.paramMin,
+      props.paramMax,
+      startAngle,
+      endAngle,
+      props.initialParam
+    );
+    console.log(initialDegrees); // expect 90ish?
+    return initialDegrees;
+  });
 
   const getDeg = (cX: number, cY: number, pts: { x: any; y: any }) => {
     const x = cX - pts.x;
@@ -55,7 +52,7 @@ const Knob = (props: KnobProps) => {
       y: knob.top + knob.height / 2,
     };
     const moveHandler = (e: { clientX: number; clientY: number }) => {
-      setCurrentDegrees(getDeg(e.clientX, e.clientY, pts));
+      setDegrees(getDeg(e.clientX, e.clientY, pts));
     };
     document.addEventListener("mousemove", moveHandler);
     document.addEventListener("mouseup", (e) => {
@@ -70,7 +67,7 @@ const Knob = (props: KnobProps) => {
   const iStyle = dcpy(knobStyle);
   const oStyle = dcpy(knobStyle);
   oStyle.margin = margin;
-  iStyle.transform = "rotate(" + currentDegrees + "deg)";
+  iStyle.transform = "rotate(" + degrees + "deg)";
 
   return (
     <div className="knob" style={knobStyle}>
