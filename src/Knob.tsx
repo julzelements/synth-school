@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getDegrees } from "./utils";
+import { finalDeg, getDegrees } from "./utils";
 
 interface KnobProps {
   size: number;
@@ -32,19 +32,6 @@ const Knob = (props: KnobProps) => {
     return initialDegrees;
   });
 
-  const getDeg = (cX: number, cY: number, pts: { x: any; y: any }) => {
-    const x = cX - pts.x;
-    const y = cY - pts.y;
-    let deg = (Math.atan(y / x) * 180) / Math.PI;
-    if ((x < 0 && y >= 0) || (x < 0 && y < 0)) {
-      deg += 90;
-    } else {
-      deg += 270;
-    }
-    let finalDeg = Math.min(Math.max(startAngle, deg), endAngle);
-    return finalDeg;
-  };
-
   const startDrag = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const knob = e.currentTarget.getBoundingClientRect();
@@ -53,7 +40,7 @@ const Knob = (props: KnobProps) => {
       y: knob.top + knob.height / 2,
     };
     const moveHandler = (e: { clientX: number; clientY: number }) => {
-      setDegrees(getDeg(e.clientX, e.clientY, pts));
+      setDegrees(finalDeg(e.clientX, e.clientY, pts, startAngle, endAngle));
     };
     document.addEventListener("mousemove", moveHandler);
     document.addEventListener("mouseup", (e) => {
@@ -70,6 +57,10 @@ const Knob = (props: KnobProps) => {
   oStyle.margin = margin;
   iStyle.transform = "rotate(" + degrees + "deg)";
 
+  const minilogueStyle = {
+    transform: "rotate(" + degrees + "deg)",
+  };
+
   return (
     <div>
       <div>{props.paramName}</div>
@@ -78,6 +69,11 @@ const Knob = (props: KnobProps) => {
           <div className="knob inner" style={iStyle}>
             <div className="grip" />
           </div>
+        </div>
+      </div>
+      <div className="knob-container">
+        <div className="knob-value" style={minilogueStyle}>
+          <div className="knob-value-inner" />
         </div>
       </div>
     </div>

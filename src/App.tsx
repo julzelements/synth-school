@@ -6,26 +6,40 @@ function App() {
   console.log(data);
   return (
     <div className="App">
-      <Knob
-        paramName={data.filter.cutoff.name}
-        size={100}
-        fullAngle={260}
-        paramMin={0}
-        paramMax={1023}
-        initialParam={data.filter.cutoff.value}
-        color={true}
-        onChange={(value) => console.log(value)}
-      />
-      <Knob
-        paramName={data.filter.resonance.name}
-        size={100}
-        fullAngle={260}
-        paramMin={0}
-        paramMax={1023}
-        initialParam={data.filter.resonance.value}
-        color={true}
-        onChange={(value) => console.log(value)}
-      />
+      <div className="filter">
+        <Knob
+          paramName="0%"
+          size={50}
+          fullAngle={260}
+          paramMin={0}
+          paramMax={1023}
+          initialParam={0}
+          color={true}
+          onChange={(value) => console.log(value)}
+        />
+        <div style={{ width: "50px" }}></div>
+        <Knob
+          paramName="50%"
+          size={50}
+          fullAngle={260}
+          paramMin={0}
+          paramMax={1023}
+          initialParam={512}
+          color={true}
+          onChange={(value) => console.log(value)}
+        />
+        <div style={{ width: "50px" }}></div>
+        <Knob
+          paramName="100%"
+          size={50}
+          fullAngle={260}
+          paramMin={0}
+          paramMax={1023}
+          initialParam={1023}
+          color={true}
+          onChange={(value) => console.log(value)}
+        />
+      </div>
     </div>
   );
 }
