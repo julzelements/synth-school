@@ -7,20 +7,27 @@ function App() {
   return (
     <div className="App">
       <div className="filter">
-        <Knob
-          paramName="0%"
-          size={50}
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
-          initialParam={0}
-          color={true}
-          onChange={(value) => console.log(value)}
-        />
+        <div className="panel-controls">
+          <div className="panel-section">
+            <div className="control-group">
+              <div className="control-wrapper">
+                <Knob
+                  paramName="0%"
+                  fullAngle={260}
+                  paramMin={0}
+                  paramMax={1023}
+                  initialParam={0}
+                  color={true}
+                  onChange={(value) => console.log(value)}
+                />
+                <p className="control-label label">Filter</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div style={{ width: "50px" }}></div>
         <Knob
           paramName="50%"
-          size={50}
           fullAngle={260}
           paramMin={0}
           paramMax={1023}
@@ -31,7 +38,6 @@ function App() {
         <div style={{ width: "50px" }}></div>
         <Knob
           paramName="100%"
-          size={50}
           fullAngle={260}
           paramMin={0}
           paramMax={1023}
