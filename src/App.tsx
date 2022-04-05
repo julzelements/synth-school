@@ -4,6 +4,7 @@ import data from "./data.json";
 import { ReactComponent as Saw } from "./assets/saw.svg";
 import { ReactComponent as Square } from "./assets/square.svg";
 import { ReactComponent as Triangle } from "./assets/triangle.svg";
+import Switch from "./Switch";
 
 function App() {
   console.log(data);
@@ -66,37 +67,12 @@ function App() {
               </div>
               <div className="control-group" title="Sawtooth">
                 <div className="control-wrapper">
-                  <div className="switch-range switch-range-vertical">
-                    <div
-                      className="switch-value"
-                      style={{ bottom: "36px" }}
-                    ></div>
-                  </div>
-                  <div className="switch-label-wrapper">
-                    <ul className="switch-labels">
-                      <li className="switch-label">
-                        <div className="switch-value-label">
-                          <svg height="10" width="10" viewBox="0 0 6.216 3.755">
-                            <Saw />
-                          </svg>
-                        </div>
-                      </li>
-                      <li className="switch-label">
-                        <div className="switch-value-label">
-                          <svg height="10" width="10" viewBox="0 0 7.185 3.68">
-                            <Saw />
-                          </svg>
-                        </div>
-                      </li>
-                      <li className="switch-label">
-                        <div className="switch-value-label">
-                          <svg height="10" width="10" viewBox="0 0 7.044 3.567">
-                            <Saw />
-                          </svg>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+                  <Switch
+                    value={2}
+                    numPositions={3}
+                    vertical
+                    onChange={(val) => console.log(val)}
+                  />
                 </div>
                 <p className="control-label label">Wave</p>
               </div>
