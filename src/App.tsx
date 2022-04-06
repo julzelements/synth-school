@@ -73,6 +73,25 @@ function App() {
                     vertical
                     onChange={(val) => console.log(val)}
                   />
+                  <div className="switch-label-wrapper">
+                    <ul className="switch-labels">
+                      <li className="switch-label">
+                        <div className="switch-value-label">
+                          <Saw />
+                        </div>
+                      </li>
+                      <li className="switch-label">
+                        <div className="switch-value-label">
+                          <Triangle />
+                        </div>
+                      </li>
+                      <li className="switch-label">
+                        <div className="switch-value-label">
+                          <Square />
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <p className="control-label label">Wave</p>
               </div>

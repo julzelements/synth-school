@@ -103,3 +103,33 @@
   border: 2px solid var(--control-value-background);
   box-sizing: border-box;
 }
+
+.switch-label-wrapper {
+  height: 56px;
+  display: inline-block;
+  width: 10px;
+}
+
+.switch-labels {
+  display: table;
+  overflow: visible;
+  margin: 0;
+  margin-left: 3px;
+  padding: 0;
+  height: 100%;
+  text-align: left;
+  font-size: 8px;
+}
+
+.switch-label {
+  display: table-row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  width: 10px;
+}
+.switch-value-label {
+  display: table-cell;
+  vertical-align: middle;
+}
