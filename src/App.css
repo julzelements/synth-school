@@ -22,7 +22,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background: white;
+  background: rgb(46 48 49);
   margin: 0 auto;
   display: flex;
   align-items: flex-end;
@@ -32,7 +32,7 @@
   margin: 0 auto; /* Center the tick mark */
   width: 4px;
   height: 40%;
-  background: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
 }
 
 .control-group {
@@ -76,34 +76,6 @@
   border-radius: 15px;
 }
 
-.switch-range {
-  position: relative;
-  display: inline-block;
-  background: var(--control-value-background);
-  border-radius: 10px;
-  margin: 0 auto;
-}
-
-.switch-range-vertical {
-  height: 56px;
-  width: 20px;
-}
-
-.switch-range-horizontal {
-  height: 20px;
-  width: 56px;
-}
-
-.switch-value {
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  background: var(--value-color);
-  border-radius: 50%;
-  border: 2px solid var(--control-value-background);
-  box-sizing: border-box;
-}
-
 .switch-label-wrapper {
   height: 56px;
   display: inline-block;
@@ -132,4 +104,50 @@
 .switch-value-label {
   display: table-cell;
   vertical-align: middle;
+}
+
+.led-array {
+  display: table;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 65px;
+  top: 0;
+  height: 60px;
+}
+
+.led-array-value {
+  display: table-row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.led-array-light {
+  cursor: pointer;
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  background: var(--control-value-background);
+  border-radius: 6px;
+}
+
+.led-array-light-active {
+  background: #d03445;
+  height: 10px;
+  width: 10px;
+  border: 1px solid #644;
+}
+
+#keyboard-octave-leds {
+  position: absolute;
+}
+
+#keyboard-octave-leds .led-array {
+  display: flex;
+  position: relative;
+  left: 3px;
+  justify-content: space-between;
+  height: 12px;
+  width: 72px;
 }
