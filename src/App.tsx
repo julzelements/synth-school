@@ -5,6 +5,7 @@ import { VCO1 } from "./panelSections/VCO1";
 import { Mixer } from "./panelSections/Mixer";
 import { Filter } from "./panelSections/Filter";
 import { VCO2 } from "./panelSections/VCO2";
+import { EGLFO } from "./panelSections/EGLFO";
 
 function App() {
   console.log(data);
@@ -23,8 +24,7 @@ function App() {
             <VCO2 />
             <Mixer />
             <Filter />
-            {/* <Mixer />
-            <Filter /> */}
+            <EGLFO />
           </div>
         </div>
       </div>
