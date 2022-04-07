@@ -5,7 +5,7 @@ import Switch from "../Switch";
 
 const Wave = () => {
   return (
-    <div className="control-group" title="Sawtooth">
+    <div className="control-group">
       <div className="control-wrapper">
         <Switch
           value={2}

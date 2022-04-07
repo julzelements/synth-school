@@ -11,11 +11,9 @@
   text-align: center;
 }
 .App {
-  display: grid;
+  margin: 50px;
   justify-content: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5em;
 }
 
 .knob-value {
@@ -57,7 +55,7 @@
 .panel-controls {
   text-transform: uppercase;
   display: grid;
-  grid-template-columns: repeat(17, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 0;
   margin-top: 2em;
@@ -150,4 +148,43 @@
   justify-content: space-between;
   height: 12px;
   width: 72px;
+}
+
+/**
+ * Layout
+ */
+
+#global {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#vco1 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#vco2 {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#mixer {
+  grid-column-start: 6;
+  grid-column-end: 7;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#filter {
+  grid-column-start: 8;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 4;
 }

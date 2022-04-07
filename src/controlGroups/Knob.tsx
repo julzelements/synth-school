@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { cursorCoordsToDegrees, degreesToParam, paramToDegrees } from "./utils";
+import {
+  cursorCoordsToDegrees,
+  degreesToParam,
+  paramToDegrees,
+} from "../utils";
 
 interface KnobProps {
+  label: string;
   paramMin: number;
   paramMax: number;
   paramName: string;
@@ -63,12 +68,15 @@ const Knob = (props: KnobProps) => {
   };
 
   return (
-    <div>
-      <div className="knob-container">
-        <div className="knob-value" style={knobStyle} onMouseDown={startDrag}>
-          <div className="knob-value-inner" />
+    <div className="control-group">
+      <div className="control-wrapper">
+        <div className="knob-container">
+          <div className="knob-value" style={knobStyle} onMouseDown={startDrag}>
+            <div className="knob-value-inner" />
+          </div>
         </div>
       </div>
+      <p className="control-label label">{props.label}</p>
     </div>
   );
 };
