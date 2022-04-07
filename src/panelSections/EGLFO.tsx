@@ -1,6 +1,5 @@
 import Wave from "../controlGroups/Wave";
 import Knob from "../controlGroups/Knob";
-import HalfWave from "../controlGroups/HalfWave";
 
 export const EGLFO = () => {
   return (
@@ -40,10 +39,10 @@ export const EGLFO = () => {
         />
         <Wave />
       </div>
-      {/* <div className="panel-group">
+      <div className="panel-group">
         <h2 className="panel-group-label label">LFO</h2>
-        <HalfWave />
-        <HalfWave />
+        <Wave />
+        <Wave />
         <Knob
           label="Shape"
           paramName="0%"
@@ -65,7 +64,7 @@ export const EGLFO = () => {
           onChange={(value) => console.log(value)}
         />
         <Wave />
-      </div> */}
+      </div>
     </div>
   );
 };
