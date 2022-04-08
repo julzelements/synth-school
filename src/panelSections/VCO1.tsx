@@ -1,7 +1,12 @@
 import Wave from "../controlGroups/Wave";
 import Knob from "../controlGroups/Knob";
 
-export const VCO1 = () => {
+interface VCO1Props {
+  shape: number;
+  wave: number;
+}
+
+export const VCO1 = (props: VCO1Props) => {
   return (
     <div className="panel-section" id="vco1">
       <h2 className="panel-group-label label">VCO1</h2>
@@ -11,12 +16,8 @@ export const VCO1 = () => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            label="shape"
-            paramName="0%"
-            fullAngle={260}
-            paramMin={0}
-            paramMax={1023}
-            initialParam={0}
+            paramName="shape"
+            initialParam={props.shape}
             color={true}
             onChange={(value) => console.log(value)}
           />

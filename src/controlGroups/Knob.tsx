@@ -6,9 +6,8 @@ import {
 } from "../utils";
 
 interface KnobProps {
-  label: string;
-  paramMin: number;
-  paramMax: number;
+  paramMin?: number;
+  paramMax?: number;
   paramName: string;
   fullAngle?: number;
   initialParam: number;
@@ -17,13 +16,15 @@ interface KnobProps {
 }
 
 const Knob = (props: KnobProps) => {
+  const paramMin = props.paramMin || 0;
+  const paramMax = props.paramMax || 1023;
   const fullAngle = props.fullAngle || 260;
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;
   const [degrees, setDegrees] = useState(() => {
     const initialDegrees = paramToDegrees(
-      props.paramMin,
-      props.paramMax,
+      paramMin,
+      paramMax,
       startAngle,
       endAngle,
       props.initialParam
@@ -48,8 +49,8 @@ const Knob = (props: KnobProps) => {
       );
       setDegrees(degrees);
       const currentParamValue = degreesToParam(
-        props.paramMin,
-        props.paramMax,
+        paramMin,
+        paramMax,
         startAngle,
         endAngle,
         degrees
@@ -75,7 +76,7 @@ const Knob = (props: KnobProps) => {
           </div>
         </div>
       </div>
-      <p className="control-label label">{props.label}</p>
+      <p className="control-label label">{props.paramName}</p>
     </div>
   );
 };

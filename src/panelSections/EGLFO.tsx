@@ -8,31 +8,19 @@ export const EGLFO = () => {
         <h2 className="panel-group-label label">EG</h2>
         <Wave />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}
@@ -44,21 +32,13 @@ export const EGLFO = () => {
         <Wave />
         <Wave />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}

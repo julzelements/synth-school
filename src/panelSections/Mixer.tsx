@@ -7,11 +7,7 @@ export const Mixer = () => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            label="VCO1"
-            paramName="0%"
-            fullAngle={260}
-            paramMin={0}
-            paramMax={1023}
+            paramName="VCO1"
             initialParam={0}
             color={true}
             onChange={(value) => console.log(value)}
@@ -21,11 +17,7 @@ export const Mixer = () => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            label="VCO2"
-            paramName="0%"
-            fullAngle={260}
-            paramMin={0}
-            paramMax={1023}
+            paramName="VCO2"
             initialParam={0}
             color={true}
             onChange={(value) => console.log(value)}

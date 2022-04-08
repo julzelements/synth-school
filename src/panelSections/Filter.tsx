@@ -5,21 +5,13 @@ export const Filter = () => {
     <div className="panel-section" id="filter">
       <h2 className="panel-group-label label">Filter</h2>
       <Knob
-        label="Cutoff"
-        paramName="0%"
-        fullAngle={260}
-        paramMin={0}
-        paramMax={1023}
+        paramName="Cutoff"
         initialParam={0}
         color={true}
         onChange={(value) => console.log(value)}
       />
       <Knob
-        label="Resonance"
-        paramName="0%"
-        fullAngle={260}
-        paramMin={0}
-        paramMax={1023}
+        paramName="Resonance"
         initialParam={0}
         color={true}
         onChange={(value) => console.log(value)}

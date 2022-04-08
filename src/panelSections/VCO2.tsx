@@ -9,11 +9,7 @@ export const VCO2 = () => {
         <h2 className="panel-group-label label">VCO2</h2>
         <Wave />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}
@@ -23,11 +19,7 @@ export const VCO2 = () => {
         <HalfWave />
         <HalfWave />
         <Knob
-          label="Shape"
-          paramName="0%"
-          fullAngle={260}
-          paramMin={0}
-          paramMax={1023}
+          paramName="Shape"
           initialParam={0}
           color={true}
           onChange={(value) => console.log(value)}
