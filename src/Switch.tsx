@@ -31,6 +31,8 @@ const Switch = (props: SwitchProps) => {
   const [value, setValue] = useState(() => props.value);
 
   const onMouseMove = (event) => {
+    console.log(rangeEl);
+    console.log(valueEl);
     handleMousePosition(event);
   };
 

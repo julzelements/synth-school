@@ -1,11 +1,17 @@
 import KeyboardOctaveLeds from "../controlGroups/KeyboardOctaveLeds";
 import Knob from "../controlGroups/Knob";
 import Switch from "../Switch";
+import { Parameter } from "../types";
 
-export const Global = () => {
+interface MasterProps {
+  parameters: Parameter;
+  onChange: (value) => void;
+}
+
+export const Master = (props: MasterProps) => {
   return (
-    <div className="panel-section" id="global">
-      <h2 className="panel-group-label label">Global</h2>
+    <div className="panel-section" id="master">
+      <h2 className="panel-group-label label">Master</h2>
       <Knob
         label="Volume"
         paramName="0%"
@@ -17,14 +23,14 @@ export const Global = () => {
         onChange={(value) => console.log(value)}
       />
       <Knob
-        label="Drive"
+        label={props.parameters.name}
         paramName="0%"
         fullAngle={260}
         paramMin={0}
         paramMax={1023}
-        initialParam={0}
+        initialParam={props.parameters.value}
         color={true}
-        onChange={(value) => console.log(value)}
+        onChange={props.onChange}
       />
 
       <KeyboardOctaveLeds />

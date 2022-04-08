@@ -3,10 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import blob from "./data.json";
+import { KorgProgramDump } from "./types";
+
+const data: KorgProgramDump = blob;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App {...data} />
   </React.StrictMode>,
   document.getElementById("app-root")
 );

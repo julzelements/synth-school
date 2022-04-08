@@ -10,15 +10,16 @@ interface KnobProps {
   paramMin: number;
   paramMax: number;
   paramName: string;
-  fullAngle: number;
+  fullAngle?: number;
   initialParam: number;
   color: boolean;
   onChange: (newValue: number) => void;
 }
 
 const Knob = (props: KnobProps) => {
-  const startAngle: number = (360 - props.fullAngle) / 2;
-  const endAngle: number = startAngle + props.fullAngle;
+  const fullAngle = props.fullAngle || 260;
+  const startAngle: number = (360 - fullAngle) / 2;
+  const endAngle: number = startAngle + fullAngle;
   const [degrees, setDegrees] = useState(() => {
     const initialDegrees = paramToDegrees(
       props.paramMin,
@@ -29,7 +30,6 @@ const Knob = (props: KnobProps) => {
     );
     return initialDegrees;
   });
-  const [paramValue, setParamValue] = useState(() => props.initialParam);
 
   const startDrag = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -54,7 +54,6 @@ const Knob = (props: KnobProps) => {
         endAngle,
         degrees
       );
-      setParamValue(currentParamValue);
       props.onChange(currentParamValue);
     };
     document.addEventListener("mousemove", moveHandler);

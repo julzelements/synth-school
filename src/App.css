@@ -176,7 +176,7 @@
  * Layout
  */
 
-#global {
+#master {
   grid-column: 1 / span 1;
   grid-row: 1 / span 3;
 }
