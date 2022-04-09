@@ -13,33 +13,35 @@ interface VCO2Props {
   onChangeShapeValue: (value) => void;
 }
 
-export const VCO2 = () => {
+export const VCO2 = (props: VCO2Props) => {
   return (
     <div className="panel-section" id="vco2">
       <div className="panel-group">
         <h2 className="panel-group-label label">VCO2</h2>
         <Wave paramName="Octave" />
         <Knob
-          paramName="Shape"
-          initialParam={0}
+          paramName={props.oscilator.pitch.name}
+          initialValue={props.oscilator.pitch.value}
           color={true}
-          onChange={(value) => console.log(value)}
+          onChange={props.onChangePitchValue}
         />
       </div>
       <div className="panel-group">
         <Wave
-          paramName="Wave"
+          paramName={props.oscilator.wave.name}
+          initialValue={props.oscilator.wave.value}
           labels={[<Saw />, <Triangle />, <Noise />]}
           half={true}
         />
         <Wave
-          paramName="Duty"
+          paramName={props.oscilator.duty.name}
+          initialValue={props.oscilator.duty.value}
           half={true}
           labels={[<div>Sync</div>, <div>Free</div>, <div>Ring</div>]}
         />
         <Knob
-          paramName="Shape"
-          initialParam={0}
+          paramName={props.oscilator.shape.name}
+          initialValue={props.oscilator.shape.value}
           color={true}
           onChange={(value) => console.log(value)}
         />

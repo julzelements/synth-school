@@ -27,7 +27,7 @@ export const VCO1 = (props: VCO1Props) => {
         <div className="control-wrapper">
           <Knob
             paramName={props.oscilator.shape.name}
-            initialParam={props.oscilator.shape.value}
+            initialValue={props.oscilator.shape.value}
             color={true}
             onChange={props.onChangeWaveType}
           />

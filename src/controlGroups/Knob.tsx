@@ -10,7 +10,7 @@ interface KnobProps {
   paramMax?: number;
   paramName: string;
   fullAngle?: number;
-  initialParam: number;
+  initialValue: number;
   color: boolean;
   onChange: (newValue: number) => void;
 }
@@ -27,7 +27,7 @@ const Knob = (props: KnobProps) => {
       paramMax,
       startAngle,
       endAngle,
-      props.initialParam
+      props.initialValue
     );
     return initialDegrees;
   });

@@ -35,7 +35,23 @@ const App = (props: KorgProgramDump) => {
               onChangeWaveType={setVco1WaveType}
               onChangeShapeValue={setVco1ShapeValue}
             />
-            <VCO2 />
+            <VCO2
+              oscilator={props.oscilators.find(
+                (params) => params.wave.oscilator === 1
+              )}
+              onChangeWaveType={function (value: any): void {
+                throw new Error("Function not implemented.");
+              }}
+              onChangeDutyValue={function (value: any): void {
+                throw new Error("Function not implemented.");
+              }}
+              onChangePitchValue={function (value: any): void {
+                throw new Error("Function not implemented.");
+              }}
+              onChangeShapeValue={function (value: any): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
             <Mixer />
             <Filter />
             <EGLFO />

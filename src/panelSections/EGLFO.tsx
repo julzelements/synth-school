@@ -9,19 +9,19 @@ export const EGLFO = () => {
         <Wave />
         <Knob
           paramName="Shape"
-          initialParam={0}
+          initialValue={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
         <Knob
           paramName="Shape"
-          initialParam={0}
+          initialValue={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
         <Knob
           paramName="Shape"
-          initialParam={0}
+          initialValue={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
@@ -33,13 +33,13 @@ export const EGLFO = () => {
         <Wave />
         <Knob
           paramName="Shape"
-          initialParam={0}
+          initialValue={0}
           color={true}
           onChange={(value) => console.log(value)}
         />
         <Knob
           paramName="Shape"
-          initialParam={0}
+          initialValue={0}
           color={true}
           onChange={(value) => console.log(value)}
         />

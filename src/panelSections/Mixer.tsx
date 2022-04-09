@@ -8,7 +8,7 @@ export const Mixer = () => {
         <div className="control-wrapper">
           <Knob
             paramName="VCO1"
-            initialParam={0}
+            initialValue={0}
             color={true}
             onChange={(value) => console.log(value)}
           />
@@ -18,7 +18,7 @@ export const Mixer = () => {
         <div className="control-wrapper">
           <Knob
             paramName="VCO2"
-            initialParam={0}
+            initialValue={0}
             color={true}
             onChange={(value) => console.log(value)}
           />

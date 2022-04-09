@@ -28,8 +28,8 @@ const Wave = (props: WaveProps) => {
         />
         <div className="switch-label-wrapper">
           <ul className="switch-labels">
-            {labels.map((label) => (
-              <li className="switch-label">
+            {labels.map((label, index) => (
+              <li className="switch-label" key={index}>
                 <div className="switch-value-label">{label}</div>
               </li>
             ))}

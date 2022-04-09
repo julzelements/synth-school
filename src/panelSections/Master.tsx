@@ -14,13 +14,13 @@ export const Master = (props: MasterProps) => {
       <h2 className="panel-group-label label">Master</h2>
       <Knob
         paramName="Volume"
-        initialParam={0}
+        initialValue={0}
         color={true}
         onChange={(value) => console.log(value)}
       />
       <Knob
         paramName={props.drive.name}
-        initialParam={props.drive.value}
+        initialValue={props.drive.value}
         color={true}
         onChange={props.onChange}
       />
