@@ -11,6 +11,7 @@ import { Envelope } from "./panelSections/Envelope";
 import { LFO } from "./panelSections/LFO";
 import { KorgProgramDump } from "./types";
 import { useState } from "react";
+import VCO2Octave from "./controlGroups/VCO2Octave";
 
 const App = (props: KorgProgramDump) => {
   const [drive, setDrive] = useState(() => props.drive.value);
@@ -27,6 +28,11 @@ const App = (props: KorgProgramDump) => {
     () =>
       props.oscilators.find((params) => params.wave.oscilator === 0).wave.value
   );
+  const [vco2OctaveValue, setVco2OctaveValue] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).octave
+        .value
+  );
   const [vco2WaveType, setVco2WaveType] = useState(
     () =>
       props.oscilators.find((params) => params.wave.oscilator === 1).wave.value
@@ -35,7 +41,7 @@ const App = (props: KorgProgramDump) => {
     () =>
       props.oscilators.find((params) => params.wave.oscilator === 1).duty.value
   );
-  const [vco2DutyPitchValue, setVco2DutyPitchValue] = useState(
+  const [vco2PitchValue, setVco2PitchValue] = useState(
     () =>
       props.oscilators.find((params) => params.wave.oscilator === 1).duty.value
   );
@@ -99,9 +105,11 @@ const App = (props: KorgProgramDump) => {
               oscilator={props.oscilators.find(
                 (params) => params.wave.oscilator === 1
               )}
+              octave={vco2OctaveValue}
+              onChangeOctave={setVco2OctaveValue}
               onChangeWaveType={setVco2WaveType}
               onChangeDutyValue={setVco2DutyValue}
-              onChangePitchValue={setVco2DutyPitchValue}
+              onChangePitchValue={setVco2PitchValue}
               onChangeShapeValue={setVco2ShapeValue}
             />
             <Mixer

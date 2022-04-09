@@ -4,9 +4,12 @@ import { ReactComponent as Saw } from "../assets/saw.svg";
 import { ReactComponent as Triangle } from "../assets/triangle.svg";
 import { ReactComponent as Noise } from "../assets/noise.svg";
 import { Oscilator } from "../types";
+import VCO2Octave from "../controlGroups/VCO2Octave";
 
 interface VCO2Props {
   oscilator: Oscilator;
+  octave: number;
+  onChangeOctave: (value) => void;
   onChangeWaveType: (value) => void;
   onChangeDutyValue: (value) => void;
   onChangePitchValue: (value) => void;
@@ -18,7 +21,11 @@ export const VCO2 = (props: VCO2Props) => {
     <div className="panel-section" id="vco2">
       <div className="panel-group">
         <h2 className="panel-group-label label">VCO2</h2>
-        <SwitchContainer paramName="Octave" />
+        <VCO2Octave
+          paramName="Octave"
+          initialValue={props.octave}
+          onChange={props.onChangeOctave}
+        />
         <Knob
           paramName={props.oscilator.pitch.name}
           initialValue={props.oscilator.pitch.value}
