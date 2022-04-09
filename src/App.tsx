@@ -10,7 +10,8 @@ import { VCO1 } from "./panelSections/VCO1";
 import { Mixer } from "./panelSections/Mixer";
 import { Filter } from "./panelSections/Filter";
 import { VCO2 } from "./panelSections/VCO2";
-import { EGLFO } from "./panelSections/EGLFO";
+import { Envelope } from "./panelSections/Envelope";
+import { LFO } from "./panelSections/LFO";
 import { KorgProgramDump } from "./types";
 import { useState } from "react";
 
@@ -42,6 +43,20 @@ const App = (props: KorgProgramDump) => {
   );
   const [cutoff, setCutoff] = useState(() => props.filter.cutoff);
   const [resonance, setResonance] = useState(() => props.filter.resonance);
+
+  const [envType, setEnvType] = useState(() => props.envelope.type);
+  const [envAttack, setEnvAttack] = useState(() => props.envelope.attack);
+  const [envDecay, setEnvDecay] = useState(() => props.envelope.decay);
+  const [envIntensity, setEnvIntensity] = useState(
+    () => props.envelope.intensity
+  );
+  const [envTarget, setEnvTarget] = useState(() => props.envelope.target);
+
+  const [lfoWave, setLfoWave] = useState(() => props.lfo.wave);
+  const [lfoMode, setLfoMode] = useState(() => props.lfo.mode);
+  const [lfoRate, setLfoRate] = useState(() => props.lfo.rate);
+  const [lfoIntensity, setLfoIntensity] = useState(() => props.lfo.intensity);
+  const [lfoTarget, setLfoTarget] = useState(() => props.lfo.target);
 
   return (
     <div className="App">
@@ -88,7 +103,32 @@ const App = (props: KorgProgramDump) => {
               onChangeCutoff={setCutoff}
               onChangeResonance={setResonance}
             />
-            <EGLFO />
+            <div className="panel-section" id="eglfo">
+              <Envelope
+                type={props.envelope.type}
+                attack={props.envelope.attack}
+                decay={props.envelope.decay}
+                intensity={props.envelope.intensity}
+                target={props.envelope.target}
+                onChangeType={setEnvType}
+                onChangeAttack={setEnvAttack}
+                onChangeDecay={setEnvDecay}
+                onChangeIntensity={setEnvIntensity}
+                onChangeTarget={setEnvTarget}
+              />
+              <LFO
+                wave={props.lfo.wave}
+                mode={props.lfo.mode}
+                rate={props.lfo.rate}
+                intensity={props.lfo.intensity}
+                target={props.lfo.target}
+                onChangeWave={setLfoWave}
+                onChangeMode={setLfoMode}
+                onChangeRate={setLfoRate}
+                onChangeIntensity={setLfoIntensity}
+                onChangeTarget={setLfoTarget}
+              />
+            </div>
           </div>
         </div>
       </div>
