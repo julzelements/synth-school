@@ -17,7 +17,6 @@ export const Mixer = (props: MixerProps) => {
           <Knob
             paramName={props.vco1Level.name}
             initialValue={props.vco1Level.value}
-            color={true}
             onChange={props.onChangeVCO1LevelValue}
           />
         </div>
@@ -27,7 +26,6 @@ export const Mixer = (props: MixerProps) => {
           <Knob
             paramName={props.vco2Level.name}
             initialValue={props.vco2Level.value}
-            color={true}
             onChange={props.onChangeVCO2LevelValue}
           />
         </div>

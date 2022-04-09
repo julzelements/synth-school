@@ -15,13 +15,11 @@ export const Filter = (props: FilterProps) => {
       <Knob
         paramName={props.cutoff.name}
         initialValue={props.cutoff.value}
-        color={true}
         onChange={props.onChangeCutoff}
       />
       <Knob
         paramName={props.resonance.name}
         initialValue={props.resonance.value}
-        color={true}
         onChange={props.onChangeResonance}
       />
     </div>

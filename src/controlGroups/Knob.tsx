@@ -11,7 +11,6 @@ interface KnobProps {
   paramName: string;
   fullAngle?: number;
   initialValue: number;
-  color: boolean;
   onChange: (newValue: number) => void;
 }
 

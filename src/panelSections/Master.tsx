@@ -15,13 +15,11 @@ export const Master = (props: MasterProps) => {
       <Knob
         paramName="Volume"
         initialValue={0}
-        color={true}
         onChange={(value) => console.log(value)}
       />
       <Knob
         paramName={props.drive.name}
         initialValue={props.drive.value}
-        color={true}
         onChange={props.onChange}
       />
 

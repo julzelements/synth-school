@@ -24,13 +24,11 @@ export const LFO = (props: LFOProps) => {
       <Knob
         paramName="Shape"
         initialValue={0}
-        color={true}
         onChange={(value) => console.log(value)}
       />
       <Knob
         paramName="Shape"
         initialValue={0}
-        color={true}
         onChange={(value) => console.log(value)}
       />
       <Wave />

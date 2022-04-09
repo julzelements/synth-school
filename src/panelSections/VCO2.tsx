@@ -22,7 +22,6 @@ export const VCO2 = (props: VCO2Props) => {
         <Knob
           paramName={props.oscilator.pitch.name}
           initialValue={props.oscilator.pitch.value}
-          color={true}
           onChange={props.onChangePitchValue}
         />
       </div>
@@ -44,7 +43,6 @@ export const VCO2 = (props: VCO2Props) => {
         <Knob
           paramName={props.oscilator.shape.name}
           initialValue={props.oscilator.shape.value}
-          color={true}
           onChange={props.onChangeShapeValue}
         />
       </div>
