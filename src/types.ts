@@ -1,7 +1,7 @@
 export interface KorgProgramDump {
   patchName: string;
   drive: Parameter;
-  oscilators?: OscilatorsEntity[] | null;
+  oscilators?: Oscilator[] | null;
   filter: Filter;
   envelope: Envelope;
   lfo: Lfo;
@@ -12,7 +12,7 @@ export interface Parameter {
   name: string;
   value: number;
 }
-export interface OscilatorsEntity {
+export interface Oscilator {
   wave: Wave;
   shape: Parameter;
   level: Parameter;

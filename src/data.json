@@ -4,7 +4,7 @@
   "oscilators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
-      "shape": { "name": "Shape", "value": 0 },
+      "shape": { "name": "Shape", "value": 500 },
       "level": { "name": "Level", "value": 1023 },
       "pitch": { "name": "Pitch", "value": 0 },
       "duty": { "name": "Duty", "value": 1 },
