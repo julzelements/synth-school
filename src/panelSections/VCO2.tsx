@@ -1,4 +1,4 @@
-import Wave from "../controlGroups/Wave";
+import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
 import { ReactComponent as Saw } from "../assets/saw.svg";
 import { ReactComponent as Triangle } from "../assets/triangle.svg";
@@ -18,7 +18,7 @@ export const VCO2 = (props: VCO2Props) => {
     <div className="panel-section" id="vco2">
       <div className="panel-group">
         <h2 className="panel-group-label label">VCO2</h2>
-        <Wave paramName="Octave" />
+        <SwitchContainer paramName="Octave" />
         <Knob
           paramName={props.oscilator.pitch.name}
           initialValue={props.oscilator.pitch.value}
@@ -26,14 +26,14 @@ export const VCO2 = (props: VCO2Props) => {
         />
       </div>
       <div className="panel-group">
-        <Wave
+        <SwitchContainer
           paramName={props.oscilator.wave.name}
           initialValue={props.oscilator.wave.value}
           labels={[<Saw />, <Triangle />, <Noise />]}
           half={true}
           onChange={props.onChangeWaveType}
         />
-        <Wave
+        <SwitchContainer
           paramName={props.oscilator.duty.name}
           initialValue={props.oscilator.duty.value}
           half={true}

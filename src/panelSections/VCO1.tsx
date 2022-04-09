@@ -1,4 +1,4 @@
-import Wave from "../controlGroups/Wave";
+import SwitchContainer from "../controlGroups/SwitchContainer";
 import { ReactComponent as Saw } from "../assets/saw.svg";
 import { ReactComponent as Triangle } from "../assets/triangle.svg";
 import { ReactComponent as Square } from "../assets/square.svg";
@@ -16,7 +16,7 @@ export const VCO1 = (props: VCO1Props) => {
     <div className="panel-section" id="vco1">
       <h2 className="panel-group-label label">VCO1</h2>
       <div className="control-group">
-        <Wave
+        <SwitchContainer
           paramName={props.oscilator.wave.name}
           initialValue={props.oscilator.wave.value}
           onChange={props.onChangeShapeValue}

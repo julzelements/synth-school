@@ -1,4 +1,4 @@
-import Wave from "../controlGroups/Wave";
+import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
 import { Parameter } from "../types";
 
@@ -19,8 +19,8 @@ export const LFO = (props: LFOProps) => {
   return (
     <div className="panel-group">
       <h2 className="panel-group-label label">LFO</h2>
-      <Wave />
-      <Wave />
+      <SwitchContainer />
+      <SwitchContainer />
       <Knob
         paramName="Shape"
         initialValue={0}
@@ -31,7 +31,7 @@ export const LFO = (props: LFOProps) => {
         initialValue={0}
         onChange={(value) => console.log(value)}
       />
-      <Wave />
+      <SwitchContainer />
     </div>
   );
 };

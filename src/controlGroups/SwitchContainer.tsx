@@ -11,7 +11,7 @@ interface WaveProps {
   labels?: ReactElement<any, any>[];
   half?: boolean;
 }
-const Wave = (props: WaveProps) => {
+const SwitchContainer = (props: WaveProps) => {
   const labels = props.labels || [<Saw />, <Triangle />, <Square />];
   return (
     <div
@@ -41,4 +41,4 @@ const Wave = (props: WaveProps) => {
   );
 };
 
-export default Wave;
+export default SwitchContainer;

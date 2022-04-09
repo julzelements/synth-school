@@ -1,4 +1,4 @@
-import Wave from "../controlGroups/Wave";
+import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
 import { Parameter } from "../types";
 import { ReactComponent as AD } from "../assets/ad.svg";
@@ -22,7 +22,7 @@ export const Envelope = (props: EnvelopeProps) => {
   return (
     <div className="panel-group">
       <h2 className="panel-group-label label">EG</h2>
-      <Wave
+      <SwitchContainer
         paramName={props.type.name}
         initialValue={props.type.value}
         onChange={props.onChangeType}
@@ -44,7 +44,7 @@ export const Envelope = (props: EnvelopeProps) => {
         initialValue={props.intensity.value}
         onChange={props.onChangeIntensity}
       />
-      <Wave
+      <SwitchContainer
         paramName={props.target.name}
         initialValue={props.target.value}
         onChange={props.onChangeTarget}
