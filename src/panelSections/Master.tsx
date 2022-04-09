@@ -1,11 +1,13 @@
-import KeyboardOctaveLeds from "../controlGroups/KeyboardOctaveLeds";
+import { KeyboardOctaveLeds } from "../controlGroups/KeyboardOctaveLeds";
 import Knob from "../controlGroups/Knob";
 import Switch from "../Switch";
 import { Parameter } from "../types";
 
 interface MasterProps {
   drive: Parameter;
-  onChange: (value) => void;
+  onChangeDrive: (value) => void;
+  onChangeOctave: (value) => void;
+  octave: Parameter;
 }
 
 export const Master = (props: MasterProps) => {
@@ -20,17 +22,17 @@ export const Master = (props: MasterProps) => {
       <Knob
         paramName={props.drive.name}
         initialValue={props.drive.value}
-        onChange={props.onChange}
+        onChange={props.onChangeDrive}
       />
 
-      <KeyboardOctaveLeds />
+      <KeyboardOctaveLeds octave={props.octave} />
       <div className="control-group" title="KeyboardOctave">
         <div className="control-wrapper">
           <Switch
             value={2}
             numPositions={5}
             vertical={false}
-            onChange={(val) => console.log(val)}
+            onChange={props.onChangeOctave}
           />
           <p className="control-label label">Octave</p>
         </div>

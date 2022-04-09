@@ -17,6 +17,9 @@ import { useState } from "react";
 
 const App = (props: KorgProgramDump) => {
   const [drive, setDrive] = useState(() => props.drive.value);
+  const [vco1OctaveValue, setVco1OctaveValue] = useState(
+    () => props.oscilators.find((params) => params.wave.oscilator === 0).octave
+  );
   const [vco1ShapeValue, setVco1ShapeValue] = useState(() =>
     props.oscilators.find((params) => params.wave.oscilator === 0)
   );
@@ -68,7 +71,15 @@ const App = (props: KorgProgramDump) => {
             </h1>
           </header>
           <div className="panel-controls">
-            <Master drive={props.drive} onChange={setDrive} />
+            <Master
+              drive={props.drive}
+              onChangeDrive={setDrive}
+              octave={
+                props.oscilators.find((params) => params.wave.oscilator === 0)
+                  .octave
+              }
+              onChangeOctave={setVco1OctaveValue}
+            />
             <VCO1
               oscilator={props.oscilators.find(
                 (params) => params.wave.oscilator === 0

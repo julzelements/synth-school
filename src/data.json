@@ -8,7 +8,7 @@
       "level": { "name": "Level", "value": 1023 },
       "pitch": { "name": "Pitch", "value": 0 },
       "duty": { "name": "Duty", "value": 1 },
-      "octave": { "name": "Octave", "value": 0 }
+      "octave": { "name": "Octave", "value": 2 }
     },
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 1 },
