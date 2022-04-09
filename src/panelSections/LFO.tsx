@@ -19,19 +19,33 @@ export const LFO = (props: LFOProps) => {
   return (
     <div className="panel-group">
       <h2 className="panel-group-label label">LFO</h2>
-      <SwitchContainer />
-      <SwitchContainer />
-      <Knob
-        paramName="Shape"
-        initialValue={0}
-        onChange={(value) => console.log(value)}
+      <SwitchContainer
+        paramName={props.wave.name}
+        initialValue={props.wave.value}
+        onChange={props.onChangeWave}
+      />
+      <SwitchContainer
+        paramName="Mode"
+        initialValue={props.mode.value}
+        onChange={props.onChangeMode}
+        labels={[<div>Fast</div>, <div>Slow</div>, <div>1Shot</div>]}
       />
       <Knob
-        paramName="Shape"
-        initialValue={0}
-        onChange={(value) => console.log(value)}
+        paramName={props.rate.name}
+        initialValue={props.rate.value}
+        onChange={props.onChangeRate}
       />
-      <SwitchContainer />
+      <Knob
+        paramName={props.intensity.name}
+        initialValue={props.intensity.value}
+        onChange={props.onChangeIntensity}
+      />
+      <SwitchContainer
+        paramName={props.target.name}
+        initialValue={props.target.value}
+        onChange={props.onChangeTarget}
+        labels={[<div>Pitch</div>, <div>Shape</div>, <div>Cutoff</div>]}
+      />
     </div>
   );
 };
