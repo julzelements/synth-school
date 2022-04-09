@@ -40,6 +40,8 @@ const App = (props: KorgProgramDump) => {
   const [vco2Level, setVco2Level] = useState(() =>
     props.oscilators.find((params) => params.wave.oscilator === 1)
   );
+  const [cutoff, setCutoff] = useState(() => props.filter.cutoff);
+  const [resonance, setResonance] = useState(() => props.filter.resonance);
 
   return (
     <div className="App">
@@ -80,7 +82,12 @@ const App = (props: KorgProgramDump) => {
               onChangeVCO1LevelValue={setVco1Level}
               onChangeVCO2LevelValue={setVco2Level}
             />
-            <Filter />
+            <Filter
+              cutoff={props.filter.cutoff}
+              resonance={props.filter.resonance}
+              onChangeCutoff={setCutoff}
+              onChangeResonance={setResonance}
+            />
             <EGLFO />
           </div>
         </div>

@@ -1,20 +1,28 @@
 import Knob from "../controlGroups/Knob";
+import { Parameter } from "../types";
 
-export const Filter = () => {
+interface FilterProps {
+  cutoff: Parameter;
+  resonance: Parameter;
+  onChangeCutoff: (value) => void;
+  onChangeResonance: (value) => void;
+}
+
+export const Filter = (props: FilterProps) => {
   return (
     <div className="panel-section" id="filter">
       <h2 className="panel-group-label label">Filter</h2>
       <Knob
-        paramName="Cutoff"
-        initialValue={0}
+        paramName={props.cutoff.name}
+        initialValue={props.cutoff.value}
         color={true}
-        onChange={(value) => console.log(value)}
+        onChange={props.onChangeCutoff}
       />
       <Knob
-        paramName="Resonance"
-        initialValue={0}
+        paramName={props.resonance.name}
+        initialValue={props.resonance.value}
         color={true}
-        onChange={(value) => console.log(value)}
+        onChange={props.onChangeResonance}
       />
     </div>
   );
