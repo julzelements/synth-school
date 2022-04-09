@@ -1,7 +1,6 @@
 import "./App.css";
 
 // JULZ! You need to.
-// Fix up the on change functions for VCO2
 // Rename <Wave/> to <Switch/>
 // Do the octaves.
 // Draw the rest of the owl.
@@ -24,6 +23,15 @@ const App = (props: KorgProgramDump) => {
     props.oscilators.find((params) => params.wave.oscilator === 0)
   );
   const [vco2WaveType, setVco2WaveType] = useState(() =>
+    props.oscilators.find((params) => params.wave.oscilator === 1)
+  );
+  const [vco2DutyValue, setVco2DutyValue] = useState(() =>
+    props.oscilators.find((params) => params.wave.oscilator === 1)
+  );
+  const [vco2DutyPitchValue, setVco2DutyPitchValue] = useState(() =>
+    props.oscilators.find((params) => params.wave.oscilator === 1)
+  );
+  const [vco2ShapeValue, setVco2ShapeValue] = useState(() =>
     props.oscilators.find((params) => params.wave.oscilator === 1)
   );
 
@@ -49,18 +57,10 @@ const App = (props: KorgProgramDump) => {
               oscilator={props.oscilators.find(
                 (params) => params.wave.oscilator === 1
               )}
-              onChangeWaveType={function (value: any): void {
-                throw new Error("Function not implemented.");
-              }}
-              onChangeDutyValue={function (value: any): void {
-                throw new Error("Function not implemented.");
-              }}
-              onChangePitchValue={function (value: any): void {
-                throw new Error("Function not implemented.");
-              }}
-              onChangeShapeValue={function (value: any): void {
-                throw new Error("Function not implemented.");
-              }}
+              onChangeWaveType={setVco2WaveType}
+              onChangeDutyValue={setVco2DutyValue}
+              onChangePitchValue={setVco2DutyPitchValue}
+              onChangeShapeValue={setVco2ShapeValue}
             />
             <Mixer />
             <Filter />
