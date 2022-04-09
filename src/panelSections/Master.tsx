@@ -7,7 +7,7 @@ interface MasterProps {
   drive: Parameter;
   onChangeDrive: (value) => void;
   onChangeOctave: (value) => void;
-  octave: Parameter;
+  octave: number;
 }
 
 export const Master = (props: MasterProps) => {

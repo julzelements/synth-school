@@ -1,9 +1,6 @@
 import "./App.css";
-
-// JULZ! You need to.
-// Rename <Wave/> to <Switch/>
-// Do the octaves.
-// Draw the rest of the owl.
+// JULZ!
+// Keyboard octaves do not refresh.
 
 import { Master } from "./panelSections/Master";
 import { VCO1 } from "./panelSections/VCO1";
@@ -18,48 +15,62 @@ import { useState } from "react";
 const App = (props: KorgProgramDump) => {
   const [drive, setDrive] = useState(() => props.drive.value);
   const [vco1OctaveValue, setVco1OctaveValue] = useState(
-    () => props.oscilators.find((params) => params.wave.oscilator === 0).octave
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 0).octave
+        .value
   );
-  const [vco1ShapeValue, setVco1ShapeValue] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 0)
+  const [vco1ShapeValue, setVco1ShapeValue] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 0).shape.value
   );
-  const [vco1WaveType, setVco1WaveType] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 0)
+  const [vco1WaveType, setVco1WaveType] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 0).wave.value
   );
-  const [vco2WaveType, setVco2WaveType] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 1)
+  const [vco2WaveType, setVco2WaveType] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).wave.value
   );
-  const [vco2DutyValue, setVco2DutyValue] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 1)
+  const [vco2DutyValue, setVco2DutyValue] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).duty.value
   );
-  const [vco2DutyPitchValue, setVco2DutyPitchValue] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 1)
+  const [vco2DutyPitchValue, setVco2DutyPitchValue] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).duty.value
   );
-  const [vco2ShapeValue, setVco2ShapeValue] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 1)
+  const [vco2ShapeValue, setVco2ShapeValue] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).shape.value
   );
-  const [vco1Level, setVco1Level] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 1)
+  const [vco1Level, setVco1Level] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).level.value
   );
-  const [vco2Level, setVco2Level] = useState(() =>
-    props.oscilators.find((params) => params.wave.oscilator === 1)
+  const [vco2Level, setVco2Level] = useState(
+    () =>
+      props.oscilators.find((params) => params.wave.oscilator === 1).level.value
   );
-  const [cutoff, setCutoff] = useState(() => props.filter.cutoff);
-  const [resonance, setResonance] = useState(() => props.filter.resonance);
+  const [cutoff, setCutoff] = useState(() => props.filter.cutoff.value);
+  const [resonance, setResonance] = useState(
+    () => props.filter.resonance.value
+  );
 
-  const [envType, setEnvType] = useState(() => props.envelope.type);
-  const [envAttack, setEnvAttack] = useState(() => props.envelope.attack);
-  const [envDecay, setEnvDecay] = useState(() => props.envelope.decay);
+  const [envType, setEnvType] = useState(() => props.envelope.type.value);
+  const [envAttack, setEnvAttack] = useState(() => props.envelope.attack.value);
+  const [envDecay, setEnvDecay] = useState(() => props.envelope.decay.value);
   const [envIntensity, setEnvIntensity] = useState(
-    () => props.envelope.intensity
+    () => props.envelope.intensity.value
   );
-  const [envTarget, setEnvTarget] = useState(() => props.envelope.target);
+  const [envTarget, setEnvTarget] = useState(() => props.envelope.target.value);
 
-  const [lfoWave, setLfoWave] = useState(() => props.lfo.wave);
-  const [lfoMode, setLfoMode] = useState(() => props.lfo.mode);
-  const [lfoRate, setLfoRate] = useState(() => props.lfo.rate);
-  const [lfoIntensity, setLfoIntensity] = useState(() => props.lfo.intensity);
-  const [lfoTarget, setLfoTarget] = useState(() => props.lfo.target);
+  const [lfoWave, setLfoWave] = useState(() => props.lfo.wave.value);
+  const [lfoMode, setLfoMode] = useState(() => props.lfo.mode.value);
+  const [lfoRate, setLfoRate] = useState(() => props.lfo.rate.value);
+  const [lfoIntensity, setLfoIntensity] = useState(
+    () => props.lfo.intensity.value
+  );
+  const [lfoTarget, setLfoTarget] = useState(() => props.lfo.target.value);
 
   return (
     <div className="App">
@@ -74,10 +85,7 @@ const App = (props: KorgProgramDump) => {
             <Master
               drive={props.drive}
               onChangeDrive={setDrive}
-              octave={
-                props.oscilators.find((params) => params.wave.oscilator === 0)
-                  .octave
-              }
+              octave={vco1OctaveValue}
               onChangeOctave={setVco1OctaveValue}
             />
             <VCO1

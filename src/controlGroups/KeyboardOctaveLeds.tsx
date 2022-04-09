@@ -1,9 +1,7 @@
-import { Parameter } from "../types";
-
-export const KeyboardOctaveLeds = (props: { octave: Parameter }) => {
+export const KeyboardOctaveLeds = (props: { octave: number }) => {
   const leds = Array.from(Array(5).keys())
     .map((value, index) =>
-      index === props.octave.value
+      index === props.octave
         ? "led-array-light led-array-light-active"
         : "led-array-light"
     )
