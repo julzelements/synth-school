@@ -1,26 +1,34 @@
 import Knob from "../controlGroups/Knob";
+import { Parameter } from "../types";
 
-export const Mixer = () => {
+interface MixerProps {
+  vco1Level: Parameter;
+  vco2Level: Parameter;
+  onChangeVCO1LevelValue: (value) => void;
+  onChangeVCO2LevelValue: (value) => void;
+}
+
+export const Mixer = (props: MixerProps) => {
   return (
     <div className="panel-section" id="mixer">
       <h2 className="panel-group-label label">Mixer</h2>
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            paramName="VCO1"
-            initialValue={0}
+            paramName={props.vco1Level.name}
+            initialValue={props.vco1Level.value}
             color={true}
-            onChange={(value) => console.log(value)}
+            onChange={props.onChangeVCO1LevelValue}
           />
         </div>
       </div>
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            paramName="VCO2"
-            initialValue={0}
+            paramName={props.vco2Level.name}
+            initialValue={props.vco2Level.value}
             color={true}
-            onChange={(value) => console.log(value)}
+            onChange={props.onChangeVCO2LevelValue}
           />
         </div>
       </div>

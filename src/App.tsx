@@ -34,6 +34,12 @@ const App = (props: KorgProgramDump) => {
   const [vco2ShapeValue, setVco2ShapeValue] = useState(() =>
     props.oscilators.find((params) => params.wave.oscilator === 1)
   );
+  const [vco1Level, setVco1Level] = useState(() =>
+    props.oscilators.find((params) => params.wave.oscilator === 1)
+  );
+  const [vco2Level, setVco2Level] = useState(() =>
+    props.oscilators.find((params) => params.wave.oscilator === 1)
+  );
 
   return (
     <div className="App">
@@ -62,7 +68,18 @@ const App = (props: KorgProgramDump) => {
               onChangePitchValue={setVco2DutyPitchValue}
               onChangeShapeValue={setVco2ShapeValue}
             />
-            <Mixer />
+            <Mixer
+              vco1Level={
+                props.oscilators.find((params) => params.wave.oscilator === 0)
+                  .level
+              }
+              vco2Level={
+                props.oscilators.find((params) => params.wave.oscilator === 1)
+                  .level
+              }
+              onChangeVCO1LevelValue={setVco1Level}
+              onChangeVCO2LevelValue={setVco2Level}
+            />
             <Filter />
             <EGLFO />
           </div>
