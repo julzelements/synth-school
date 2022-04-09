@@ -32,18 +32,20 @@ export const VCO2 = (props: VCO2Props) => {
           initialValue={props.oscilator.wave.value}
           labels={[<Saw />, <Triangle />, <Noise />]}
           half={true}
+          onChange={props.onChangeWaveType}
         />
         <Wave
           paramName={props.oscilator.duty.name}
           initialValue={props.oscilator.duty.value}
           half={true}
           labels={[<div>Sync</div>, <div>Free</div>, <div>Ring</div>]}
+          onChange={props.onChangeDutyValue}
         />
         <Knob
           paramName={props.oscilator.shape.name}
           initialValue={props.oscilator.shape.value}
           color={true}
-          onChange={(value) => console.log(value)}
+          onChange={props.onChangeShapeValue}
         />
       </div>
     </div>

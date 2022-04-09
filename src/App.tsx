@@ -1,4 +1,11 @@
 import "./App.css";
+
+// JULZ! You need to.
+// Fix up the on change functions for VCO2
+// Rename <Wave/> to <Switch/>
+// Do the octaves.
+// Draw the rest of the owl.
+
 import { Master } from "./panelSections/Master";
 import { VCO1 } from "./panelSections/VCO1";
 import { Mixer } from "./panelSections/Mixer";
@@ -15,6 +22,9 @@ const App = (props: KorgProgramDump) => {
   );
   const [vco1WaveType, setVco1WaveType] = useState(() =>
     props.oscilators.find((params) => params.wave.oscilator === 0)
+  );
+  const [vco2WaveType, setVco2WaveType] = useState(() =>
+    props.oscilators.find((params) => params.wave.oscilator === 1)
   );
 
   return (
