@@ -11,9 +11,16 @@ import { Envelope } from "./panelSections/Envelope";
 import { LFO } from "./panelSections/LFO";
 import { KorgProgramDump } from "./types";
 import { useState } from "react";
-import VCO2Octave from "./controlGroups/VCO2Octave";
+import afxAcid from "./patches/<afx acid3>.json";
+import injection from "./patches/Injection.json";
 
 const App = (props: KorgProgramDump) => {
+  const selectPatch = (patch: KorgProgramDump) => {
+    console.log(patch.patchName);
+    setVco1OctaveValue(patch.oscilators[0].octave.value);
+    setVco2OctaveValue(patch.oscilators[1].octave.value);
+    setDrive(patch.drive.value);
+  };
   const [drive, setDrive] = useState(() => props.drive.value);
   const [vco1OctaveValue, setVco1OctaveValue] = useState(
     () =>
@@ -89,7 +96,7 @@ const App = (props: KorgProgramDump) => {
           </header>
           <div className="panel-controls">
             <Master
-              drive={props.drive}
+              drive={drive}
               onChangeDrive={setDrive}
               octave={vco1OctaveValue}
               onChangeOctave={setVco1OctaveValue}
@@ -159,6 +166,8 @@ const App = (props: KorgProgramDump) => {
           </div>
         </div>
       </div>
+      <button onClick={() => selectPatch(injection)}>Injection</button>
+      <button onClick={() => selectPatch(afxAcid)}>AfxAcid</button>
     </div>
   );
 };

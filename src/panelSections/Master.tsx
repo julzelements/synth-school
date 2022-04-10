@@ -4,7 +4,7 @@ import Switch from "../Switch";
 import { Parameter } from "../types";
 
 interface MasterProps {
-  drive: Parameter;
+  drive: number;
   onChangeDrive: (value) => void;
   onChangeOctave: (value) => void;
   octave: number;
@@ -20,8 +20,8 @@ export const Master = (props: MasterProps) => {
         onChange={(value) => console.log(value)}
       />
       <Knob
-        paramName={props.drive.name}
-        initialValue={props.drive.value}
+        paramName="Drive"
+        initialValue={props.drive}
         onChange={props.onChangeDrive}
       />
 
