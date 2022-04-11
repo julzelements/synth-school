@@ -6,6 +6,7 @@ import Knob from "../controlGroups/Knob";
 import { Oscilator } from "../types";
 
 interface VCO1Props {
+  waveType: number;
   oscilator: Oscilator;
   onChangeWaveType: (value) => void;
   onChangeShapeValue: (value) => void;
@@ -18,7 +19,7 @@ export const VCO1 = (props: VCO1Props) => {
       <div className="control-group">
         <SwitchContainer
           paramName={props.oscilator.wave.name}
-          initialValue={props.oscilator.wave.value}
+          initialValue={props.waveType}
           onChange={props.onChangeShapeValue}
           labels={[<Saw />, <Triangle />, <Square />]}
         />

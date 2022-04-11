@@ -105,6 +105,7 @@ const App = (props: KorgProgramDump) => {
               oscilator={props.oscilators.find(
                 (params) => params.wave.oscilator === 0
               )}
+              waveType={vco1WaveType}
               onChangeWaveType={setVco1WaveType}
               onChangeShapeValue={setVco1ShapeValue}
             />

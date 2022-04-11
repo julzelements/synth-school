@@ -1,7 +1,6 @@
 import { KeyboardOctaveLeds } from "../controlGroups/KeyboardOctaveLeds";
 import Knob from "../controlGroups/Knob";
 import Switch from "../Switch";
-import { Parameter } from "../types";
 
 interface MasterProps {
   drive: number;
