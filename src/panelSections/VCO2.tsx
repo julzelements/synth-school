@@ -10,10 +10,10 @@ interface VCO2Props {
   oscilator: Oscilator;
   octave: number;
   onChangeOctave: (value) => void;
-  onChangeWaveType: (value) => void;
-  onChangeDutyValue: (value) => void;
-  onChangePitchValue: (value) => void;
-  onChangeShapeValue: (value) => void;
+  onChangeWave: (value) => void;
+  onChangeDuty: (value) => void;
+  onChangePitch: (value) => void;
+  onChangeShape: (value) => void;
 }
 
 export const VCO2 = (props: VCO2Props) => {
@@ -29,28 +29,28 @@ export const VCO2 = (props: VCO2Props) => {
         <Knob
           paramName={props.oscilator.pitch.name}
           value={props.oscilator.pitch.value}
-          onChange={props.onChangePitchValue}
+          onChange={props.onChangePitch}
         />
       </div>
       <div className="panel-group">
         <SwitchContainer
           paramName={props.oscilator.wave.name}
-          initialValue={props.oscilator.wave.value}
+          value={props.oscilator.wave.value}
           labels={[<Saw />, <Triangle />, <Noise />]}
           half={true}
-          onChange={props.onChangeWaveType}
+          onChange={props.onChangeWave}
         />
         <SwitchContainer
           paramName={props.oscilator.duty.name}
-          initialValue={props.oscilator.duty.value}
+          value={props.oscilator.duty.value}
           half={true}
           labels={[<div>Sync</div>, <div>Free</div>, <div>Ring</div>]}
-          onChange={props.onChangeDutyValue}
+          onChange={props.onChangeDuty}
         />
         <Knob
           paramName={props.oscilator.shape.name}
           value={props.oscilator.shape.value}
-          onChange={props.onChangeShapeValue}
+          onChange={props.onChangeShape}
         />
       </div>
     </div>

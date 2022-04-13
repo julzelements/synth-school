@@ -5,10 +5,10 @@ import { ReactComponent as Square } from "../assets/square.svg";
 import Knob from "../controlGroups/Knob";
 
 interface VCO1Props {
-  waveType: number;
-  shapeValue: number;
-  onChangeWaveType: (value) => void;
-  onChangeShapeValue: (value) => void;
+  wave: number;
+  shape: number;
+  onChangeWave: (value) => void;
+  onChangeShape: (value) => void;
 }
 
 export const VCO1 = (props: VCO1Props) => {
@@ -18,8 +18,8 @@ export const VCO1 = (props: VCO1Props) => {
       <div className="control-group">
         <SwitchContainer
           paramName="Wave"
-          initialValue={props.waveType}
-          onChange={props.onChangeWaveType}
+          value={props.wave}
+          onChange={props.onChangeWave}
           labels={[<Saw />, <Triangle />, <Square />]}
         />
       </div>
@@ -27,8 +27,8 @@ export const VCO1 = (props: VCO1Props) => {
         <div className="control-wrapper">
           <Knob
             paramName="Shape"
-            value={props.shapeValue}
-            onChange={props.onChangeShapeValue}
+            value={props.shape}
+            onChange={props.onChangeShape}
           />
         </div>
       </div>

@@ -6,7 +6,7 @@ import Switch from "../Switch";
 
 interface WaveProps {
   paramName?: string;
-  initialValue?: number;
+  value?: number;
   onChange?: (value) => void;
   labels?: ReactElement<any, any>[];
   half?: boolean;
@@ -21,7 +21,7 @@ const SwitchContainer = (props: WaveProps) => {
     >
       <div className="control-wrapper">
         <Switch
-          value={props.initialValue}
+          value={props.value}
           numPositions={3}
           vertical
           onChange={props.onChange}

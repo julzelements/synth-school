@@ -21,12 +21,12 @@ export const LFO = (props: LFOProps) => {
       <h2 className="panel-group-label label">LFO</h2>
       <SwitchContainer
         paramName={props.wave.name}
-        initialValue={props.wave.value}
+        value={props.wave.value}
         onChange={props.onChangeWave}
       />
       <SwitchContainer
         paramName="Mode"
-        initialValue={props.mode.value}
+        value={props.mode.value}
         onChange={props.onChangeMode}
         labels={[<div>Fast</div>, <div>Slow</div>, <div>1Shot</div>]}
       />
@@ -42,7 +42,7 @@ export const LFO = (props: LFOProps) => {
       />
       <SwitchContainer
         paramName={props.target.name}
-        initialValue={props.target.value}
+        value={props.target.value}
         onChange={props.onChangeTarget}
         labels={[<div>Pitch</div>, <div>Shape</div>, <div>Cutoff</div>]}
       />

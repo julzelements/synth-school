@@ -24,7 +24,7 @@ export const Envelope = (props: EnvelopeProps) => {
       <h2 className="panel-group-label label">EG</h2>
       <SwitchContainer
         paramName={props.type.name}
-        initialValue={props.type.value}
+        value={props.type.value}
         onChange={props.onChangeType}
         labels={[<div>AD</div>, <div>AGD</div>, <div>Gate</div>]}
         // labels={[<AD />, <AGD />, <Gate />]}
@@ -46,7 +46,7 @@ export const Envelope = (props: EnvelopeProps) => {
       />
       <SwitchContainer
         paramName={props.target.name}
-        initialValue={props.target.value}
+        value={props.target.value}
         onChange={props.onChangeTarget}
         labels={[<div>Pitch</div>, <div>Pitch 2</div>, <div>Cutoff</div>]}
       />

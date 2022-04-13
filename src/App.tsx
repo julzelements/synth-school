@@ -17,55 +17,43 @@ import injection from "./patches/Injection.json";
 const App = (props: KorgProgramDump) => {
   const selectPatch = (patch: KorgProgramDump) => {
     console.log(patch.patchName);
-    setVco1OctaveValue(patch.oscilators[0].octave.value);
-    setVco2OctaveValue(patch.oscilators[1].octave.value);
+    setVco1Octave(patch.oscilators[0].octave.value);
+    setVco2Octave(patch.oscilators[1].octave.value);
     setDrive(patch.drive.value);
-    setVco1ShapeValue(patch.oscilators[0].shape.value);
-    setVco1WaveType(patch.oscilators[0].wave.value);
+    setVco1Shape(patch.oscilators[0].shape.value);
+    setVco1Wave(patch.oscilators[0].wave.value);
   };
 
   const [drive, setDrive] = useState(() => props.drive.value);
-  const [vco1OctaveValue, setVco1OctaveValue] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 0).octave
-        .value
+  const [vco1Octave, setVco1Octave] = useState(
+    () => props.oscilators[0].octave.value
   );
-  const [vco1ShapeValue, setVco1ShapeValue] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 0).shape.value
+  const [vco1Shape, setVco1Shape] = useState(
+    () => props.oscilators[0].shape.value
   );
-  const [vco1WaveType, setVco1WaveType] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 0).wave.value
+  const [vco1Wave, setVco1Wave] = useState(
+    () => props.oscilators[0].wave.value
   );
-  const [vco2OctaveValue, setVco2OctaveValue] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).octave
-        .value
+  const [vco2Octave, setVco2Octave] = useState(
+    () => props.oscilators[1].octave.value
   );
-  const [vco2WaveType, setVco2WaveType] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).wave.value
+  const [vco2Wave, setVco2Wave] = useState(
+    () => props.oscilators[1].wave.value
   );
-  const [vco2DutyValue, setVco2DutyValue] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).duty.value
+  const [vco2Duty, setVco2Duty] = useState(
+    () => props.oscilators[1].duty.value
   );
-  const [vco2PitchValue, setVco2PitchValue] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).duty.value
+  const [vco2Pitch, setVco2Pitch] = useState(
+    () => props.oscilators[1].duty.value
   );
-  const [vco2ShapeValue, setVco2ShapeValue] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).shape.value
+  const [vco2Shape, setVco2Shape] = useState(
+    () => props.oscilators[1].shape.value
   );
   const [vco1Level, setVco1Level] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).level.value
+    () => props.oscilators[1].level.value
   );
   const [vco2Level, setVco2Level] = useState(
-    () =>
-      props.oscilators.find((params) => params.wave.oscilator === 1).level.value
+    () => props.oscilators[1].level.value
   );
   const [cutoff, setCutoff] = useState(() => props.filter.cutoff.value);
   const [resonance, setResonance] = useState(
@@ -101,35 +89,29 @@ const App = (props: KorgProgramDump) => {
             <Master
               drive={drive}
               onChangeDrive={setDrive}
-              octave={vco1OctaveValue}
-              onChangeOctave={setVco1OctaveValue}
+              octave={vco1Octave}
+              onChangeOctave={setVco1Octave}
             />
             <VCO1
-              shapeValue={vco1ShapeValue}
-              waveType={vco1WaveType}
-              onChangeWaveType={setVco1WaveType}
-              onChangeShapeValue={setVco1ShapeValue}
+              shape={vco1Shape}
+              wave={vco1Wave}
+              onChangeWave={setVco1Wave}
+              onChangeShape={setVco1Shape}
             />
             <VCO2
               oscilator={props.oscilators.find(
                 (params) => params.wave.oscilator === 1
               )}
-              octave={vco2OctaveValue}
-              onChangeOctave={setVco2OctaveValue}
-              onChangeWaveType={setVco2WaveType}
-              onChangeDutyValue={setVco2DutyValue}
-              onChangePitchValue={setVco2PitchValue}
-              onChangeShapeValue={setVco2ShapeValue}
+              octave={vco2Octave}
+              onChangeOctave={setVco2Octave}
+              onChangeWave={setVco2Wave}
+              onChangeDuty={setVco2Duty}
+              onChangePitch={setVco2Pitch}
+              onChangeShape={setVco2Shape}
             />
             <Mixer
-              vco1Level={
-                props.oscilators.find((params) => params.wave.oscilator === 0)
-                  .level
-              }
-              vco2Level={
-                props.oscilators.find((params) => params.wave.oscilator === 1)
-                  .level
-              }
+              vco1Level={props.oscilators[0].level}
+              vco2Level={props.oscilators[1].level}
               onChangeVCO1LevelValue={setVco1Level}
               onChangeVCO2LevelValue={setVco2Level}
             />
