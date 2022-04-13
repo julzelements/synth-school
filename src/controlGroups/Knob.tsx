@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   cursorCoordsToDegrees,
   degreesToParam,
@@ -10,7 +9,7 @@ interface KnobProps {
   paramMax?: number;
   paramName: string;
   fullAngle?: number;
-  initialValue: number;
+  value: number;
   onChange: (newValue: number) => void;
 }
 
@@ -20,16 +19,13 @@ const Knob = (props: KnobProps) => {
   const fullAngle = props.fullAngle || 260;
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;
-  const [degrees, setDegrees] = useState(() => {
-    const initialDegrees = paramToDegrees(
-      paramMin,
-      paramMax,
-      startAngle,
-      endAngle,
-      props.initialValue
-    );
-    return initialDegrees;
-  });
+  const degrees: number = paramToDegrees(
+    paramMin,
+    paramMax,
+    startAngle,
+    endAngle,
+    props.value
+  );
 
   const startDrag = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -46,15 +42,15 @@ const Knob = (props: KnobProps) => {
         startAngle,
         endAngle
       );
-      setDegrees(degrees);
-      const currentParamValue = degreesToParam(
+
+      const currentValue = degreesToParam(
         paramMin,
         paramMax,
         startAngle,
         endAngle,
         degrees
       );
-      props.onChange(currentParamValue);
+      props.onChange(currentValue);
     };
     document.addEventListener("mousemove", moveHandler);
     document.addEventListener("mouseup", (e) => {

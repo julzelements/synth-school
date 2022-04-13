@@ -32,12 +32,12 @@ export const LFO = (props: LFOProps) => {
       />
       <Knob
         paramName={props.rate.name}
-        initialValue={props.rate.value}
+        value={props.rate.value}
         onChange={props.onChangeRate}
       />
       <Knob
         paramName={props.intensity.name}
-        initialValue={props.intensity.value}
+        value={props.intensity.value}
         onChange={props.onChangeIntensity}
       />
       <SwitchContainer

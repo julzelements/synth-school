@@ -16,7 +16,7 @@ export const Mixer = (props: MixerProps) => {
         <div className="control-wrapper">
           <Knob
             paramName={props.vco1Level.name}
-            initialValue={props.vco1Level.value}
+            value={props.vco1Level.value}
             onChange={props.onChangeVCO1LevelValue}
           />
         </div>
@@ -25,7 +25,7 @@ export const Mixer = (props: MixerProps) => {
         <div className="control-wrapper">
           <Knob
             paramName={props.vco2Level.name}
-            initialValue={props.vco2Level.value}
+            value={props.vco2Level.value}
             onChange={props.onChangeVCO2LevelValue}
           />
         </div>

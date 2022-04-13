@@ -14,12 +14,12 @@ export const Filter = (props: FilterProps) => {
       <h2 className="panel-group-label label">Filter</h2>
       <Knob
         paramName={props.cutoff.name}
-        initialValue={props.cutoff.value}
+        value={props.cutoff.value}
         onChange={props.onChangeCutoff}
       />
       <Knob
         paramName={props.resonance.name}
-        initialValue={props.resonance.value}
+        value={props.resonance.value}
         onChange={props.onChangeResonance}
       />
     </div>

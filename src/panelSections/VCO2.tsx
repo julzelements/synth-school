@@ -23,12 +23,12 @@ export const VCO2 = (props: VCO2Props) => {
         <h2 className="panel-group-label label">VCO2</h2>
         <VCO2Octave
           paramName="Octave"
-          initialValue={props.octave}
+          value={props.octave}
           onChange={props.onChangeOctave}
         />
         <Knob
           paramName={props.oscilator.pitch.name}
-          initialValue={props.oscilator.pitch.value}
+          value={props.oscilator.pitch.value}
           onChange={props.onChangePitchValue}
         />
       </div>
@@ -49,7 +49,7 @@ export const VCO2 = (props: VCO2Props) => {
         />
         <Knob
           paramName={props.oscilator.shape.name}
-          initialValue={props.oscilator.shape.value}
+          value={props.oscilator.shape.value}
           onChange={props.onChangeShapeValue}
         />
       </div>

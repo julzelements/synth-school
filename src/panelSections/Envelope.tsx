@@ -31,17 +31,17 @@ export const Envelope = (props: EnvelopeProps) => {
       />
       <Knob
         paramName={props.attack.name}
-        initialValue={props.attack.value}
+        value={props.attack.value}
         onChange={props.onChangeAttack}
       />
       <Knob
         paramName={props.decay.name}
-        initialValue={props.decay.value}
+        value={props.decay.value}
         onChange={props.onChangeDecay}
       />
       <Knob
         paramName={props.intensity.name}
-        initialValue={props.intensity.value}
+        value={props.intensity.value}
         onChange={props.onChangeIntensity}
       />
       <SwitchContainer
