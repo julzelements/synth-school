@@ -19,7 +19,7 @@ const OscOctaveLeds = (props: { octave: number }) => {
 
 interface WaveProps {
   paramName?: string;
-  initialValue?: number;
+  value: number;
   onChange?: (value) => void;
   half?: boolean;
 }
@@ -33,14 +33,14 @@ const VCO2Octave = (props: WaveProps) => {
     >
       <div className="control-wrapper">
         <Switch
-          value={props.initialValue}
+          value={props.value}
           numPositions={4}
           vertical
           onChange={props.onChange}
         />
       </div>
       <p className="control-label label">{props.paramName}</p>
-      <OscOctaveLeds octave={props.initialValue} />
+      <OscOctaveLeds octave={props.value} />
     </div>
   );
 };
