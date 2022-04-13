@@ -20,7 +20,10 @@ const App = (props: KorgProgramDump) => {
     setVco1OctaveValue(patch.oscilators[0].octave.value);
     setVco2OctaveValue(patch.oscilators[1].octave.value);
     setDrive(patch.drive.value);
+    setVco1ShapeValue(patch.oscilators[0].shape.value);
+    setVco1WaveType(patch.oscilators[0].wave.value);
   };
+
   const [drive, setDrive] = useState(() => props.drive.value);
   const [vco1OctaveValue, setVco1OctaveValue] = useState(
     () =>
@@ -102,9 +105,7 @@ const App = (props: KorgProgramDump) => {
               onChangeOctave={setVco1OctaveValue}
             />
             <VCO1
-              oscilator={props.oscilators.find(
-                (params) => params.wave.oscilator === 0
-              )}
+              shapeValue={vco1ShapeValue}
               waveType={vco1WaveType}
               onChangeWaveType={setVco1WaveType}
               onChangeShapeValue={setVco1ShapeValue}

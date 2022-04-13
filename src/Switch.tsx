@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Switch.css";
 
 interface SwitchProps {
@@ -12,9 +12,9 @@ const Switch = (props: SwitchProps) => {
   var rangeEl;
   var valueEl;
 
-  useEffect(() => updateValueElement());
+  useEffect(() => updateValueElement(props.value));
 
-  const updateValueElement = () => {
+  const updateValueElement = (value: number) => {
     // Calculate the top offset
     const { height: rangeHeight, width: rangeWidth } =
       rangeEl.getBoundingClientRect();
@@ -28,11 +28,7 @@ const Switch = (props: SwitchProps) => {
     valueEl.style[styleProperty] = `${offset}px`;
   };
 
-  const [value, setValue] = useState(() => props.value);
-
   const onMouseMove = (event) => {
-    console.log(rangeEl);
-    console.log(valueEl);
     handleMousePosition(event);
   };
 
@@ -61,9 +57,8 @@ const Switch = (props: SwitchProps) => {
         props.numPositions - 1
       )
     );
-    updateValueElement();
     props.onChange(positionIndex);
-    setValue(positionIndex);
+    updateValueElement(positionIndex);
   };
 
   const onRangeClick = (event) => {
