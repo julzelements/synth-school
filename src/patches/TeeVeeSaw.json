@@ -5,7 +5,7 @@
     {
       "wave": { "name": "Wave", "value": 2, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },
-      "level": { "name": "Level", "value": 1023 },
+      "level": { "name": "Level", "value": 500 },
       "pitch": { "name": "Pitch", "value": 0 },
       "duty": { "name": "Duty", "value": 1 },
       "octave": { "name": "Octave", "value": 0 }

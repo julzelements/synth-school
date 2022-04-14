@@ -1,13 +1,12 @@
 import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
-import { Parameter } from "../types";
 
 interface LFOProps {
-  wave: Parameter;
-  mode: Parameter;
-  rate: Parameter;
-  intensity: Parameter;
-  target: Parameter;
+  wave: number;
+  mode: number;
+  rate: number;
+  intensity: number;
+  target: number;
   onChangeWave: (value) => void;
   onChangeMode: (value) => void;
   onChangeRate: (value) => void;
@@ -20,29 +19,25 @@ export const LFO = (props: LFOProps) => {
     <div className="panel-group">
       <h2 className="panel-group-label label">LFO</h2>
       <SwitchContainer
-        paramName={props.wave.name}
-        value={props.wave.value}
+        paramName="Wave"
+        value={props.wave}
         onChange={props.onChangeWave}
       />
       <SwitchContainer
         paramName="Mode"
-        value={props.mode.value}
+        value={props.mode}
         onChange={props.onChangeMode}
         labels={[<div>Fast</div>, <div>Slow</div>, <div>1Shot</div>]}
       />
+      <Knob paramName="Rate" value={props.rate} onChange={props.onChangeRate} />
       <Knob
-        paramName={props.rate.name}
-        value={props.rate.value}
-        onChange={props.onChangeRate}
-      />
-      <Knob
-        paramName={props.intensity.name}
-        value={props.intensity.value}
+        paramName="Int"
+        value={props.intensity}
         onChange={props.onChangeIntensity}
       />
       <SwitchContainer
-        paramName={props.target.name}
-        value={props.target.value}
+        paramName="Target"
+        value={props.target}
         onChange={props.onChangeTarget}
         labels={[<div>Pitch</div>, <div>Shape</div>, <div>Cutoff</div>]}
       />

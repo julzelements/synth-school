@@ -3,12 +3,14 @@ import Knob from "../controlGroups/Knob";
 import { ReactComponent as Saw } from "../assets/saw.svg";
 import { ReactComponent as Triangle } from "../assets/triangle.svg";
 import { ReactComponent as Noise } from "../assets/noise.svg";
-import { Oscilator } from "../types";
 import VCO2Octave from "../controlGroups/VCO2Octave";
 
 interface VCO2Props {
-  oscilator: Oscilator;
   octave: number;
+  pitch: number;
+  wave: number;
+  duty: number;
+  shape: number;
   onChangeOctave: (value) => void;
   onChangeWave: (value) => void;
   onChangeDuty: (value) => void;
@@ -27,29 +29,29 @@ export const VCO2 = (props: VCO2Props) => {
           onChange={props.onChangeOctave}
         />
         <Knob
-          paramName={props.oscilator.pitch.name}
-          value={props.oscilator.pitch.value}
+          paramName="Pitch"
+          value={props.pitch}
           onChange={props.onChangePitch}
         />
       </div>
       <div className="panel-group">
         <SwitchContainer
-          paramName={props.oscilator.wave.name}
-          value={props.oscilator.wave.value}
+          paramName="Wave"
+          value={props.wave}
           labels={[<Saw />, <Triangle />, <Noise />]}
           half={true}
           onChange={props.onChangeWave}
         />
         <SwitchContainer
-          paramName={props.oscilator.duty.name}
-          value={props.oscilator.duty.value}
+          paramName="Duty"
+          value={props.duty}
           half={true}
           labels={[<div>Sync</div>, <div>Free</div>, <div>Ring</div>]}
           onChange={props.onChangeDuty}
         />
         <Knob
-          paramName={props.oscilator.shape.name}
-          value={props.oscilator.shape.value}
+          paramName="Shape"
+          value={props.shape}
           onChange={props.onChangeShape}
         />
       </div>

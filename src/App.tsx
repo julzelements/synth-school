@@ -13,17 +13,47 @@ import { KorgProgramDump } from "./types";
 import { useState } from "react";
 import afxAcid from "./patches/<afx acid3>.json";
 import injection from "./patches/Injection.json";
+import fake3OSC from "./patches/Fake3OSC.json";
+import TeeVeeSaw from "./patches/TeeVeeSaw.json";
 
 const App = (props: KorgProgramDump) => {
   const selectPatch = (patch: KorgProgramDump) => {
     console.log(patch.patchName);
+    // MASTER
+    setPatchName(patch.patchName);
     setVco1Octave(patch.oscilators[0].octave.value);
-    setVco2Octave(patch.oscilators[1].octave.value);
     setDrive(patch.drive.value);
-    setVco1Shape(patch.oscilators[0].shape.value);
+    // VCO1
+    setVco1Octave(patch.oscilators[0].octave.value);
     setVco1Wave(patch.oscilators[0].wave.value);
+    setVco1Shape(patch.oscilators[0].shape.value);
+    // VCO2
+    setVco2Octave(patch.oscilators[1].octave.value);
+    setVco2Wave(patch.oscilators[1].wave.value);
+    setVco2Pitch(patch.oscilators[1].pitch.value);
+    setVco2Duty(patch.oscilators[1].duty.value);
+    setVco2Shape(patch.oscilators[1].shape.value);
+    // MIX
+    setVco1Level(patch.oscilators[0].level.value);
+    setVco2Level(patch.oscilators[1].level.value);
+    // FILTER
+    setCutoff(patch.filter.cutoff.value);
+    setResonance(patch.filter.resonance.value);
+    // ENVELOPE
+    setEnvType(patch.envelope.type.value);
+    setEnvAttack(patch.envelope.attack.value);
+    setEnvDecay(patch.envelope.decay.value);
+    setEnvIntensity(patch.envelope.intensity.value);
+    setEnvTarget(patch.envelope.target.value);
+    // ENVELOPE
+    setLfoWave(patch.lfo.wave.value);
+    setLfoMode(patch.lfo.mode.value);
+    setLfoRate(patch.lfo.rate.value);
+    setLfoIntensity(patch.lfo.intensity.value);
+    setLfoTarget(patch.lfo.target.value);
   };
 
+  const [patchName, setPatchName] = useState(() => props.patchName);
   const [drive, setDrive] = useState(() => props.drive.value);
   const [vco1Octave, setVco1Octave] = useState(
     () => props.oscilators[0].octave.value
@@ -82,7 +112,7 @@ const App = (props: KorgProgramDump) => {
         <div className="panel">
           <header>
             <h1 className="program-title">
-              <span>{props.patchName}</span>
+              <span>{patchName}</span>
             </h1>
           </header>
           <div className="panel-controls">
@@ -99,10 +129,11 @@ const App = (props: KorgProgramDump) => {
               onChangeShape={setVco1Shape}
             />
             <VCO2
-              oscilator={props.oscilators.find(
-                (params) => params.wave.oscilator === 1
-              )}
               octave={vco2Octave}
+              pitch={vco2Pitch}
+              wave={vco2Wave}
+              duty={vco2Duty}
+              shape={vco2Shape}
               onChangeOctave={setVco2Octave}
               onChangeWave={setVco2Wave}
               onChangeDuty={setVco2Duty}
@@ -110,24 +141,24 @@ const App = (props: KorgProgramDump) => {
               onChangeShape={setVco2Shape}
             />
             <Mixer
-              vco1Level={props.oscilators[0].level}
-              vco2Level={props.oscilators[1].level}
+              vco1Level={vco1Level}
+              vco2Level={vco2Level}
               onChangeVCO1LevelValue={setVco1Level}
               onChangeVCO2LevelValue={setVco2Level}
             />
             <Filter
-              cutoff={props.filter.cutoff}
-              resonance={props.filter.resonance}
+              cutoff={cutoff}
+              resonance={resonance}
               onChangeCutoff={setCutoff}
               onChangeResonance={setResonance}
             />
             <div className="panel-section" id="eglfo">
               <Envelope
-                type={props.envelope.type}
-                attack={props.envelope.attack}
-                decay={props.envelope.decay}
-                intensity={props.envelope.intensity}
-                target={props.envelope.target}
+                type={envType}
+                attack={envAttack}
+                decay={envDecay}
+                intensity={envIntensity}
+                target={envTarget}
                 onChangeType={setEnvType}
                 onChangeAttack={setEnvAttack}
                 onChangeDecay={setEnvDecay}
@@ -135,11 +166,11 @@ const App = (props: KorgProgramDump) => {
                 onChangeTarget={setEnvTarget}
               />
               <LFO
-                wave={props.lfo.wave}
-                mode={props.lfo.mode}
-                rate={props.lfo.rate}
-                intensity={props.lfo.intensity}
-                target={props.lfo.target}
+                wave={lfoWave}
+                mode={lfoMode}
+                rate={lfoRate}
+                intensity={lfoIntensity}
+                target={lfoTarget}
                 onChangeWave={setLfoWave}
                 onChangeMode={setLfoMode}
                 onChangeRate={setLfoRate}
@@ -152,6 +183,8 @@ const App = (props: KorgProgramDump) => {
       </div>
       <button onClick={() => selectPatch(injection)}>Injection</button>
       <button onClick={() => selectPatch(afxAcid)}>AfxAcid</button>
+      <button onClick={() => selectPatch(fake3OSC)}>Fake30OSC</button>
+      <button onClick={() => selectPatch(TeeVeeSaw)}>TeeVeeSaw</button>
     </div>
   );
 };

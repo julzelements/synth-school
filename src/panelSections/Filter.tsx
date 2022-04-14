@@ -1,9 +1,7 @@
 import Knob from "../controlGroups/Knob";
-import { Parameter } from "../types";
-
 interface FilterProps {
-  cutoff: Parameter;
-  resonance: Parameter;
+  cutoff: number;
+  resonance: number;
   onChangeCutoff: (value) => void;
   onChangeResonance: (value) => void;
 }
@@ -13,13 +11,13 @@ export const Filter = (props: FilterProps) => {
     <div className="panel-section" id="filter">
       <h2 className="panel-group-label label">Filter</h2>
       <Knob
-        paramName={props.cutoff.name}
-        value={props.cutoff.value}
+        paramName="Cutoff"
+        value={props.cutoff}
         onChange={props.onChangeCutoff}
       />
       <Knob
-        paramName={props.resonance.name}
-        value={props.resonance.value}
+        paramName="Resonance"
+        value={props.resonance}
         onChange={props.onChangeResonance}
       />
     </div>

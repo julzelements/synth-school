@@ -39,7 +39,7 @@ export interface Envelope {
 export interface Target {
   name: string;
   value: number;
-  type: number;
+  type: number; // Either ENV or LFO (redundant data)
 }
 export interface Lfo {
   wave: Wave;

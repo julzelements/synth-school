@@ -1,9 +1,8 @@
 import Knob from "../controlGroups/Knob";
-import { Parameter } from "../types";
 
 interface MixerProps {
-  vco1Level: Parameter;
-  vco2Level: Parameter;
+  vco1Level: number;
+  vco2Level: number;
   onChangeVCO1LevelValue: (value) => void;
   onChangeVCO2LevelValue: (value) => void;
 }
@@ -15,8 +14,8 @@ export const Mixer = (props: MixerProps) => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            paramName={props.vco1Level.name}
-            value={props.vco1Level.value}
+            paramName="VCO1"
+            value={props.vco1Level}
             onChange={props.onChangeVCO1LevelValue}
           />
         </div>
@@ -24,8 +23,8 @@ export const Mixer = (props: MixerProps) => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
-            paramName={props.vco2Level.name}
-            value={props.vco2Level.value}
+            paramName="VCO2"
+            value={props.vco2Level}
             onChange={props.onChangeVCO2LevelValue}
           />
         </div>
