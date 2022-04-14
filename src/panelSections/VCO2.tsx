@@ -29,6 +29,7 @@ export const VCO2 = (props: VCO2Props) => {
           onChange={props.onChangeOctave}
         />
         <Knob
+          color="red"
           paramName="Pitch"
           value={props.pitch}
           onChange={props.onChangePitch}
@@ -50,6 +51,7 @@ export const VCO2 = (props: VCO2Props) => {
           onChange={props.onChangeDuty}
         />
         <Knob
+          color="red"
           paramName="Shape"
           value={props.shape}
           onChange={props.onChangeShape}

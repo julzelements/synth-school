@@ -29,8 +29,14 @@ export const LFO = (props: LFOProps) => {
         onChange={props.onChangeMode}
         labels={[<div>Fast</div>, <div>Slow</div>, <div>1Shot</div>]}
       />
-      <Knob paramName="Rate" value={props.rate} onChange={props.onChangeRate} />
       <Knob
+        color="green"
+        paramName="Rate"
+        value={props.rate}
+        onChange={props.onChangeRate}
+      />
+      <Knob
+        color="green"
         paramName="Int"
         value={props.intensity}
         onChange={props.onChangeIntensity}

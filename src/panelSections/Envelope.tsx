@@ -29,16 +29,19 @@ export const Envelope = (props: EnvelopeProps) => {
         // labels={[<AD />, <AGD />, <Gate />]}
       />
       <Knob
+        color="yellow"
         paramName="Attack"
         value={props.attack}
         onChange={props.onChangeAttack}
       />
       <Knob
+        color="yellow"
         paramName="Decay"
         value={props.decay}
         onChange={props.onChangeDecay}
       />
       <Knob
+        color="yellow"
         paramName="Int"
         value={props.intensity}
         onChange={props.onChangeIntensity}

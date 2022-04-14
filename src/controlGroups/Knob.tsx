@@ -9,6 +9,7 @@ interface KnobProps {
   paramMax?: number;
   paramName: string;
   fullAngle?: number;
+  color?: string;
   value: number;
   onChange: (newValue: number) => void;
 }
@@ -59,7 +60,12 @@ const Knob = (props: KnobProps) => {
   };
 
   const knobStyle = {
-    transform: "rotate(" + degrees + "deg)",
+    transform: `rotate(${degrees}deg)`,
+    background: props.color,
+  };
+
+  const knobInnerStyle = {
+    background: props.color ? "black" : null,
   };
 
   return (
@@ -67,7 +73,7 @@ const Knob = (props: KnobProps) => {
       <div className="control-wrapper">
         <div className="knob-container">
           <div className="knob-value" style={knobStyle} onMouseDown={startDrag}>
-            <div className="knob-value-inner" />
+            <div className="knob-value-inner" style={knobInnerStyle} />
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ export const Mixer = (props: MixerProps) => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
+            color="red"
             paramName="VCO1"
             value={props.vco1Level}
             onChange={props.onChangeVCO1LevelValue}
@@ -23,6 +24,7 @@ export const Mixer = (props: MixerProps) => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
+            color="red"
             paramName="VCO2"
             value={props.vco2Level}
             onChange={props.onChangeVCO2LevelValue}

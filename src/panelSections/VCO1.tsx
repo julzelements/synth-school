@@ -26,6 +26,7 @@ export const VCO1 = (props: VCO1Props) => {
       <div className="control-group">
         <div className="control-wrapper">
           <Knob
+            color="red"
             paramName="Shape"
             value={props.shape}
             onChange={props.onChangeShape}
