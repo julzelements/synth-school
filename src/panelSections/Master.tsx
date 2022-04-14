@@ -28,7 +28,7 @@ export const Master = (props: MasterProps) => {
       <div className="control-group" title="KeyboardOctave">
         <div className="control-wrapper">
           <Switch
-            value={2}
+            value={props.octave}
             numPositions={5}
             vertical={false}
             onChange={props.onChangeOctave}

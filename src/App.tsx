@@ -1,7 +1,5 @@
 import "./App.css";
-// JULZ!
-// Keyboard octaves do not refresh.
-
+import { useState } from "react";
 import { Master } from "./panelSections/Master";
 import { VCO1 } from "./panelSections/VCO1";
 import { Mixer } from "./panelSections/Mixer";
@@ -10,7 +8,6 @@ import { VCO2 } from "./panelSections/VCO2";
 import { Envelope } from "./panelSections/Envelope";
 import { LFO } from "./panelSections/LFO";
 import { KorgProgramDump } from "./types";
-import { useState } from "react";
 import afxAcid from "./patches/<afx acid3>.json";
 import injection from "./patches/Injection.json";
 import fake3OSC from "./patches/Fake3OSC.json";
@@ -18,7 +15,6 @@ import TeeVeeSaw from "./patches/TeeVeeSaw.json";
 
 const App = (props: KorgProgramDump) => {
   const selectPatch = (patch: KorgProgramDump) => {
-    console.log(patch.patchName);
     // MASTER
     setPatchName(patch.patchName);
     setVco1Octave(patch.oscilators[0].octave.value);
