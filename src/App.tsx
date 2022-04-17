@@ -13,6 +13,7 @@ import afxAcid from "./patches/<afx acid3>.json";
 import injection from "./patches/Injection.json";
 import fake3OSC from "./patches/Fake3OSC.json";
 import TeeVeeSaw from "./patches/TeeVeeSaw.json";
+import { ParameterHash as PARAMS } from "./ParameterHash";
 
 const App = (props: KorgProgramDump) => {
   const selectPatch = (patch: KorgProgramDump) => {
@@ -72,18 +73,95 @@ const App = (props: KorgProgramDump) => {
     });
   };
   const listen = () => {
-    channelIn.addListener(
-      "midimessage",
-      (e) => {
-        if (e.data[1] === 43) {
-          setCutoff(Math.round((e.data[2] / 123) * 1027));
-        }
-        console.log(e.data);
-      },
-      {
-        duration: 4000,
+    channelIn.addListener("midimessage", (e) => {
+      const [_, parameter, value] = e.data;
+      const knobValue = Math.round((value / 123) * 1027);
+      const threePoleValue = (value / 123) * 2;
+      const fourPoleValue = (value / 123) * 3;
+      switch (parameter) {
+        // GLOBAL
+        case PARAMS.DRIVE:
+          setDrive(knobValue);
+          break;
+        // VCO1
+        case PARAMS.VCO1_WAVE:
+          setVco1Wave(threePoleValue);
+          break;
+        case PARAMS.VCO1_SHAPE:
+          setVco1Shape(knobValue);
+          break;
+        // VCO2
+        case PARAMS.VCO2_OCTAVE:
+          setVco2Octave(fourPoleValue);
+          break;
+        case PARAMS.VCO2_PITCH:
+          setVco2Pitch(knobValue);
+          break;
+        case PARAMS.VCO2_WAVE:
+          setVco2Wave(threePoleValue);
+          break;
+        case PARAMS.VCO2_DUTY:
+          setVco2Duty(threePoleValue);
+          break;
+        case PARAMS.VCO2_SHAPE:
+          setVco2Shape(knobValue);
+          break;
+        // MIXER
+
+        case PARAMS.VCO1_LEVEL:
+          setVco1Level(knobValue);
+          break;
+        case PARAMS.VCO2_LEVEL:
+          setVco2Level(knobValue);
+          break;
+
+        // FILTER
+        case PARAMS.CUTOFF:
+          setCutoff(knobValue);
+          break;
+        case PARAMS.RESONANCE:
+          setResonance(knobValue);
+          break;
+
+        // EG
+        case PARAMS.ENV_TYPE:
+          setEnvType(threePoleValue);
+          break;
+        case PARAMS.ENV_ATTACK:
+          setEnvAttack(knobValue);
+          break;
+        case PARAMS.ENV_DECAY:
+          setEnvDecay(knobValue);
+          break;
+        case PARAMS.ENV_INTENSITY:
+          setEnvIntensity(knobValue);
+          break;
+        case PARAMS.ENV_TARGET:
+          setEnvTarget(threePoleValue);
+          break;
+
+        // LFO
+        case PARAMS.LFO_WAVE:
+          setLfoWave(threePoleValue);
+          break;
+        case PARAMS.LFO_MODE:
+          setLfoMode(threePoleValue);
+          break;
+        case PARAMS.LFO_RATE:
+          setLfoRate(knobValue);
+          break;
+        case PARAMS.LFO_INTENSITY:
+          setLfoIntensity(knobValue);
+          break;
+        case PARAMS.LFO_TARGET:
+          setLfoTarget(threePoleValue);
+          break;
+
+        default:
+          console.log(e.data);
+          break;
       }
-    );
+    });
   };
 
   const [channelIn, setChannelIn] = useState(() => null);
@@ -122,12 +200,6 @@ const App = (props: KorgProgramDump) => {
     () => props.oscilators[1].level.value
   );
   const [cutoff, setCutoff] = useState(() => props.filter.cutoff.value);
-
-  const onChangeCutoff = (value: number) => {
-    const forMidi = Math.round((value / 1023) * 127);
-    setCutoff(value);
-    channelOut.send([176, 43, forMidi]);
-  };
   const [resonance, setResonance] = useState(
     () => props.filter.resonance.value
   );
@@ -191,8 +263,14 @@ const App = (props: KorgProgramDump) => {
             <Filter
               cutoff={cutoff}
               resonance={resonance}
-              onChangeCutoff={onChangeCutoff}
-              onChangeResonance={setResonance}
+              onChangeCutoff={(value) => {
+                setCutoff(value);
+                channelOut.send([176, 43, Math.round((value / 1023) * 127)]);
+              }}
+              onChangeResonance={(value) => {
+                setResonance(value);
+                channelOut.send([176, 44, Math.round((value / 1023) * 127)]);
+              }}
             />
             <div className="panel-section" id="eglfo">
               <Envelope
