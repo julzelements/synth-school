@@ -8,6 +8,7 @@ import { VCO2 } from "./panelSections/VCO2";
 import { Envelope } from "./panelSections/Envelope";
 import { LFO } from "./panelSections/LFO";
 import { KorgProgramDump } from "./types";
+import { WebMidi } from "webmidi";
 import afxAcid from "./patches/<afx acid3>.json";
 import injection from "./patches/Injection.json";
 import fake3OSC from "./patches/Fake3OSC.json";
@@ -49,6 +50,45 @@ const App = (props: KorgProgramDump) => {
     setLfoTarget(patch.lfo.target.value);
   };
 
+  const connectMidi = () => {
+    WebMidi.enable({ sysex: true })
+      .then(onEnabled)
+      .catch((err) => alert(err + "could not connect to midi"));
+  };
+  function onEnabled() {
+    setChannelIn(WebMidi.inputs[0].channels[1]);
+    setChannelOut(WebMidi.outputs[0].channels[1]);
+    WebMidi.inputs.forEach((input) =>
+      console.log(input.manufacturer, input.name)
+    );
+    WebMidi.outputs.forEach((output) =>
+      console.log(output.manufacturer, output.name)
+    );
+  }
+
+  const listenSysex = () => {
+    channelIn.addListener("midi", (e) => console.log(e), {
+      duration: 4000,
+    });
+  };
+  const listen = () => {
+    channelIn.addListener(
+      "midimessage",
+      (e) => {
+        if (e.data[1] === 43) {
+          setCutoff(Math.round((e.data[2] / 123) * 1027));
+        }
+        console.log(e.data);
+      },
+      {
+        duration: 4000,
+      }
+    );
+  };
+
+  const [channelIn, setChannelIn] = useState(() => null);
+  const [channelOut, setChannelOut] = useState(() => null);
+
   const [patchName, setPatchName] = useState(() => props.patchName);
   const [drive, setDrive] = useState(() => props.drive.value);
   const [vco1Octave, setVco1Octave] = useState(
@@ -82,6 +122,12 @@ const App = (props: KorgProgramDump) => {
     () => props.oscilators[1].level.value
   );
   const [cutoff, setCutoff] = useState(() => props.filter.cutoff.value);
+
+  const onChangeCutoff = (value: number) => {
+    const forMidi = Math.round((value / 1023) * 127);
+    setCutoff(value);
+    channelOut.send([176, 43, forMidi]);
+  };
   const [resonance, setResonance] = useState(
     () => props.filter.resonance.value
   );
@@ -145,7 +191,7 @@ const App = (props: KorgProgramDump) => {
             <Filter
               cutoff={cutoff}
               resonance={resonance}
-              onChangeCutoff={setCutoff}
+              onChangeCutoff={onChangeCutoff}
               onChangeResonance={setResonance}
             />
             <div className="panel-section" id="eglfo">
@@ -181,6 +227,9 @@ const App = (props: KorgProgramDump) => {
       <button onClick={() => selectPatch(afxAcid)}>AfxAcid</button>
       <button onClick={() => selectPatch(fake3OSC)}>Fake30OSC</button>
       <button onClick={() => selectPatch(TeeVeeSaw)}>TeeVeeSaw</button>
+      <button onClick={() => connectMidi()}>ConnectMidi</button>
+      <button onClick={() => listen()}>Listen</button>
+      <button onClick={() => listenSysex()}>ListenSysex</button>
     </div>
   );
 };
