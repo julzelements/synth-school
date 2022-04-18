@@ -204,3 +204,18 @@
   grid-column: 7 / span 5;
   grid-row: 1 / span 2;
 }
+
+.knob-glow {
+  animation-duration: 3s;
+  animation-name: glow;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0px 0px 20px 20px #00000082;
+  }
+
+  to {
+    box-shadow: 0px 0px 20px 20px #ffffff82;
+  }
+}

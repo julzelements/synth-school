@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   cursorCoordsToDegrees,
   degreesToParam,
@@ -27,6 +28,18 @@ const Knob = (props: KnobProps) => {
     endAngle,
     props.value
   );
+
+  const [timer, setTimer] = useState(() => null);
+  const [active, setActive] = useState(() => false);
+  useEffect(() => {
+    clearTimeout(timer);
+    setActive(true);
+    setTimer(
+      setTimeout(() => {
+        setActive(false);
+      }, 1500)
+    );
+  }, [props.value]);
 
   const startDrag = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
@@ -72,7 +85,11 @@ const Knob = (props: KnobProps) => {
     <div className="control-group">
       <div className="control-wrapper">
         <div className="knob-container">
-          <div className="knob-value" style={knobStyle} onMouseDown={startDrag}>
+          <div
+            className={`knob-value ${active && "knob-glow"}`}
+            style={knobStyle}
+            onMouseDown={startDrag}
+          >
             <div className="knob-value-inner" style={knobInnerStyle} />
           </div>
         </div>
