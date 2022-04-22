@@ -5,8 +5,8 @@ import Switch from "../Switch";
 interface MasterProps {
   drive: number;
   onChangeDrive: (value) => void;
-  onChangeOctave: (value) => void;
-  octave: number;
+  onChangeOctave?: (value) => void;
+  octave?: number;
 }
 
 export const Master = (props: MasterProps) => {
