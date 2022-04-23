@@ -1,3 +1,10 @@
+import MonologueController from "./midi/midi";
+
+export interface AppProps {
+  korgProgramDump: KorgProgramDump;
+  monologueController: MonologueController;
+}
+
 export interface KorgProgramDump {
   patchName: string;
   drive: Parameter;

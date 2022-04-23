@@ -1,0 +1,127 @@
+import { constants } from "buffer";
+import { Parameters, Parameter } from "./ParameterHash";
+import { KorgProgramDump } from "./types";
+
+interface ParamterStateMap {
+  parameter: Parameter;
+  value: number;
+}
+
+export interface ParamState {
+  drive: ParamterStateMap;
+  vco1Shape: ParamterStateMap;
+  vco1Wave: ParamterStateMap;
+  vco2Octave: ParamterStateMap;
+  vco2Wave: ParamterStateMap;
+  vco2Duty: ParamterStateMap;
+  vco2Pitch: ParamterStateMap;
+  vco2Shape: ParamterStateMap;
+  vco1Level: ParamterStateMap;
+  vco2Level: ParamterStateMap;
+  cutoff: ParamterStateMap;
+  resonance: ParamterStateMap;
+  envType: ParamterStateMap;
+  envAttack: ParamterStateMap;
+  envDecay: ParamterStateMap;
+  envIntensity: ParamterStateMap;
+  envTarget: ParamterStateMap;
+  lfoWave: ParamterStateMap;
+  lfoMode: ParamterStateMap;
+  lfoRate: ParamterStateMap;
+  lfoIntensity: ParamterStateMap;
+  lfoTarget: ParamterStateMap;
+}
+
+export const initialiseParamState = (korgProgramDump: KorgProgramDump): ParamState => {
+  console.log("initialiseParamState");
+  return {
+    drive: {
+      parameter: Parameters.DRIVE,
+      value: korgProgramDump.drive.value,
+    }, 
+    vco1Shape: {
+      parameter: Parameters.VCO1_SHAPE,
+      value: korgProgramDump.oscilators[0].shape.value,
+    },
+    vco1Wave: {
+      parameter: Parameters.VCO1_WAVE,
+      value: korgProgramDump.oscilators[0].wave.value,
+    },
+    vco2Octave: {
+      parameter: Parameters.VCO2_OCTAVE,
+      value: korgProgramDump.oscilators[1].octave.value,
+    },
+    vco2Wave: {
+      parameter: Parameters.VCO2_WAVE,
+      value: korgProgramDump.oscilators[1].wave.value,
+    },
+    vco2Duty: {
+      parameter: Parameters.VCO2_DUTY,
+      value: korgProgramDump.oscilators[1].duty.value,
+    },
+    vco2Pitch: {
+      parameter: Parameters.VCO2_PITCH,
+      value: korgProgramDump.oscilators[1].duty.value,
+    },
+    vco2Shape: {
+      parameter: Parameters.VCO2_SHAPE,
+      value: korgProgramDump.oscilators[1].shape.value,
+    },
+    vco1Level: {
+      parameter: Parameters.VCO2_LEVEL,
+      value: korgProgramDump.oscilators[1].level.value,
+    },
+    vco2Level: {
+      parameter: Parameters.VCO2_LEVEL,
+      value: korgProgramDump.oscilators[1].level.value,
+    },
+    cutoff: {
+      parameter: Parameters.CUTOFF,
+      value: korgProgramDump.filter.cutoff.value,
+    },
+    resonance: {
+      parameter: Parameters.RESONANCE,
+      value: korgProgramDump.filter.resonance.value,
+    },
+    envType: {
+      parameter: Parameters.ENV_TYPE,
+      value: korgProgramDump.envelope.type.value,
+    },
+    envAttack: {
+      parameter: Parameters.ENV_ATTACK,
+      value: korgProgramDump.envelope.attack.value,
+    },
+    envDecay: {
+      parameter: Parameters.ENV_DECAY,
+      value: korgProgramDump.envelope.decay.value,
+    },
+    envIntensity: {
+      parameter: Parameters.ENV_INTENSITY,
+      value: korgProgramDump.envelope.intensity.value,
+    },
+    envTarget: {
+      parameter: Parameters.ENV_TARGET,
+      value: korgProgramDump.envelope.target.value,
+    },
+    lfoWave: {
+      parameter: Parameters.LFO_WAVE,
+      value: korgProgramDump.lfo.wave.value,
+    },
+    lfoMode: {
+      parameter: Parameters.LFO_MODE,
+      value: korgProgramDump.lfo.mode.value,
+    },
+    lfoRate: {
+      parameter: Parameters.LFO_RATE,
+      value: korgProgramDump.lfo.rate.value,
+    },
+    lfoIntensity: {
+      parameter: Parameters.LFO_INTENSITY,
+      value: korgProgramDump.lfo.intensity.value,
+    },
+    lfoTarget: {
+      parameter: Parameters.ENV_TARGET,
+      value: korgProgramDump.lfo.target.value,
+    },
+  };
+}
