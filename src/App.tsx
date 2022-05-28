@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Master } from "./panelSections/Master";
 import { VCO1 } from "./panelSections/VCO1";
 import { Mixer } from "./panelSections/Mixer";
@@ -14,22 +14,32 @@ import afxAcid from "./patches/<afx acid3>.json";
 import injection from "./patches/Injection.json";
 import fake3OSC from "./patches/Fake3OSC.json";
 import TeeVeeSaw from "./patches/TeeVeeSaw.json";
-import { initialiseParamState, ParamState } from "./paramState";
+import { initialiseParamState, ParamState, ParameterStateMap } from "./paramState";
 import MonologueController from "./midi/midi";
 
 const getMergedParamState = (state:ParamState, setParamState, monologueController:MonologueController) => (parameter: Parameter, finalValue: number) => {
+  const paramStateMap:ParameterStateMap = {
+    parameter: parameter,
+    value: finalValue,
+  };
+
   setParamState({
     ...state,
-    [parameter.name]: finalValue
-  })
+    [parameter.name]: paramStateMap,
+  });
 }
 
 const getMergedParamStateForCallback = (state:ParamState, setParamState, monologueController:MonologueController) => (parameter: Parameter) => (finalValue: number) => {
   monologueController.setParameter(parameter, finalValue);
 
+  const paramStateMap:ParameterStateMap = {
+    parameter: parameter,
+    value: finalValue,
+  };
+
   setParamState({
     ...state,
-    [parameter.name]: finalValue
+    [parameter.name]: paramStateMap,
   })
 };
 
@@ -62,6 +72,10 @@ const App = (props: AppProps) => {
 
   const [patchName, setPatchName] = useState(() => korgProgramDump.patchName);
   const [paramState, setParamState] = useState(() => initialiseParamState(korgProgramDump));
+
+  useEffect(() => {
+    flushStateToMonologue(paramState, monologueController);
+  },[paramState, monologueController]);
 
   const appliedParamState = getMergedParamState(paramState, setParamState, monologueController);
   const setParamViaCallback = getMergedParamStateForCallback(paramState, setParamState, monologueController);
