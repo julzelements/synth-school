@@ -13,7 +13,9 @@ const data: KorgProgramDump = {
   ...blob,
 };
 
-monologueController.connect().then(() => {
+
+
+monologueController.connect(true).then(() => {
   ReactDOM.render(
     <React.StrictMode>
       <App korgProgramDump={data} monologueController={monologueController} />
