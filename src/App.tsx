@@ -57,7 +57,7 @@ const App = (props: AppProps) => {
   };
 
   const connectMidi = async () => {
-    return monologueController.connect();
+    return monologueController.connect(false);
   };
 
   const [patchName, setPatchName] = useState(() => korgProgramDump.patchName);
