@@ -14,11 +14,44 @@ import afxAcid from "./patches/<afx acid3>.json";
 import injection from "./patches/Injection.json";
 import fake3OSC from "./patches/Fake3OSC.json";
 import TeeVeeSaw from "./patches/TeeVeeSaw.json";
+import fifthSaw from "./patches/dutch-bass/5th Saw.json";
+import Delayed from "./patches/dutch-bass/Delayed.json";
+import LeidenLoop from "./patches/dutch-bass/Leiden Loop.json";
+import ShapeShifter from "./patches/dutch-bass/ShapeShifter.json";
+import VintageKit from "./patches/dutch-bass/Vintage Kit.json";
+import NinetiesClassic from "./patches/dutch-bass/90'S Classic.json";
+import DeltaBass from "./patches/dutch-bass/Delta Bass.json";
+import MiniBass from "./patches/dutch-bass/Mini Bass.json";
+import SimpleBeat from "./patches/dutch-bass/Simple Beat.json";
+import VinylPulse from "./patches/dutch-bass/Vinyl Pulse.json";
+import AcidVox from "./patches/dutch-bass/Acid Vox.json";
+import DutchClassic from "./patches/dutch-bass/DutchClassic.json";
+import MotorMouth from "./patches/dutch-bass/Motor Mouth.json";
+import SoulFood from "./patches/dutch-bass/Soul Food.json";
+import VocalChordz from "./patches/dutch-bass/Vocal Chordz.json";
+import AnalogDrums from "./patches/dutch-bass/Analog Drums.json";
+import ElectroKit from "./patches/dutch-bass/Electro Kit.json";
+import MrMatrix from "./patches/dutch-bass/Mr Matrix.json";
+import SyntheBass from "./patches/dutch-bass/Synthe Bass.json";
+import Boogie80s from "./patches/dutch-bass/Boogie 80's.json";
+import FunkyAcid from "./patches/dutch-bass/Funky Acid.json";
+import PortaBass from "./patches/dutch-bass/Porta Bass.json";
+import TechNoir from "./patches/dutch-bass/Tech Noir.json";
+import DanceBass from "./patches/dutch-bass/Dance Bass.json";
+import GrittySquare from "./patches/dutch-bass/GrittySquare.json";
+import PunkFunk from "./patches/dutch-bass/Punk Funk.json";
+import VCTenVox from "./patches/dutch-bass/VC-10 Vox.json";
+import DeepHouse from "./patches/dutch-bass/Deep House.json";
+import KeycityBass from "./patches/dutch-bass/Keycity Bass.json";
+import RawBass from "./patches/dutch-bass/Raw Bass.json";
+import VideoGame from "./patches/dutch-bass/Video Game.json";
+
+
 import { initialiseParamState, ParamState, ParameterStateMap } from "./paramState";
 import MonologueController from "./midi/midi";
 
-const getMergedParamState = (state:ParamState, setParamState, monologueController:MonologueController) => (parameter: Parameter, finalValue: number) => {
-  const paramStateMap:ParameterStateMap = {
+const getMergedParamState = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter, finalValue: number) => {
+  const paramStateMap: ParameterStateMap = {
     parameter: parameter,
     value: finalValue,
   };
@@ -29,10 +62,10 @@ const getMergedParamState = (state:ParamState, setParamState, monologueControlle
   });
 }
 
-const getMergedParamStateForCallback = (state:ParamState, setParamState, monologueController:MonologueController) => (parameter: Parameter) => (finalValue: number) => {
+const getMergedParamStateForCallback = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter) => (finalValue: number) => {
   monologueController.setParameter(parameter, finalValue);
 
-  const paramStateMap:ParameterStateMap = {
+  const paramStateMap: ParameterStateMap = {
     parameter: parameter,
     value: finalValue,
   };
@@ -43,7 +76,7 @@ const getMergedParamStateForCallback = (state:ParamState, setParamState, monolog
   })
 };
 
-const flushStateToMonologue = (state:ParamState, monologueController:MonologueController) => {
+const flushStateToMonologue = (state: ParamState, monologueController: MonologueController) => {
   Object.keys(state).forEach(key => {
     const { parameter, value } = state[key];
     console.log(`Setting ${parameter.name} to ${value}`);
@@ -58,6 +91,7 @@ const App = (props: AppProps) => {
   } = props;
 
   const selectPatch = (patch: KorgProgramDump) => {
+
     setPatchName(patch.patchName);
 
     const state = initialiseParamState(patch);
@@ -75,7 +109,7 @@ const App = (props: AppProps) => {
 
   useEffect(() => {
     flushStateToMonologue(paramState, monologueController);
-  },[paramState, monologueController]);
+  }, [paramState, monologueController]);
 
   const appliedParamState = getMergedParamState(paramState, setParamState, monologueController);
   const setParamViaCallback = getMergedParamStateForCallback(paramState, setParamState, monologueController);
@@ -185,9 +219,40 @@ const App = (props: AppProps) => {
           </div>
         </div>
       </div>
-      <button onClick={() => selectPatch(injection)}>Injection</button>
-      <button onClick={() => selectPatch(afxAcid)}>AfxAcid</button>
-      <button onClick={() => selectPatch(fake3OSC)}>Fake30OSC</button>
+      fifthSaw
+      <button onClick={() => selectPatch(Delayed)}>Delayed</button>
+      <button onClick={() => selectPatch(LeidenLoop)}>LeidenLoop</button>
+      <button onClick={() => selectPatch(ShapeShifter)}>ShapeShifter</button>
+      <button onClick={() => selectPatch(VintageKit)}>VintageKit</button>
+      <button onClick={() => selectPatch(NinetiesClassic)}>NinetiesClassic</button>
+      <button onClick={() => selectPatch(DeltaBass)}>DeltaBass</button>
+      <button onClick={() => selectPatch(MiniBass)}>MiniBass</button>
+      <button onClick={() => selectPatch(SimpleBeat)}>SimpleBeat</button>
+      <button onClick={() => selectPatch(VinylPulse)}>VinylPulse</button>
+      <button onClick={() => selectPatch(AcidVox)}>AcidVox</button>
+      <button onClick={() => selectPatch(DutchClassic)}>DutchClassic</button>
+      <button onClick={() => selectPatch(MotorMouth)}>MotorMouth</button>
+      <button onClick={() => selectPatch(SoulFood)}>SoulFood</button>
+      <button onClick={() => selectPatch(VocalChordz)}>VocalChordz</button>
+      <button onClick={() => selectPatch(AnalogDrums)}>AnalogDrums</button>
+      <button onClick={() => selectPatch(ElectroKit)}>ElectroKit</button>
+      <button onClick={() => selectPatch(MrMatrix)}>MrMatrix</button>
+      <button onClick={() => selectPatch(SyntheBass)}>SyntheBass</button>
+      <button onClick={() => selectPatch(Boogie80s)}>Boogie80s</button>
+      <button onClick={() => selectPatch(FunkyAcid)}>FunkyAcid</button>
+      <button onClick={() => selectPatch(PortaBass)}>PortaBass</button>
+      <button onClick={() => selectPatch(TechNoir)}>TechNoir</button>
+      <button onClick={() => selectPatch(DanceBass)}>DanceBass</button>
+      <button onClick={() => selectPatch(GrittySquare)}>GrittySquare</button>
+      <button onClick={() => selectPatch(PunkFunk)}>PunkFunk</button>
+      <button onClick={() => selectPatch(VCTenVox)}>VCTenVox</button>
+      <button onClick={() => selectPatch(DeepHouse)}>DeepHouse</button>
+      <button onClick={() => selectPatch(KeycityBass)}>KeycityBass</button>
+      <button onClick={() => selectPatch(RawBass)}>RawBass</button>
+      <button onClick={() => selectPatch(VideoGame)}>VideoGame</button>
+      <button onClick={() => selectPatch(injection)}>injection</button>
+      <button onClick={() => selectPatch(afxAcid)}>afxAcid</button>
+      <button onClick={() => selectPatch(fake3OSC)}>fake3OSC</button>
       <button onClick={() => selectPatch(TeeVeeSaw)}>TeeVeeSaw</button>
       <button onClick={() => connectMidi()}>ConnectMidi</button>
     </div>

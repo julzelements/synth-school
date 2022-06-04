@@ -61,7 +61,7 @@ export const initialiseParamState = (korgProgramDump: KorgProgramDump): ParamSta
     },
     vco2Pitch: {
       parameter: Parameters.VCO2_PITCH,
-      value: korgProgramDump.oscilators[1].duty.value,
+      value: korgProgramDump.oscilators[1].pitch.value,
     },
     vco2Shape: {
       parameter: Parameters.VCO2_SHAPE,
