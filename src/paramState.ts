@@ -2,34 +2,34 @@ import { constants } from "buffer";
 import { Parameters, Parameter } from "./ParameterHash";
 import { KorgProgramDump } from "./types";
 
-interface ParamterStateMap {
+export interface ParameterStateMap {
   parameter: Parameter;
   value: number;
 }
 
 export interface ParamState {
-  drive: ParamterStateMap;
-  vco1Shape: ParamterStateMap;
-  vco1Wave: ParamterStateMap;
-  vco2Octave: ParamterStateMap;
-  vco2Wave: ParamterStateMap;
-  vco2Duty: ParamterStateMap;
-  vco2Pitch: ParamterStateMap;
-  vco2Shape: ParamterStateMap;
-  vco1Level: ParamterStateMap;
-  vco2Level: ParamterStateMap;
-  cutoff: ParamterStateMap;
-  resonance: ParamterStateMap;
-  envType: ParamterStateMap;
-  envAttack: ParamterStateMap;
-  envDecay: ParamterStateMap;
-  envIntensity: ParamterStateMap;
-  envTarget: ParamterStateMap;
-  lfoWave: ParamterStateMap;
-  lfoMode: ParamterStateMap;
-  lfoRate: ParamterStateMap;
-  lfoIntensity: ParamterStateMap;
-  lfoTarget: ParamterStateMap;
+  drive: ParameterStateMap;
+  vco1Shape: ParameterStateMap;
+  vco1Wave: ParameterStateMap;
+  vco2Octave: ParameterStateMap;
+  vco2Wave: ParameterStateMap;
+  vco2Duty: ParameterStateMap;
+  vco2Pitch: ParameterStateMap;
+  vco2Shape: ParameterStateMap;
+  vco1Level: ParameterStateMap;
+  vco2Level: ParameterStateMap;
+  cutoff: ParameterStateMap;
+  resonance: ParameterStateMap;
+  envType: ParameterStateMap;
+  envAttack: ParameterStateMap;
+  envDecay: ParameterStateMap;
+  envIntensity: ParameterStateMap;
+  envTarget: ParameterStateMap;
+  lfoWave: ParameterStateMap;
+  lfoMode: ParameterStateMap;
+  lfoRate: ParameterStateMap;
+  lfoIntensity: ParameterStateMap;
+  lfoTarget: ParameterStateMap;
 }
 
 export const initialiseParamState = (korgProgramDump: KorgProgramDump): ParamState => {
