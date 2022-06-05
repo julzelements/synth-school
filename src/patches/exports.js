@@ -85,7 +85,7 @@ export { default as Disemvowel } from "./defaults/Disemvowel.json";
 export { default as DistortedSqr } from "./defaults/DistortedSqr.json";
 export { default as DrJuice } from "./defaults/Dr.Juice.json";
 export { default as DualSaw } from "./defaults/Dual Saw.json";
-export { default as FmodSeq } from "./defaults/FMod Seq.jsonjson";
+export { default as FmodSeq } from "./defaults/FMod Seq.json";
 export { default as Fake30SC } from "./defaults/Fake3OSC.json";
 export { default as GhostTown } from "./defaults/Ghost Town.json";
 export { default as HardRun } from "./defaults/Hard Run.json";
