@@ -5,7 +5,7 @@ import { Parameter, Parameters } from "./ParameterHash";
 
 import { initialiseParamState, ParamState, ParameterStateMap } from "./paramState";
 import MonologueController from "./midi/midi";
-import Patches from "./Components/Patches";
+import Buttons from "./Components/Buttons";
 import Panel from "./Components/Panel";
 
 const getMergedParamState = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter, finalValue: number) => {
@@ -43,6 +43,9 @@ const flushStateToMonologue = (state: ParamState, monologueController: Monologue
 };
 
 const App = (props: AppProps) => {
+  const [opened, setOpened] = useState(false);
+  const [collapseOpen, setCollapseOpen] = useState(false);
+
   const { korgProgramDump, monologueController } = props;
 
   const selectPatch = (patch: KorgProgramDump) => {
@@ -52,6 +55,8 @@ const App = (props: AppProps) => {
 
     setParamState(state);
     flushStateToMonologue(state, monologueController);
+    setOpened(false);
+    setCollapseOpen(false);
   };
 
   const connectMidi = async () => {
@@ -106,7 +111,7 @@ const App = (props: AppProps) => {
           </header>
           <Panel setParamViaCallback={setParamViaCallback} paramState={paramState} Parameters={Parameters} />
         </div>
-        <Patches selectPatch={selectPatch} connectMidi={connectMidi} />
+        <Buttons selectPatch={selectPatch} connectMidi={connectMidi} setOpened={setOpened} opened={opened} setCollapseOpen={setCollapseOpen} collapseOpen={collapseOpen} />
       </div>
     </div>
   );
