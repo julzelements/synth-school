@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 import "./Switch.css";
 
 interface SwitchProps {
@@ -8,7 +8,7 @@ interface SwitchProps {
   onChange: (newValue: number) => void;
 }
 
-const Switch = (props: SwitchProps) => {
+const Switch = memo((props: SwitchProps) => {
   var rangeEl;
   var valueEl;
 
@@ -85,6 +85,6 @@ const Switch = (props: SwitchProps) => {
       />
     </div>
   );
-};
+});
 
 export default Switch;
