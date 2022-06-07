@@ -1,8 +1,7 @@
 import { useEffect, useState, memo } from "react";
 import {
   cursorCoordsToDegrees,
-  degreesToParam,
-  paramToDegrees,
+  rangeMap,
 } from "../utils";
 
 interface KnobProps {
@@ -17,11 +16,13 @@ interface KnobProps {
 
 const Knob = memo((props: KnobProps) => {
   const paramMin = props.paramMin || 0;
-  const paramMax = props.paramMax || 1023;
+  const paramMax = props.paramMax || 127;
   const fullAngle = props.fullAngle || 260;
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;
-  const degrees: number = paramToDegrees(
+
+
+  const degrees: number = rangeMap(
     paramMin,
     paramMax,
     startAngle,
@@ -57,13 +58,13 @@ const Knob = memo((props: KnobProps) => {
         endAngle
       );
 
-      const currentValue = degreesToParam(
-        paramMin,
-        paramMax,
+      const currentValue = Math.floor(rangeMap(
         startAngle,
         endAngle,
+        paramMin,
+        paramMax,
         degrees
-      );
+      ));
       props.onChange(currentValue);
     };
     document.addEventListener("mousemove", moveHandler);

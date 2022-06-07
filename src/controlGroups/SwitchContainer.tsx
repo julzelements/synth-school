@@ -13,6 +13,22 @@ interface WaveProps {
 }
 const SwitchContainer = (props: WaveProps) => {
   const labels = props.labels || [<Saw />, <Triangle />, <Square />];
+
+  let transposedValue;
+  switch(props.value) {
+    case 127:
+      transposedValue = 2;
+      break;
+    case 64:
+      transposedValue = 1;
+      break;
+    case 0:
+      transposedValue = 0;
+      break;
+    default:
+      transposedValue = props.value;
+  }
+
   return (
     <div
       className={`control-group${
@@ -21,7 +37,7 @@ const SwitchContainer = (props: WaveProps) => {
     >
       <div className="control-wrapper">
         <Switch
-          value={props.value}
+          value={transposedValue}
           numPositions={3}
           vertical
           onChange={props.onChange}
