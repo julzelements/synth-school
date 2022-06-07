@@ -20,18 +20,23 @@ $black: #242424;
 .category-button_container {
   .category-button {
     width: 90%;
-    @include flex-spacing;
     font-size: 24px;
     padding: 10px;
     border-bottom: 1px solid grey;
     margin-bottom: 8px;
     cursor: pointer;
+    .category-button_title {
+      @include flex-spacing;
+    }
   }
 }
 
 .patch-button_container {
   display: flex;
   flex-wrap: wrap;
+  max-height: 240px;
+  overflow: scroll;
+  margin-top: 8px;
 
   .patch-button {
     text-align: center;
@@ -39,7 +44,8 @@ $black: #242424;
     font-weight: bold;
     box-sizing: border-box;
     padding: 6px;
-    margin: 3px 3px;
+    margin: 3px 2px;
+    width: 32%;
     background-color: blue;
     color: white;
     cursor: pointer;

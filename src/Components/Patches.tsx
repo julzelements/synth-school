@@ -1,5 +1,3 @@
-import React from "react";
-
 // prettier-ignore
 import {
   afxAcid, Injection, Fake30SC, TeeVeeSaw, fifthSaw, Delayed, LeidenLoop, ShapeShifter, 
@@ -9,7 +7,7 @@ import {
   RawBass, VideoGame,
 } from "../patches/exports";
 
-const Patchess = ({ selectPatch }) => {
+const Patches = ({ category, selectPatch }) => {
   return (
     <div className="patch-button_container">
       <div className="patch-button" onClick={() => selectPatch(fifthSaw)}>
@@ -121,4 +119,4 @@ const Patchess = ({ selectPatch }) => {
   );
 };
 
-export default Patchess;
+export default Patches;

@@ -8,31 +8,36 @@ import MonologueController from "./midi/midi";
 import Buttons from "./Components/Buttons";
 import Panel from "./Components/Panel";
 
-const getMergedParamState = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter, finalValue: number) => {
-  const paramStateMap: ParameterStateMap = {
-    parameter: parameter,
-    value: finalValue,
+const getMergedParamState =
+  (state: ParamState, setParamState, monologueController: MonologueController) =>
+  (parameter: Parameter, finalValue: number) => {
+    const paramStateMap: ParameterStateMap = {
+      parameter: parameter,
+      value: finalValue,
+    };
+
+    setParamState({
+      ...state,
+      [parameter.name]: paramStateMap,
+    });
   };
 
-  setParamState({
-    ...state,
-    [parameter.name]: paramStateMap,
-  });
-};
+const getMergedParamStateForCallback =
+  (state: ParamState, setParamState, monologueController: MonologueController) =>
+  (parameter: Parameter) =>
+  (finalValue: number) => {
+    monologueController.setParameter(parameter, finalValue);
 
-const getMergedParamStateForCallback = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter) => (finalValue: number) => {
-  monologueController.setParameter(parameter, finalValue);
+    const paramStateMap: ParameterStateMap = {
+      parameter: parameter,
+      value: finalValue,
+    };
 
-  const paramStateMap: ParameterStateMap = {
-    parameter: parameter,
-    value: finalValue,
+    setParamState({
+      ...state,
+      [parameter.name]: paramStateMap,
+    });
   };
-
-  setParamState({
-    ...state,
-    [parameter.name]: paramStateMap,
-  });
-};
 
 const flushStateToMonologue = (state: ParamState, monologueController: MonologueController) => {
   Object.keys(state).forEach((key) => {
@@ -44,7 +49,6 @@ const flushStateToMonologue = (state: ParamState, monologueController: Monologue
 
 const App = (props: AppProps) => {
   const [opened, setOpened] = useState(false);
-  const [collapseOpen, setCollapseOpen] = useState(false);
 
   const { korgProgramDump, monologueController } = props;
 
@@ -56,7 +60,6 @@ const App = (props: AppProps) => {
     setParamState(state);
     flushStateToMonologue(state, monologueController);
     setOpened(false);
-    setCollapseOpen(false);
   };
 
   const connectMidi = async () => {
@@ -111,7 +114,7 @@ const App = (props: AppProps) => {
           </header>
           <Panel setParamViaCallback={setParamViaCallback} paramState={paramState} Parameters={Parameters} />
         </div>
-        <Buttons selectPatch={selectPatch} connectMidi={connectMidi} setOpened={setOpened} opened={opened} setCollapseOpen={setCollapseOpen} collapseOpen={collapseOpen} />
+        <Buttons selectPatch={selectPatch} connectMidi={connectMidi} setOpened={setOpened} opened={opened} />
       </div>
     </div>
   );
