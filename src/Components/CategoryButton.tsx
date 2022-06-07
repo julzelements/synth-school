@@ -3,14 +3,20 @@ import "../assets/styles/patches.scss";
 import Patches from "./Patches";
 import { useState } from "react";
 
-const CategoryButton = ({ category, selectPatch }) => {
+const CategoryButton = ({ categoryName, selectPatch }) => {
   const [collapseOpen, setCollapseOpen] = useState(false);
+  const [category, setCategory] = useState("");
+
+  const handleCategoryClick = () => {
+    setCollapseOpen(!collapseOpen);
+    setCategory(categoryName);
+  };
 
   return (
     <div>
-      <div className="category-button" onClick={() => setCollapseOpen(!collapseOpen)}>
+      <div className="category-button" onClick={() => handleCategoryClick()}>
         <div className="category-button_title">
-          {category}
+          {categoryName}
           {!collapseOpen ? (
             <span style={{ color: "333333" }}>&#9660;</span>
           ) : (

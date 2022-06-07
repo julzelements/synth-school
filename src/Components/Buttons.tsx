@@ -42,8 +42,8 @@ const Buttons = ({ selectPatch, connectMidi, setOpened, opened }) => {
         transitionTimingFunction="ease"
       >
         <div className="category-button_container">
-          <CategoryButton category={"Default"} selectPatch={selectPatch} />
-          <CategoryButton category={"Dutch Bass"} selectPatch={selectPatch} />
+          <CategoryButton categoryName="Default" selectPatch={selectPatch} />
+          <CategoryButton categoryName="Dutch Bass" selectPatch={selectPatch} />
         </div>
       </Drawer>
     </div>
