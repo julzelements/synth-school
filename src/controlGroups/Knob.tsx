@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import {
   cursorCoordsToDegrees,
   degreesToParam,
@@ -15,7 +15,7 @@ interface KnobProps {
   onChange: (newValue: number) => void;
 }
 
-const Knob = (props: KnobProps) => {
+const Knob = memo((props: KnobProps) => {
   const paramMin = props.paramMin || 0;
   const paramMax = props.paramMax || 1023;
   const fullAngle = props.fullAngle || 260;
@@ -97,6 +97,6 @@ const Knob = (props: KnobProps) => {
       <p className="control-label label">{props.paramName}</p>
     </div>
   );
-};
+});
 
 export default Knob;
