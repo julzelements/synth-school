@@ -50,8 +50,7 @@ import VideoGame from "./patches/dutch-bass/Video Game.json";
 import { initialiseParamState, ParamState, ParameterStateMap } from "./paramState";
 import MonologueController from "./midi/midi";
 
-const getMergedParamState = (state: ParamState, setParamState, monologueController: MonologueController) =>
-  (parameter: Parameter, finalValue: number) => {
+const getMergedParamState = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter, finalValue: number) => {
   const paramStateMap: ParameterStateMap = {
     parameter: parameter,
     value: finalValue,
@@ -63,9 +62,7 @@ const getMergedParamState = (state: ParamState, setParamState, monologueControll
   });
 }
 
-const getMergedParamStateForCallback = (state: ParamState, setParamState, monologueController: MonologueController) =>
-  (parameter: Parameter) =>
-  (finalValue: number) => {
+const getMergedParamStateForCallback = (state: ParamState, setParamState, monologueController: MonologueController) => (parameter: Parameter) => (finalValue: number) => {
   monologueController.setParameter(parameter, finalValue);
 
   const paramStateMap: ParameterStateMap = {
@@ -94,9 +91,11 @@ const App = (props: AppProps) => {
   } = props;
 
   const selectPatch = (patch: KorgProgramDump) => {
-    const state = initialiseParamState(patch);
 
     setPatchName(patch.patchName);
+
+    const state = initialiseParamState(patch);
+
     setParamState(state);
     flushStateToMonologue(state, monologueController);
   };
@@ -107,6 +106,10 @@ const App = (props: AppProps) => {
 
   const [patchName, setPatchName] = useState(() => korgProgramDump.patchName);
   const [paramState, setParamState] = useState(() => initialiseParamState(korgProgramDump));
+
+  useEffect(() => {
+    flushStateToMonologue(paramState, monologueController);
+  }, [paramState, monologueController]);
 
   const appliedParamState = getMergedParamState(paramState, setParamState, monologueController);
   const setParamViaCallback = getMergedParamStateForCallback(paramState, setParamState, monologueController);

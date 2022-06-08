@@ -1,13 +1,28 @@
-export const rangeMap = (
-  valueMin: number,
-  valueMax: number,
-  rangeMin: number,
-  rangeMax: number,
-  value: number
+export const paramToDegrees = (
+  paramMin: number,
+  paramMax: number,
+  startAngle: number,
+  endAngle: number,
+  paramValue: number
 ) => {
-  return (value - valueMin)
-  / (valueMax - valueMin)
-  * (rangeMax - rangeMin) + rangeMin;
+  return Math.floor(
+    ((paramValue - paramMin) * (endAngle - startAngle)) /
+      (paramMax - paramMin) +
+      startAngle
+  );
+};
+
+export const degreesToParam = (
+  paramMin: number,
+  paramMax: number,
+  startAngle: number,
+  endAngle: number,
+  degrees: number
+) => {
+  return Math.floor(
+    ((degrees - startAngle) * (paramMax - paramMin)) / (endAngle - startAngle) +
+      paramMin
+  );
 };
 
 export const cursorCoordsToDegrees = (
