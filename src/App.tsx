@@ -5,7 +5,6 @@ import { Parameter, Parameters } from "./ParameterHash";
 
 import { initialiseParamState, ParamState, ParameterStateMap } from "./paramState";
 import MonologueController from "./midi/midi";
-<<<<<<< HEAD
 import Buttons from "./Components/Buttons";
 import Panel from "./Components/Panel";
 
@@ -38,7 +37,7 @@ const getMergedParamStateForCallback =
       ...state,
       [parameter.name]: paramStateMap,
     });
-}
+};
 
 const flushStateToMonologue = (state: ParamState, monologueController: MonologueController) => {
   Object.keys(state).forEach((key) => {
