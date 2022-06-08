@@ -25,24 +25,6 @@ interface WaveProps {
 }
 
 const VCO2Octave = (props: WaveProps) => {
-  let transposedValue;
-  switch(props.value) {
-    case 127:
-      transposedValue = 3;
-      break;
-    case 84:
-      transposedValue = 2;
-      break;
-    case 42:
-      transposedValue = 1;
-      break;
-    case 0:
-      transposedValue = 0;
-      break;
-    default:
-      transposedValue = props.value;
-  }
-
   return (
     <div
       className={`control-group${
@@ -51,14 +33,14 @@ const VCO2Octave = (props: WaveProps) => {
     >
       <div className="control-wrapper">
         <Switch
-          value={transposedValue}
+          value={props.value}
           numPositions={4}
           vertical
           onChange={props.onChange}
         />
       </div>
       <p className="control-label label">{props.paramName}</p>
-      <OscOctaveLeds octave={transposedValue} />
+      <OscOctaveLeds octave={props.value} />
     </div>
   );
 };
