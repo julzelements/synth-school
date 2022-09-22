@@ -8,7 +8,9 @@ import data from "./data.json";
 const monologueController = new MonologueController();
 
 test("renders learn react link", () => {
-  render(<App korgProgramDump={data} monologueController={monologueController} />);
-  const linkElement = screen.getByText(/learn react/i);
+  render(
+    <App korgProgramDump={data} monologueController={monologueController} />
+  );
+  const linkElement = screen.getByText(/connect midi/i);
   expect(linkElement).toBeInTheDocument();
 });
