@@ -1,15 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Recorder = () => {
-  const [mediaStream, setMediaStream] = useState<MediaStream | undefined>();
-  const [mediaRecorder, setMediaRecorder] = useState<
-    MediaRecorder | undefined
-  >();
-  const [audio, setAudio] = useState<string | undefined>();
-
-  const stopRecording = () => {
-
-  }
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder>();
+  const [audio, setAudio] = useState<string>();
 
   const startRecording = async () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -19,23 +12,21 @@ const Recorder = () => {
         });
         let chunks = [];
         const recorder = new MediaRecorder(stream);
+        setMediaRecorder(recorder);
 
         recorder.ondataavailable = (e: BlobEvent) => {
           chunks.push(e.data);
         };
         recorder.onstop = (_) => {
+          console.log("recording stopped");
           const blob = new Blob(chunks, { type: "audio/ogg;codecs=opus" });
           chunks = [];
           const audioURL = window.URL.createObjectURL(blob);
           setAudio(audioURL);
         };
+        recorder.onstart = (_) => console.log("recording started");
 
         recorder.start();
-        
-        await new Promise((r) => setTimeout(r, 2000));
-        recorder.stop();
-
-        console.log(stream);
       } catch (err) {
         console.log(err);
       }
@@ -47,7 +38,7 @@ const Recorder = () => {
   return (
     <>
       <button onClick={startRecording}>Start Recording</button>
-      <button onClick={startRecording}>Stop Recording</button>
+      <button onClick={() => mediaRecorder.stop()}>Stop Recording</button>
       <audio src={audio} controls={true} />
     </>
   );
