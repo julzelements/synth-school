@@ -192,9 +192,10 @@ const App = (props: AppProps) => {
           selectPatch={selectPatch}
           connectMidi={connectMidi}
           setOpened={setOpened}
+          patchName={patchName}
           opened={opened}
         />
-        <Recorder />
+        <Recorder patchName={patchName} />
       </div>
     </div>
   );
