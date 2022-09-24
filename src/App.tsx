@@ -13,6 +13,7 @@ import Buttons from "./Components/Buttons";
 import Panel from "./Components/Panel";
 import Recorder from "./Components/Recorder";
 import { cleanName } from "./utils/utils";
+import LoadPatches from "./Components/LoadPatches";
 
 const getMergedParamState =
   (
@@ -195,10 +196,10 @@ const App = (props: AppProps) => {
           selectPatch={selectPatch}
           connectMidi={connectMidi}
           setOpened={setOpened}
-          patchName={patchName}
           opened={opened}
         />
         <Recorder patchName={patchName} />
+        <LoadPatches patchName={patchName} />
       </div>
     </div>
   );

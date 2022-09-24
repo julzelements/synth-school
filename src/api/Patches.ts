@@ -5,6 +5,24 @@
 // PUT  	 /patches/{id}   : Update the patch information identified by "id"
 // DELETE	 /patches/{id}   : Delete patch by "id"
 
+export const getPatchById = (id: number) => {
+  fetch(`http://localhost:3001/patches/${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw response;
+      }
+      return response.json();
+    })
+    .then((json) => {
+      console.log(json);
+    })
+    .catch((err) => {
+      err.text().then((errorMessage) => {
+        console.error(errorMessage);
+      });
+    });
+}
+
 export const getAllPatches = () => {
   fetch("http://localhost:3001/patches")
     .then((response) => response.text())
