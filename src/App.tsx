@@ -12,6 +12,7 @@ import MonologueController from "./midi/midi";
 import Buttons from "./Components/Buttons";
 import Panel from "./Components/Panel";
 import Recorder from "./Components/Recorder";
+import { cleanName } from "./utils/utils";
 
 const getMergedParamState =
   (
@@ -69,7 +70,7 @@ const App = (props: AppProps) => {
   const { korgProgramDump, monologueController } = props;
 
   const selectPatch = (patch: KorgProgramDump) => {
-    setPatchName(patch.patchName);
+    setPatchName(cleanName(patch.patchName));
 
     const state = initialiseParamState(patch);
 
@@ -82,7 +83,9 @@ const App = (props: AppProps) => {
     return monologueController.connect(false);
   };
 
-  const [patchName, setPatchName] = useState(() => korgProgramDump.patchName);
+  const [patchName, setPatchName] = useState(() =>
+    cleanName(korgProgramDump.patchName)
+  );
   const [paramState, setParamState] = useState(() =>
     initialiseParamState(korgProgramDump)
   );
