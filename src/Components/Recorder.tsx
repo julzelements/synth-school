@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { uploadAudioXML } from "../api/Audio";
 
 interface Props {
   patchName: string;
@@ -8,15 +9,7 @@ const Recorder = (props: Props) => {
   const { patchName } = props;
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder>();
   const [audio, setAudio] = useState<string>();
-
-  const saveRecording = (blob: Blob) => {
-    const formData = new FormData();
-    formData.append("blob", blob);
-    
-    const request = new XMLHttpRequest();
-    request.open("POST", "http://localhost:3001/audio");
-    request.send(formData);
-  };
+  const [blob, setBlob] = useState<Blob>();
 
   const startRecording = async () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -33,14 +26,13 @@ const Recorder = (props: Props) => {
         };
         recorder.onstop = (_) => {
           console.log("recording stopped");
-          const blob = new Blob(chunks, { type: "audio/ogg;codecs=opus" });
+          const tempBlob = new Blob(chunks, { type: "audio/ogg;codecs=opus" });
+          setBlob(tempBlob);
           chunks = [];
-          const audioURL = window.URL.createObjectURL(blob);
+          const audioURL = window.URL.createObjectURL(tempBlob);
           setAudio(audioURL);
-          saveRecording(blob);
         };
         recorder.onstart = (_) => console.log("recording started");
-
         recorder.start();
       } catch (err) {
         console.log(err);
@@ -55,13 +47,7 @@ const Recorder = (props: Props) => {
       <button onClick={startRecording}>Start Recording</button>
       <button onClick={() => mediaRecorder.stop()}>Stop Recording</button>
       <audio src={audio} controls={true} />
-      <button
-        onClick={() => {
-          console.log("todo");
-        }}
-      >
-        Save recording
-      </button>
+      <button onClick={() => uploadAudioXML(blob, patchName)}>Save recording</button>
     </>
   );
 };
