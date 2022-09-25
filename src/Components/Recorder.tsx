@@ -9,13 +9,13 @@ const Recorder = (props: Props) => {
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder>();
   const [audio, setAudio] = useState<string>();
 
-  const saveRecording = async () => {
-    const patch = await fetch("http://localhost:3001/patches", {
-      referrerPolicy: "strict-origin-when-cross-origin",
-      body: null,
-      method: "GET",
-    });
-    console.log(patch, patchName);
+  const saveRecording = (blob: Blob) => {
+    const formData = new FormData();
+    formData.append("blob", blob);
+    
+    const request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:3001/audio");
+    request.send(formData);
   };
 
   const startRecording = async () => {
@@ -37,6 +37,7 @@ const Recorder = (props: Props) => {
           chunks = [];
           const audioURL = window.URL.createObjectURL(blob);
           setAudio(audioURL);
+          saveRecording(blob);
         };
         recorder.onstart = (_) => console.log("recording started");
 
@@ -54,7 +55,13 @@ const Recorder = (props: Props) => {
       <button onClick={startRecording}>Start Recording</button>
       <button onClick={() => mediaRecorder.stop()}>Stop Recording</button>
       <audio src={audio} controls={true} />
-      <button onClick={saveRecording}>Save recording</button>
+      <button
+        onClick={() => {
+          console.log("todo");
+        }}
+      >
+        Save recording
+      </button>
     </>
   );
 };
