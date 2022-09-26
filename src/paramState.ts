@@ -1,4 +1,4 @@
-import { constants } from "buffer";
+// import { constants } from "buffer";
 import { Parameters, Parameter } from "./ParameterHash";
 import { KorgProgramDump } from "./types";
 

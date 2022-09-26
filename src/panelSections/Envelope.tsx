@@ -1,8 +1,8 @@
 import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
-import { ReactComponent as AD } from "../assets/ad.svg";
-import { ReactComponent as AGD } from "../assets/agd.svg";
-import { ReactComponent as Gate } from "../assets/gate.svg";
+// import { ReactComponent as AD } from "../assets/ad.svg";
+// import { ReactComponent as AGD } from "../assets/agd.svg";
+// import { ReactComponent as Gate } from "../assets/gate.svg";
 
 interface EnvelopeProps {
   type: number;

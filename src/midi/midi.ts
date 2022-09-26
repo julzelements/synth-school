@@ -1,7 +1,7 @@
 import { WebMidi } from "webmidi";
 import { Parameter } from "../ParameterHash";
 
-const PARAM_CHANGE_MESSAGE = 179;
+const PARAM_CHANGE_MESSAGE = 176;
 
 export default class MonologueController {
   constructor() {
@@ -26,9 +26,8 @@ export default class MonologueController {
     Object.keys(this.registeredParameters).map((id) => {
       const { parameter, callback } = this.registeredParameters[id];
       const [message, messageParameter, value] = e.data; // eslint-disable-line @typescript-eslint/no-unused-vars
-
       // We only want to listen to param change messages
-      if(message !== PARAM_CHANGE_MESSAGE) return null;
+      if (message !== PARAM_CHANGE_MESSAGE) return null;
 
       if (messageParameter !== parameter.ID) {
         return null;
@@ -45,9 +44,11 @@ export default class MonologueController {
 
     const channelOut = WebMidi.outputs[0].channels[1];
 
-    console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${value}`);
+    console.log(
+      `setting parameter ${parameter.name}:${parameter.ID} to ${value}`
+    );
 
-    channelOut.sendControlChange(parameter.ID, value)
+    channelOut.sendControlChange(parameter.ID, value);
   };
 
   connectDemo = async () => {
@@ -72,5 +73,4 @@ export default class MonologueController {
     const channelIn = WebMidi.inputs[0].channels[1];
     channelIn?.addListener("midimessage", this.handleParameterChange);
   };
-
 }
