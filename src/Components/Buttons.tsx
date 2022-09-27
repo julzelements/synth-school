@@ -24,27 +24,27 @@ const Buttons = ({
       <div className="menu-button_container">
         <Button
           onClick={() => setOpened(true)}
-          size="xl"
+          size="md"
           className="menu-button"
-          color="indigo"
         >
-          Patches
-        </Button>
-        <Button
-          className="menu-button"
-          onClick={() => connectMidi()}
-          size="lg"
-          color="cyan"
-        >
-          Connect Midi
+          📗 View patches
         </Button>
         <Button
           onClick={() => handleRandomClick()}
-          size="xl"
+          size="md"
           className="menu-button"
-          color="orange"
         >
-          Random
+          🎲 Random patch!
+        </Button>
+      </div>
+      <div className="menu-button_container">
+        <Button
+          className="menu-button"
+          onClick={() => connectMidi()}
+          size="xs"
+          color="dark"
+        >
+         🎹 Connect Midi
         </Button>
       </div>
       <Drawer
