@@ -57,6 +57,11 @@ export default class MonologueController {
   };
 
   connect = async (allowDemoFallback: boolean) => {
+    if (!navigator.requestMIDIAccess) {
+      console.log("Midi is not supported in this browser");
+      this.connectDemo();
+      return;
+    }
     console.log("connecting to monologue");
     await WebMidi.enable({ sysex: true });
     if (WebMidi.inputs.length <= 0) {
