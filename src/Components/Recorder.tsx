@@ -44,9 +44,9 @@ const Recorder = (props: Props) => {
 
   return (
     <>
+      <audio src={audio} controls={true} />
       <button onClick={startRecording}>Start Recording</button>
       <button onClick={() => mediaRecorder.stop()}>Stop Recording</button>
-      <audio src={audio} controls={true} />
       <button onClick={() => uploadAudioXML(blob, patchName)}>Save recording</button>
     </>
   );

@@ -198,7 +198,7 @@ const App = (props: AppProps) => {
           setOpened={setOpened}
           opened={opened}
         />
-        <Recorder patchName={patchName} />
+        {/* <Recorder patchName={patchName} /> */}
         {/* <LoadPatches patchName={patchName} /> */}
       </div>
     </div>
