@@ -199,7 +199,7 @@ const App = (props: AppProps) => {
           opened={opened}
         />
         <Recorder patchName={patchName} />
-        <LoadPatches patchName={patchName} />
+        {/* <LoadPatches patchName={patchName} /> */}
       </div>
     </div>
   );
