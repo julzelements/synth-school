@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web MIDI API</title>
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+    <script>
+      const toHex = (decimal) => parseInt(decimal.toString()).toString(16);
+
+      navigator.requestMIDIAccess({ sysex: true }).then((midiAccess) => {
+        Array.from(midiAccess.inputs).forEach((input) => {
+          if (input[1].name === "monologue KBD/KNOB") {
+            input[1].onmidimessage = (msg) => {
+              if (msg && msg.data && msg.data.length) {
+                const hexBuff = [];
+                msg.data.forEach((buff) => hexBuff.push(toHex(buff)));
+                // skip these: f8 is 'clock', fe is 'keep alive'
+                const [command, dataByte1, dataByte2] = hexBuff;
+                if (command !== "f8" && command !== "fe") {
+                  console.log(msg);
+                  console.log(command, dataByte1, dataByte2);
+                }
+              }
+            };
+          }
+        });
+      });
+
+    </script>
+  </head>
+
+  <body>
+    <h1>Official Web MIDI API: open the console</h1>
+  </body>
+</html>

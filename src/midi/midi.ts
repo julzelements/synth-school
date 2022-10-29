@@ -32,7 +32,7 @@ export default class MonologueController {
       if (messageParameter !== parameter.ID) {
         return null;
       }
-
+      console.log(`RECIEVING: ${parameter.name}:${message} => ${value}`);
       return callback(parameter, value);
     });
   };
@@ -42,11 +42,9 @@ export default class MonologueController {
       return;
     }
 
-    const channelOut = WebMidi.outputs[0].channels[1];
+    const channelOut = WebMidi.outputs[1  ].channels[1];
 
-    console.log(
-      `setting parameter ${parameter.name}:${parameter.ID} to ${value}`
-    );
+    console.log(`SENDING: ${parameter.name}:${parameter.ID} => ${value}`);
 
     channelOut.sendControlChange(parameter.ID, value);
   };
@@ -64,6 +62,7 @@ export default class MonologueController {
     }
     console.log("connecting to monologue");
     await WebMidi.enable({ sysex: true });
+    console.log(WebMidi.inputs)
     if (WebMidi.inputs.length <= 0) {
       if (allowDemoFallback) {
         this.connectDemo();
@@ -75,7 +74,7 @@ export default class MonologueController {
       }
     }
 
-    const channelIn = WebMidi.inputs[0].channels[1];
+    const channelIn = WebMidi.inputs[1].channels[1];
     channelIn?.addListener("midimessage", this.handleParameterChange);
   };
 }
