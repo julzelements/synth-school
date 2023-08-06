@@ -44,9 +44,7 @@ export default class MonologueController {
 
     const channelOut = WebMidi.outputs[0].channels[1];
 
-    console.log(
-      `setting parameter ${parameter.name}:${parameter.ID} to ${value}`
-    );
+    console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${value}`);
 
     channelOut.sendControlChange(parameter.ID, value);
   };
@@ -66,6 +64,7 @@ export default class MonologueController {
     await WebMidi.enable({ sysex: true });
     if (WebMidi.inputs.length <= 0) {
       if (allowDemoFallback) {
+        console.log("falling back to demo mode");
         this.connectDemo();
         return;
       } else {
@@ -75,7 +74,10 @@ export default class MonologueController {
       }
     }
 
-    const channelIn = WebMidi.inputs[0].channels[1];
+    console.log(WebMidi.inputs);
+
+    const channelIn = Array.from(WebMidi.inputs.values()).find((input) => input.name === "monologue KBD/KNOB");
+
     channelIn?.addListener("midimessage", this.handleParameterChange);
   };
 }
