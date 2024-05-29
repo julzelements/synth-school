@@ -39,8 +39,8 @@
   },
   "misc": {
     "bpmSync": { "name": "BPM Sync", "value": 1 },
-    "portamentMode": { "name": "Portament Mode", "value": 0 },
-    "portamentTime": { "name": "Potament Time", "value": 0 },
+    "portamentMode": { "name": "Portamento Mode", "value": 0 },
+    "portamentTime": { "name": "Portamento Time", "value": 0 },
     "cutoffVelocity": { "name": "Cutoff Velocity", "value": 0 },
     "cutoffKeyTrack": { "name": "Cutoff Key Track", "value": 2 },
     "sliderAssign": { "name": "Slider Assign", "value": "PITCH BEND" }
