@@ -4,6 +4,12 @@ interface MiscParamsProps {
   miscParams: Misc;
 }
 
+const cutoffMap = {
+  0: "0%",
+  1: "50%",
+  2: "100%",
+};
+
 const MiscParams = (props: MiscParamsProps) => {
   const {
     miscParams: { bpmSync, portamentMode, portamentTime, cutoffVelocity, cutoffKeyTrack, sliderAssign },
@@ -14,16 +20,16 @@ const MiscParams = (props: MiscParamsProps) => {
         {bpmSync.name} : {bpmSync.value ? "On" : "Off"}
       </div>
       <div>
-        {portamentMode.name} : {portamentMode.value ? "On" : "Off"}
+        {portamentMode.name} : {portamentMode.value ? "On" : "Auto"}
       </div>
       <div>
         {portamentTime.name} : {portamentTime.value}
       </div>
       <div>
-        {cutoffVelocity.name} : {cutoffVelocity.value}
+        {cutoffVelocity.name} : {cutoffMap[cutoffVelocity.value]}
       </div>
       <div>
-        {cutoffKeyTrack.name} : {cutoffKeyTrack.value}
+        {cutoffKeyTrack.name} : {cutoffMap[cutoffKeyTrack.value]}
       </div>
       <div>
         {sliderAssign.name} : {sliderAssign.value}
