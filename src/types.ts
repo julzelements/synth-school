@@ -61,7 +61,10 @@ export interface Misc {
   portamentTime: Parameter;
   cutoffVelocity: Parameter;
   cutoffKeyTrack: Parameter;
-  sliderAssign: SliderAssignOrParameter;
+  sliderAssign: {
+    name: string;
+    value: string;
+  };
 }
 export interface SliderAssignOrParameter {
   name: string;
@@ -80,7 +83,10 @@ export interface MotionSlotParamsEntity {
   slotNumber: number;
   active: Parameter;
   smooth: Parameter;
-  parameter: SliderAssignOrParameter;
+  parameter: {
+    name: string;
+    value: string;
+  };
 }
 export interface StepsEntity {
   stepNumber: number;
