@@ -12,6 +12,7 @@ export interface ParamState {
   vco1Shape: ParameterStateMap;
   vco1Wave: ParameterStateMap;
   vco2Octave: ParameterStateMap;
+  vco1Octave: ParameterStateMap;
   vco2Wave: ParameterStateMap;
   vco2Duty: ParameterStateMap;
   vco2Pitch: ParameterStateMap;
@@ -38,7 +39,11 @@ export const initialiseParamState = (korgProgramDump: KorgProgramDump): ParamSta
     drive: {
       parameter: Parameters.DRIVE,
       value: korgProgramDump.drive.value,
-    }, 
+    },
+    vco1Octave: {
+      parameter: Parameters.VCO1_SHAPE,
+      value: korgProgramDump.oscilators[0].octave.value,
+    },
     vco1Shape: {
       parameter: Parameters.VCO1_SHAPE,
       value: korgProgramDump.oscilators[0].shape.value,
@@ -124,4 +129,4 @@ export const initialiseParamState = (korgProgramDump: KorgProgramDump): ParamSta
       value: korgProgramDump.lfo.target.value,
     },
   };
-}
+};

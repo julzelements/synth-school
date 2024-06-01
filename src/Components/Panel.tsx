@@ -5,12 +5,23 @@ import { Filter } from "../panelSections/Filter";
 import { VCO2 } from "../panelSections/VCO2";
 import { Envelope } from "../panelSections/Envelope";
 import { LFO } from "../panelSections/LFO";
+import { ParamState } from "../paramState";
+import { Parameters as KorgParameters, Parameter } from "../ParameterHash";
 
-const Panel = ({ setParamViaCallback, paramState, Parameters }) => {
+const Panel = ({
+  setParamViaCallback,
+  paramState,
+  Parameters,
+}: {
+  paramState: ParamState;
+  Parameters: typeof KorgParameters;
+  setParamViaCallback: (parameter: Parameter) => (finalValue: number) => void;
+}) => {
   return (
     <div className="panel-controls">
       <Master
         drive={paramState.drive.value}
+        octave={paramState.vco1Octave.value}
         onChangeDrive={setParamViaCallback(Parameters.DRIVE)}
         onChangeOctave={setParamViaCallback(Parameters.VCO1_OCTAVE)}
       />
