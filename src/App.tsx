@@ -31,7 +31,6 @@ const getMergedParamStateForCallback =
   (parameter: Parameter) =>
   (finalValue: number) => {
     monologueController.setParameter(parameter, finalValue);
-
     const paramStateMap: ParameterStateMap = {
       parameter: parameter,
       value: finalValue,
@@ -83,6 +82,7 @@ const App = (props: AppProps) => {
   monologueController.onParameterChange(Parameters.VCO1_WAVE, appliedParamState);
   monologueController.onParameterChange(Parameters.VCO1_SHAPE, appliedParamState);
   monologueController.onParameterChange(Parameters.VCO1_LEVEL, appliedParamState);
+  monologueController.onParameterChange(Parameters.VCO1_OCTAVE, appliedParamState);
 
   monologueController.onParameterChange(Parameters.VCO2_WAVE, appliedParamState);
   monologueController.onParameterChange(Parameters.VCO2_SHAPE, appliedParamState);

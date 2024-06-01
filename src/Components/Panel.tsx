@@ -9,8 +9,17 @@ import { LFO } from "../panelSections/LFO";
 const Panel = ({ setParamViaCallback, paramState, Parameters }) => {
   return (
     <div className="panel-controls">
-      <Master drive={paramState.drive.value} onChangeDrive={setParamViaCallback(Parameters.DRIVE)} />
-      <VCO1 shape={paramState.vco1Shape.value} wave={paramState.vco1Wave.value} onChangeWave={setParamViaCallback(Parameters.VCO1_WAVE)} onChangeShape={setParamViaCallback(Parameters.VCO1_SHAPE)} />
+      <Master
+        drive={paramState.drive.value}
+        onChangeDrive={setParamViaCallback(Parameters.DRIVE)}
+        onChangeOctave={setParamViaCallback(Parameters.VCO1_OCTAVE)}
+      />
+      <VCO1
+        shape={paramState.vco1Shape.value}
+        wave={paramState.vco1Wave.value}
+        onChangeWave={setParamViaCallback(Parameters.VCO1_WAVE)}
+        onChangeShape={setParamViaCallback(Parameters.VCO1_SHAPE)}
+      />
       <VCO2
         octave={paramState.vco2Octave.value}
         pitch={paramState.vco2Pitch.value}

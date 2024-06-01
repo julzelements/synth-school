@@ -38,7 +38,7 @@ export default class MonologueController {
   };
 
   setParameter = (parameter: Parameter, value: number) => {
-    if (this.demoMode) {
+    if (this.demoMode || parameter.isMisc) {
       return;
     }
 
