@@ -8,7 +8,7 @@ export interface AppProps {
 export interface KorgProgramDump {
   patchName: string;
   drive: Parameter;
-  oscilators?: Oscilator[] | null;
+  oscillators?: Oscilator[] | null;
   filter: Filter;
   envelope: Envelope;
   lfo: Lfo;

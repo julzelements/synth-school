@@ -1,7 +1,7 @@
 {
   "patchName": "BitterLead\u0000\u0000",
   "drive": { "name": "Drive", "value": 82 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 0, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 867 },

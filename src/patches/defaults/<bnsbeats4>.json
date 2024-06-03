@@ -1,7 +1,7 @@
 {
   "patchName": "<bnsbeats4>\u0000",
   "drive": { "name": "Drive", "value": 716 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },

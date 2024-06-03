@@ -1,7 +1,7 @@
 {
   "patchName": "<Ardkore92>\u0000",
   "drive": { "name": "Drive", "value": 96 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 772 },

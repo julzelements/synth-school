@@ -1,7 +1,7 @@
 {
   "patchName": "DutchClassic",
   "drive": { "name": "Drive", "value": 148 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 2, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },

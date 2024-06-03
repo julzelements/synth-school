@@ -1,7 +1,7 @@
 {
   "patchName": "Keycity Bass",
   "drive": { "name": "Drive", "value": 18 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 2, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },

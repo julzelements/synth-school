@@ -1,7 +1,7 @@
 {
   "patchName": "Herd Of Crab",
   "drive": { "name": "Drive", "value": 1023 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 536 },

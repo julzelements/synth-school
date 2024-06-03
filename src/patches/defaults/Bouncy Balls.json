@@ -1,7 +1,7 @@
 {
   "patchName": "Bouncy Balls",
   "drive": { "name": "Drive", "value": 0 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },

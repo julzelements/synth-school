@@ -119,3 +119,6 @@ export { default as TronIines } from "./defaults/TronIines.json";
 export { default as Werq } from "./defaults/Werq.json";
 
 // DEFAULTS FOLDER END ^
+
+export { default as Lazers } from "./synth-school/Lazers.json";
+export { default as MonsterGrowl } from "./synth-school/MonsterGrowl.json";

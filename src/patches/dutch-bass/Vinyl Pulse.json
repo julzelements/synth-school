@@ -1,7 +1,7 @@
 {
   "patchName": "Vinyl Pulse\u0000",
   "drive": { "name": "Drive", "value": 364 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },

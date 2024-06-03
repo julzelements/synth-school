@@ -1,7 +1,7 @@
 {
   "patchName": "<deep bass>\u0000",
   "drive": { "name": "Drive", "value": 16 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 2, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 807 },

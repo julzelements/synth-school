@@ -1,7 +1,7 @@
 {
   "patchName": "Simple Beat\u0000",
   "drive": { "name": "Drive", "value": 267 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 0, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },

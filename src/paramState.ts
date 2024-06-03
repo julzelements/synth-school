@@ -42,43 +42,43 @@ export const initialiseParamState = (korgProgramDump: KorgProgramDump): ParamSta
     },
     vco1Octave: {
       parameter: Parameters.VCO1_SHAPE,
-      value: korgProgramDump.oscilators[0].octave.value,
+      value: korgProgramDump.oscillators[0].octave.value,
     },
     vco1Shape: {
       parameter: Parameters.VCO1_SHAPE,
-      value: korgProgramDump.oscilators[0].shape.value,
+      value: korgProgramDump.oscillators[0].shape.value,
     },
     vco1Wave: {
       parameter: Parameters.VCO1_WAVE,
-      value: korgProgramDump.oscilators[0].wave.value,
+      value: korgProgramDump.oscillators[0].wave.value,
     },
     vco2Octave: {
       parameter: Parameters.VCO2_OCTAVE,
-      value: korgProgramDump.oscilators[1].octave.value,
+      value: korgProgramDump.oscillators[1].octave.value,
     },
     vco2Wave: {
       parameter: Parameters.VCO2_WAVE,
-      value: korgProgramDump.oscilators[1].wave.value,
+      value: korgProgramDump.oscillators[1].wave.value,
     },
     vco2Duty: {
       parameter: Parameters.VCO2_DUTY,
-      value: korgProgramDump.oscilators[1].duty.value,
+      value: korgProgramDump.oscillators[1].duty.value,
     },
     vco2Pitch: {
       parameter: Parameters.VCO2_PITCH,
-      value: korgProgramDump.oscilators[1].pitch.value,
+      value: korgProgramDump.oscillators[1].pitch.value,
     },
     vco2Shape: {
       parameter: Parameters.VCO2_SHAPE,
-      value: korgProgramDump.oscilators[1].shape.value,
+      value: korgProgramDump.oscillators[1].shape.value,
     },
     vco1Level: {
       parameter: Parameters.VCO2_LEVEL,
-      value: korgProgramDump.oscilators[1].level.value,
+      value: korgProgramDump.oscillators[1].level.value,
     },
     vco2Level: {
       parameter: Parameters.VCO2_LEVEL,
-      value: korgProgramDump.oscilators[1].level.value,
+      value: korgProgramDump.oscillators[1].level.value,
     },
     cutoff: {
       parameter: Parameters.CUTOFF,

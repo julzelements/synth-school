@@ -1,7 +1,7 @@
 {
   "patchName": "FMod Seq\u0000\u0000\u0000\u0000",
   "drive": { "name": "Drive", "value": 29 },
-  "oscilators": [
+  "oscillators": [
     {
       "wave": { "name": "Wave", "value": 1, "oscilator": 0 },
       "shape": { "name": "Shape", "value": 0 },
