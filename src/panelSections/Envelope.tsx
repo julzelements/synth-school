@@ -2,7 +2,7 @@ import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
 import { ReactComponent as AttackDecay } from "../assets/attackdecay.svg";
 import { ReactComponent as AttackGateDecay } from "../assets/attackgatedecay.svg";
-import { ReactComponent as Gate } from "../assets/gate.svg";
+import { ReactComponent as Gate } from "../assets/newgate.svg";
 
 interface EnvelopeProps {
   type: number;
