@@ -5,7 +5,7 @@ import Knob from "../controlGroups/Knob";
 // import { ReactComponent as Gate } from "../assets/gate.svg";
 import { ReactComponent as Saw } from "../assets/saw.svg";
 import { ReactComponent as Triangle } from "../assets/triangle.svg";
-import { ReactComponent as Test } from "../assets/test.svg";
+import { ReactComponent as AttackDecay } from "../assets/attackdecay.svg";
 
 interface EnvelopeProps {
   type: number;
@@ -29,7 +29,7 @@ export const Envelope = (props: EnvelopeProps) => {
         value={props.type}
         onChange={props.onChangeType}
         // labels={[<div>AD</div>, <div>AGD</div>, <div>Gate</div>]}
-        labels={[<Test />, <Triangle />, <Saw />]}
+        labels={[<AttackDecay />, <Triangle />, <Saw />]}
         // labels={[<AD />, <AGD />, <Gate />]}
       />
       <Knob color="yellow" paramName="Attack" value={props.attack} onChange={props.onChangeAttack} />
