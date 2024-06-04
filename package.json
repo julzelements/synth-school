@@ -2,6 +2,7 @@
   "name": "synth-school",
   "version": "0.1.0",
   "private": true,
+  "engine": "20.8.0",
   "dependencies": {
     "@mantine/core": "^4.2.8",
     "@mantine/hooks": "^4.2.8",
