@@ -1,6 +1,6 @@
 import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
-// import { ReactComponent as AD } from "../assets/ad.svg";
+import { ReactComponent as AD } from "../assets/ad.svg";
 // import { ReactComponent as AGD } from "../assets/agd.svg";
 // import { ReactComponent as Gate } from "../assets/gate.svg";
 import { ReactComponent as Saw } from "../assets/saw.svg";
@@ -29,7 +29,7 @@ export const Envelope = (props: EnvelopeProps) => {
         value={props.type}
         onChange={props.onChangeType}
         // labels={[<div>AD</div>, <div>AGD</div>, <div>Gate</div>]}
-        labels={[<Saw />, <Triangle />, <Noise />]}
+        labels={[<AD />, <Triangle />, <Noise />]}
         // labels={[<AD />, <AGD />, <Gate />]}
       />
       <Knob color="yellow" paramName="Attack" value={props.attack} onChange={props.onChangeAttack} />
