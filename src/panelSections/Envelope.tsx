@@ -25,8 +25,8 @@ export const Envelope = (props: EnvelopeProps) => {
         paramName="Type"
         value={props.type}
         onChange={props.onChangeType}
-        // labels={[<div>AD</div>, <div>AGD</div>, <div>Gate</div>]}
-        labels={[<AD />, <AGD />, <Gate />]}
+        labels={[<div>AD</div>, <div>AGD</div>, <div>Gate</div>]}
+        // labels={[<AD />, <AGD />, <Gate />]}
       />
       <Knob color="yellow" paramName="Attack" value={props.attack} onChange={props.onChangeAttack} />
       <Knob color="yellow" paramName="Decay" value={props.decay} onChange={props.onChangeDecay} />
