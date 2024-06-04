@@ -1,8 +1,5 @@
 import { useEffect, useState, memo } from "react";
-import {
-  cursorCoordsToDegrees,
-  rangeMap,
-} from "../utils";
+import { cursorCoordsToDegrees, potentiometerRangeMax, rangeMap } from "../utils";
 
 interface KnobProps {
   paramMin?: number;
@@ -16,19 +13,12 @@ interface KnobProps {
 
 const Knob = memo((props: KnobProps) => {
   const paramMin = props.paramMin || 0;
-  const paramMax = props.paramMax || 127;
+  const paramMax = props.paramMax || potentiometerRangeMax;
   const fullAngle = props.fullAngle || 260;
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;
 
-
-  const degrees: number = rangeMap(
-    paramMin,
-    paramMax,
-    startAngle,
-    endAngle,
-    props.value
-  );
+  const degrees: number = rangeMap(paramMin, paramMax, startAngle, endAngle, props.value);
 
   const [timer, setTimer] = useState(() => null);
   const [active, setActive] = useState(() => false);
@@ -50,21 +40,9 @@ const Knob = memo((props: KnobProps) => {
       y: knob.top + knob.height / 2,
     };
     const moveHandler = (e: { clientX: number; clientY: number }) => {
-      const degrees = cursorCoordsToDegrees(
-        e.clientX,
-        e.clientY,
-        pts,
-        startAngle,
-        endAngle
-      );
+      const degrees = cursorCoordsToDegrees(e.clientX, e.clientY, pts, startAngle, endAngle);
 
-      const currentValue = Math.floor(rangeMap(
-        startAngle,
-        endAngle,
-        paramMin,
-        paramMax,
-        degrees
-      ));
+      const currentValue = Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
       props.onChange(currentValue);
     };
     document.addEventListener("mousemove", moveHandler);
@@ -86,11 +64,7 @@ const Knob = memo((props: KnobProps) => {
     <div className="control-group">
       <div className="control-wrapper">
         <div className="knob-container">
-          <div
-            className={`knob-value ${active && "knob-glow"}`}
-            style={knobStyle}
-            onMouseDown={startDrag}
-          >
+          <div className={`knob-value ${active && "knob-glow"}`} style={knobStyle} onMouseDown={startDrag}>
             <div className="knob-value-inner" style={knobInnerStyle} />
           </div>
         </div>

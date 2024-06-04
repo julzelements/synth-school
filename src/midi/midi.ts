@@ -1,5 +1,6 @@
 import { WebMidi } from "webmidi";
-import { Parameter } from "../ParameterHash";
+import { Parameter, ParameterType } from "../ParameterHash";
+import { convertToMidiRange } from "../utils";
 
 const PARAM_CHANGE_MESSAGE = 176;
 
@@ -41,12 +42,10 @@ export default class MonologueController {
     if (this.demoMode || parameter.isMisc) {
       return;
     }
-
+    const midiValue = parameter.type === ParameterType.LINEAR ? convertToMidiRange(value) : value;
     const channelOut = WebMidi.outputs[0].channels[1];
-
-    console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${value}`);
-
-    channelOut.sendControlChange(parameter.ID, value);
+    console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${midiValue}`);
+    channelOut.sendControlChange(parameter.ID, midiValue);
   };
 
   connectDemo = async () => {

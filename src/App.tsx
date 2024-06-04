@@ -43,7 +43,7 @@ const getMergedParamStateForCallback =
   };
 
 const flushStateToMonologue = (state: ParamState, monologueController: MonologueController) => {
-  console.log(state);
+  console.log("🎹", state);
   Object.keys(state).forEach((key) => {
     const { parameter, value } = state[key];
     console.log(`Setting ${parameter.name} to ${value}`);
