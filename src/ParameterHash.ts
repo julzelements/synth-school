@@ -1,3 +1,5 @@
+import { convertToMidiRange, convertToSysexRange } from "./utils/conversions";
+
 export interface Parameter {
   name: string;
   ID: number;
@@ -10,6 +12,7 @@ export enum ParameterType {
   THREE_POLE,
   FOUR_POLE,
   FIVE_POLE,
+  LINEAR_INVERTED,
 }
 
 export enum ParameterHash {
@@ -118,7 +121,7 @@ export const Parameters = {
   LFO_INTENSITY: {
     name: "lfoIntensity",
     ID: ParameterHash.LFO_INTENSITY,
-    type: ParameterType.LINEAR,
+    type: ParameterType.LINEAR_INVERTED,
   },
   ENV_TYPE: {
     name: "envType",
@@ -143,7 +146,7 @@ export const Parameters = {
   ENV_INTENSITY: {
     name: "envIntensity",
     ID: ParameterHash.ENV_INTENSITY,
-    type: ParameterType.LINEAR,
+    type: ParameterType.LINEAR_INVERTED,
   },
   CUTOFF: {
     name: "cutoff",

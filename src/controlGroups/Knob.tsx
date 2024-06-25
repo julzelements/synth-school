@@ -1,5 +1,6 @@
 import { useEffect, useState, memo } from "react";
-import { cursorCoordsToDegrees, potentiometerRangeMax, rangeMap } from "../utils";
+import { cursorCoordsToDegrees, rangeMap } from "../utils";
+import { sysexRangeMax } from "../utils/conversions";
 
 interface KnobProps {
   paramMin?: number;
@@ -13,7 +14,7 @@ interface KnobProps {
 
 const Knob = memo((props: KnobProps) => {
   const paramMin = props.paramMin || 0;
-  const paramMax = props.paramMax || potentiometerRangeMax;
+  const paramMax = props.paramMax || sysexRangeMax;
   const fullAngle = props.fullAngle || 260;
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;

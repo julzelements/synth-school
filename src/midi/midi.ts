@@ -1,6 +1,6 @@
 import { WebMidi } from "webmidi";
 import { Parameter, ParameterType } from "../ParameterHash";
-import { convertToMidiRange } from "../utils";
+import { convertToMidiRange, convertToSysexRange } from "../utils/conversions";
 
 const PARAM_CHANGE_MESSAGE = 176;
 
@@ -26,23 +26,23 @@ export default class MonologueController {
 
     Object.keys(this.registeredParameters).map((id) => {
       const { parameter, callback } = this.registeredParameters[id];
-      const [message, messageParameter, value] = e.data; // eslint-disable-line @typescript-eslint/no-unused-vars
+      const [message, messageParameter, midiValue] = e.data; // eslint-disable-line @typescript-eslint/no-unused-vars
       // We only want to listen to param change messages
       if (message !== PARAM_CHANGE_MESSAGE) return null;
 
+      console.log(e.data);
       if (messageParameter !== parameter.ID) {
         return null;
       }
-
-      return callback(parameter, value);
+      return callback(parameter, convertToSysexRange(midiValue, parameter));
     });
   };
 
-  setParameter = (parameter: Parameter, value: number) => {
+  setParameter = (parameter: Parameter, sysexValue: number) => {
     if (this.demoMode || parameter.isMisc) {
       return;
     }
-    const midiValue = parameter.type === ParameterType.LINEAR ? convertToMidiRange(value) : value;
+    const midiValue = convertToMidiRange(sysexValue, parameter);
     const channelOut = WebMidi.outputs[0].channels[1];
     console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${midiValue}`);
     channelOut.sendControlChange(parameter.ID, midiValue);
