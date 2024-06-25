@@ -11,8 +11,19 @@
 //                   |           120                     |
 
 export const rangeMap = (valueMin: number, valueMax: number, rangeMin: number, rangeMax: number, value: number) => {
+  console.log({ rangeMax, value });
   return ((value - valueMin) / (valueMax - valueMin)) * (rangeMax - rangeMin) + rangeMin;
 };
+
+// If the weird inverted pot is involved, the mapping is different
+// 63 - 0 maps across to min - max, inverted = true
+// 64 - 127 maps across to min - max, inverted = false
+
+export const getInvertedState = (invertable: boolean, value: number) => {
+  return true;
+};
+
+export const invertedRangeMap = (inverted: boolean, value: number) => {};
 
 export const cursorCoordsToDegrees = (
   cX: number,

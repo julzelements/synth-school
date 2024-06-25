@@ -1,5 +1,3 @@
-import { convertToMidiRange, convertToSysexRange } from "./utils/conversions";
-
 export interface Parameter {
   name: string;
   ID: number;

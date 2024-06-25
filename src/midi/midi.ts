@@ -30,7 +30,6 @@ export default class MonologueController {
       // We only want to listen to param change messages
       if (message !== PARAM_CHANGE_MESSAGE) return null;
 
-      console.log(e.data);
       if (messageParameter !== parameter.ID) {
         return null;
       }

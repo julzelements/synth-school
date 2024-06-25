@@ -19,7 +19,10 @@ const Knob = memo((props: KnobProps) => {
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;
 
-  const degrees: number = rangeMap(paramMin, paramMax, startAngle, endAngle, props.value);
+  const sysexToDegrees = (sysexValue: number) => rangeMap(paramMin, paramMax, startAngle, endAngle, sysexValue);
+  const degreesToSysex = (degrees: number) => Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
+
+  const degrees: number = sysexToDegrees(props.value);
 
   const [timer, setTimer] = useState(() => null);
   const [active, setActive] = useState(() => false);
@@ -42,9 +45,7 @@ const Knob = memo((props: KnobProps) => {
     };
     const moveHandler = (e: { clientX: number; clientY: number }) => {
       const degrees = cursorCoordsToDegrees(e.clientX, e.clientY, pts, startAngle, endAngle);
-
-      const currentValue = Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
-      props.onChange(currentValue);
+      props.onChange(degreesToSysex(degrees));
     };
     document.addEventListener("mousemove", moveHandler);
     document.addEventListener("mouseup", (e) => {
