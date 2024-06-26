@@ -17,17 +17,17 @@ export const rangeMap = (valueMin: number, valueMax: number, rangeMin: number, r
 // If the weird inverted pot is involved, the mapping is different
 // 63 - 0 maps across to min - max, inverted = true
 // 64 - 127 maps across to min - max, inverted = false
-// |-------|-------|-------|-------|----------|
-// |  0    | 516   | 516   | 1023  | sysex    |
-// |-------|-------|-------|-------|----------|
-// |  0    |  64   |  64   |  127  | midi     |
-// |-------|-------|-------|-------|----------|
-// |  max  | min   | min   |  max  | knob     |
-// |-------|-------|-------|-------|----------|
-// |  270  |  0    |  0    |  270  | degrees  |
-// |-------|-------|-------|-------|----------|
-// | true  | true  | false | false | inverted |
-// |-------|-------|-------|-------|----------|
+// |-------|-------||-------|-------|----------|
+// |  0    | -511  ||   0   |  511  | sysex    |
+// |-------|-------||-------|-------|----------|
+// |  0    |  64   ||  64   |  127  | midi     |
+// |-------|-------||-------|-------|----------|
+// |  max  | min   || min   |  max  | knob     |
+// |-------|-------||-------|-------|----------|
+// |  270  |  0    ||  0    |  270  | degrees  |
+// |-------|-------||-------|-------|----------|
+// |    INVERTED   ||  NON-INVERTED | inverted?|
+// |-------|-------||-------|-------|----------|
 
 export const getInvertedState = (invertable: boolean, value: number) => {
   return true;
