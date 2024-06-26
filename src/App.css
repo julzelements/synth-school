@@ -3,6 +3,7 @@
   --control-value-background-hover: #535557;
   --control-value-background-active: #adadad;
   --value-color: #f6f5f3;
+  background: #535557;
 }
 
 .section-nav {
@@ -11,6 +12,7 @@
   text-align: center;
 }
 .App {
+  background: #535557;
   margin: 50px;
   justify-content: center;
   align-items: center;
