@@ -1,6 +1,7 @@
 // There are three types of units dealt with in this app
 
 import { Parameter, ParameterType } from "../ParameterHash";
+import { rangeMap } from "../utils";
 
 // MIDI
 // sent in realtime, from or to the monologue
@@ -24,48 +25,77 @@ export const midiRangeMax = 127;
 export const sysexRangeMax = 1023;
 
 type MidiRange = number & { readonly _midiRange: unique symbol };
-type SysexRange = number & { readonly _sysexRange: unique symbol };
 
 const isMidiRange = (value: number): value is MidiRange => {
   return value >= 0 && value <= midiRangeMax;
 };
 
-const isSysexRange = (value: number): value is SysexRange => {
-  return value >= 0 && value <= sysexRangeMax;
+const isSysexRange = (value: number): value is MidiRange => {
+  return value >= -511 && value <= 1023;
 };
 
-export const convertToSysexRange = (value: number, parameter: Parameter): SysexRange => {
+const convertToInvertedSysexRange = (midiValue: number) => {
+  if (midiValue >= 64) {
+    return Math.round((511 / 63) * (midiValue - 64));
+  } else {
+    // is inverted range
+    return Math.round((-170 / 21) * midiValue - 1);
+  }
+};
+
+const convertToInvertedMidiRange = (sysexValue: number) => {
+  if (sysexValue >= 0) {
+    return Math.round((63 / 511) * sysexValue + 64);
+  } else {
+    // is inverted range
+    return Math.round((-21 / 170) * sysexValue);
+  }
+};
+
+export const convertToSysexRange = (value: number, parameter: Parameter) => {
   if (!isMidiRange(value)) {
-    throw new Error("Value must be in the range 0-127");
+    throw new Error("Midi value must be in the range 0-127");
   }
   let result: number;
   switch (parameter.type) {
     case ParameterType.LINEAR:
-      result = Math.round((value / midiRangeMax) * sysexRangeMax) as SysexRange;
+      result = Math.round((value / midiRangeMax) * sysexRangeMax);
+      break;
+    case ParameterType.LINEAR_INVERTED:
+      result = convertToInvertedSysexRange(value);
       break;
     default:
       result = value;
   }
-  if (!isSysexRange(result)) {
+  if (result > 1023 || result < -511) {
     throw new Error(`Converted value is out of Sysex range: ${result}`);
   }
   return result;
 };
 
-export const convertToMidiRange = (value: number, parameter: Parameter): MidiRange => {
-  if (!isSysexRange(value)) {
-    throw new Error("Value must be in the range 0-1023");
+export const convertToMidiRange = (sysexValue: number, parameter: Parameter) => {
+  if (!isSysexRange(sysexValue)) {
+    throw new Error("Sysex value must be in the range -511 to 1023");
   }
   let result: number;
   switch (parameter.type) {
     case ParameterType.LINEAR:
-      result = Math.round((value / sysexRangeMax) * midiRangeMax) as MidiRange;
+      result = Math.round((sysexValue / sysexRangeMax) * midiRangeMax) as MidiRange;
+      break;
+    case ParameterType.LINEAR_INVERTED:
+      result = convertToInvertedMidiRange(sysexValue);
       break;
     default:
-      result = value;
+      result = sysexValue;
   }
   if (!isMidiRange(result)) {
     throw new Error(`Converted value is out of Midi range: ${result}`);
   }
   return result;
+};
+
+export const convertInvertibleSysexToDegrees = (sysexValue: number, startAngle: number, endAngle: number) => {
+  return sysexValue >= 0
+    ? rangeMap(0, 511, startAngle, endAngle, sysexValue)
+    : rangeMap(-511, -1, startAngle, endAngle, sysexValue);
 };

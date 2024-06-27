@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from "react";
 import { cursorCoordsToDegrees, rangeMap } from "../utils";
-import { sysexRangeMax } from "../utils/conversions";
+import { convertInvertibleSysexToDegrees, sysexRangeMax } from "../utils/conversions";
 
 interface KnobProps {
   paramMin?: number;
@@ -8,7 +8,9 @@ interface KnobProps {
   paramName: string;
   fullAngle?: number;
   color?: string;
+  invertedColor?: string;
   value: number;
+  invertible?: boolean;
   onChange: (newValue: number) => void;
 }
 
@@ -18,11 +20,15 @@ const Knob = memo((props: KnobProps) => {
   const fullAngle = props.fullAngle || 260;
   const startAngle: number = (360 - fullAngle) / 2;
   const endAngle: number = startAngle + fullAngle;
+  const isInverted = props.invertible && props.value < 0;
 
+  const invertibleSysexToDegrees = (sysexValue: number) =>
+    convertInvertibleSysexToDegrees(sysexValue, startAngle, endAngle);
   const sysexToDegrees = (sysexValue: number) => rangeMap(paramMin, paramMax, startAngle, endAngle, sysexValue);
+  // TODO invertibleSysexToDegrees
   const degreesToSysex = (degrees: number) => Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
 
-  const degrees: number = sysexToDegrees(props.value);
+  const degrees: number = props.invertible ? invertibleSysexToDegrees(props.value) : sysexToDegrees(props.value);
 
   const [timer, setTimer] = useState(() => null);
   const [active, setActive] = useState(() => false);
@@ -55,7 +61,7 @@ const Knob = memo((props: KnobProps) => {
 
   const knobStyle = {
     transform: `rotate(${degrees}deg)`,
-    background: props.color,
+    background: isInverted ? props.invertedColor : props.color,
   };
 
   const knobInnerStyle = {

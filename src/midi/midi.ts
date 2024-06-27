@@ -1,5 +1,5 @@
 import { WebMidi } from "webmidi";
-import { Parameter, ParameterType } from "../ParameterHash";
+import { Parameter } from "../ParameterHash";
 import { convertToMidiRange, convertToSysexRange } from "../utils/conversions";
 
 const PARAM_CHANGE_MESSAGE = 176;
@@ -29,11 +29,11 @@ export default class MonologueController {
       const [message, messageParameter, midiValue] = e.data; // eslint-disable-line @typescript-eslint/no-unused-vars
       // We only want to listen to param change messages
       if (message !== PARAM_CHANGE_MESSAGE) return null;
-
       if (messageParameter !== parameter.ID) {
         return null;
       }
-      return callback(parameter, convertToSysexRange(midiValue, parameter));
+      const sysexValue = convertToSysexRange(midiValue, parameter);
+      return callback(parameter, sysexValue);
     });
   };
 
@@ -72,9 +72,10 @@ export default class MonologueController {
       }
     }
 
-    console.log(WebMidi.inputs);
-
     const channelIn = Array.from(WebMidi.inputs.values()).find((input) => input.name === "monologue KBD/KNOB");
+    if (channelIn) {
+      console.log(`connected to monologue. Recieving messages from ${channelIn.name}`);
+    }
 
     channelIn?.addListener("midimessage", this.handleParameterChange);
   };

@@ -29,7 +29,14 @@ export const Envelope = (props: EnvelopeProps) => {
       />
       <Knob color="yellow" paramName="Attack" value={props.attack} onChange={props.onChangeAttack} />
       <Knob color="yellow" paramName="Decay" value={props.decay} onChange={props.onChangeDecay} />
-      <Knob color="yellow" paramName="Int" value={props.intensity} onChange={props.onChangeIntensity} />
+      <Knob
+        color="yellow"
+        paramName="Int"
+        value={props.intensity}
+        onChange={props.onChangeIntensity}
+        invertible={true}
+        invertedColor="orange"
+      />
       <SwitchContainer
         paramName="Target"
         value={props.target}
