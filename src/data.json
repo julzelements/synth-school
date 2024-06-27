@@ -27,7 +27,7 @@
     "type": { "name": "Envelope Type", "value": 0 },
     "attack": { "name": "Attack", "value": 67 },
     "decay": { "name": "Decay", "value": 124 },
-    "intensity": { "name": "Intensity", "value": 0 },
+    "intensity": { "name": "Intensity", "value": -450 },
     "target": { "name": "Target", "value": 0, "type": 0 }
   },
   "lfo": {

@@ -25,7 +25,7 @@ const Knob = memo((props: KnobProps) => {
   const invertibleSysexToDegrees = (sysexValue: number) =>
     convertInvertibleSysexToDegrees(sysexValue, startAngle, endAngle);
   const sysexToDegrees = (sysexValue: number) => rangeMap(paramMin, paramMax, startAngle, endAngle, sysexValue);
-  // TODO invertibleSysexToDegrees
+  // TODO invertibleDegreesToSysex
   const degreesToSysex = (degrees: number) => Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
 
   const degrees: number = props.invertible ? invertibleSysexToDegrees(props.value) : sysexToDegrees(props.value);
@@ -72,7 +72,12 @@ const Knob = memo((props: KnobProps) => {
     <div className="control-group">
       <div className="control-wrapper">
         <div className="knob-container">
-          <div className={`knob-value ${active && "knob-glow"}`} style={knobStyle} onMouseDown={startDrag}>
+          <div
+            className={`knob-value ${active && "knob-glow"}`}
+            style={knobStyle}
+            onMouseDown={startDrag}
+            data-testid={props.paramName}
+          >
             <div className="knob-value-inner" style={knobInnerStyle} />
           </div>
         </div>
