@@ -42,8 +42,8 @@ export default class MonologueController {
       return;
     }
     const midiValue = convertToMidiRange(sysexValue, parameter);
-    const channelOut = WebMidi.outputs[0].channels[1];
-    console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${midiValue}`);
+    const channelOut = Array.from(WebMidi.outputs.values()).find((input) => input.name === "monologue SOUND");
+    console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${midiValue}, sending to ${channelOut.name}`);
     channelOut.sendControlChange(parameter.ID, midiValue);
   };
 
@@ -74,7 +74,7 @@ export default class MonologueController {
 
     const channelIn = Array.from(WebMidi.inputs.values()).find((input) => input.name === "monologue KBD/KNOB");
     if (channelIn) {
-      console.log(`connected to monologue. Recieving messages from ${channelIn.name}`);
+      console.log(`connected to monologue out. Recieving messages from ${channelIn.name}`);
     }
 
     channelIn?.addListener("midimessage", this.handleParameterChange);

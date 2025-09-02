@@ -99,3 +99,9 @@ export const convertInvertibleSysexToDegrees = (sysexValue: number, startAngle: 
     ? rangeMap(0, 511, startAngle, endAngle, sysexValue)
     : rangeMap(-511, -1, startAngle, endAngle, sysexValue);
 };
+
+export const convertDegreesToInvertibleSysex = (sysexValue: number, startAngle: number, endAngle: number) => {
+  return sysexValue >= 0
+    ? rangeMap(0, 511, startAngle, endAngle, sysexValue)
+    : rangeMap(-511, -1, startAngle, endAngle, sysexValue);
+};
