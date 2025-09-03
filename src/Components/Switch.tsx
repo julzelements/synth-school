@@ -1,5 +1,5 @@
 import { useEffect, memo } from "react";
-import "./Switch.css";
+import "../Switch.css";
 
 interface SwitchProps {
   value: number;
@@ -16,10 +16,8 @@ const Switch = memo((props: SwitchProps) => {
 
   const updateValueElement = (value: number) => {
     // Calculate the top offset
-    const { height: rangeHeight, width: rangeWidth } =
-      rangeEl.getBoundingClientRect();
-    const { height: valueHeight, width: valueWidth } =
-      valueEl.getBoundingClientRect();
+    const { height: rangeHeight, width: rangeWidth } = rangeEl.getBoundingClientRect();
+    const { height: valueHeight, width: valueWidth } = valueEl.getBoundingClientRect();
     const rangeSize = props.vertical ? rangeHeight : rangeWidth;
     const valueSize = props.vertical ? valueHeight : valueWidth;
     const stepSize = (rangeSize - valueSize) / (props.numPositions - 1);
@@ -50,13 +48,7 @@ const Switch = memo((props: SwitchProps) => {
     const size = props.vertical ? height : width;
     const positionSize = size / props.numPositions;
     const relativePosition = props.vertical ? bottom - clientY : clientX - left;
-    const positionIndex = Math.max(
-      0,
-      Math.min(
-        Math.floor(relativePosition / positionSize),
-        props.numPositions - 1
-      )
-    );
+    const positionIndex = Math.max(0, Math.min(Math.floor(relativePosition / positionSize), props.numPositions - 1));
     props.onChange(positionIndex);
     updateValueElement(positionIndex);
   };
@@ -68,9 +60,7 @@ const Switch = memo((props: SwitchProps) => {
 
   return (
     <div
-      className={`switch-range ${
-        props.vertical ? "switch-range-vertical" : "switch-range-horizontal"
-      }`}
+      className={`switch-range ${props.vertical ? "switch-range-vertical" : "switch-range-horizontal"}`}
       ref={(element) => {
         rangeEl = element;
       }}

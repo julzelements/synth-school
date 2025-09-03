@@ -1,10 +1,10 @@
-import { Master } from "../panelSections/Master";
-import { VCO1 } from "../panelSections/VCO1";
-import { Mixer } from "../panelSections/Mixer";
-import { Filter } from "../panelSections/Filter";
-import { VCO2 } from "../panelSections/VCO2";
-import { Envelope } from "../panelSections/Envelope";
-import { LFO } from "../panelSections/LFO";
+import { Master } from "./panelSections/Master";
+import { VCO1 } from "./panelSections/VCO1";
+import { Mixer } from "./panelSections/Mixer";
+import { Filter } from "./panelSections/Filter";
+import { VCO2 } from "./panelSections/VCO2";
+import { Envelope } from "./panelSections/Envelope";
+import { LFO } from "./panelSections/LFO";
 import { ParamState } from "../paramState";
 import { Parameters as KorgParameters, Parameter } from "../ParameterHash";
 

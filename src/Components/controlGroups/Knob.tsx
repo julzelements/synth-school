@@ -1,6 +1,6 @@
 import { useEffect, useState, memo } from "react";
-import { cursorCoordsToDegrees, rangeMap } from "../utils";
-import { convertInvertibleSysexToDegrees, sysexRangeMax } from "../utils/conversions";
+import { cursorCoordsToDegrees, rangeMap } from "../../utils";
+import { convertInvertibleSysexToDegrees, sysexRangeMax } from "../../utils/conversions";
 
 interface KnobProps {
   paramMin?: number;

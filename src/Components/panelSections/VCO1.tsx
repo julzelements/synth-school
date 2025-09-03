@@ -1,7 +1,7 @@
 import SwitchContainer from "../controlGroups/SwitchContainer";
-import { ReactComponent as Saw } from "../assets/saw.svg";
-import { ReactComponent as Triangle } from "../assets/triangle.svg";
-import { ReactComponent as Square } from "../assets/square.svg";
+import { ReactComponent as Saw } from "../../assets/saw.svg";
+import { ReactComponent as Triangle } from "../../assets/triangle.svg";
+import { ReactComponent as Square } from "../../assets/square.svg";
 import Knob from "../controlGroups/Knob";
 
 interface VCO1Props {
@@ -25,12 +25,7 @@ export const VCO1 = (props: VCO1Props) => {
       </div>
       <div className="control-group">
         <div className="control-wrapper">
-          <Knob
-            color="red"
-            paramName="Shape"
-            value={props.shape}
-            onChange={props.onChangeShape}
-          />
+          <Knob color="red" paramName="Shape" value={props.shape} onChange={props.onChangeShape} />
         </div>
       </div>
     </div>
