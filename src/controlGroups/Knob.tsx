@@ -25,7 +25,7 @@ const Knob = memo((props: KnobProps) => {
   const invertibleSysexToDegrees = (sysexValue: number) =>
     convertInvertibleSysexToDegrees(sysexValue, startAngle, endAngle);
   const sysexToDegrees = (sysexValue: number) => rangeMap(paramMin, paramMax, startAngle, endAngle, sysexValue);
-  // TODO invertibleDegreesToSysex
+  // TODO invertibleDegreesToSysex (can't do without additional UI to set inverted controls)
   const degreesToSysex = (degrees: number) => Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
 
   const degrees: number = props.invertible ? invertibleSysexToDegrees(props.value) : sysexToDegrees(props.value);
