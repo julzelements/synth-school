@@ -38,11 +38,11 @@ export default class MonologueController {
   };
 
   setParameter = (parameter: Parameter, sysexValue: number) => {
-    if (this.demoMode || parameter.isMisc) {
+    const channelOut = Array.from(WebMidi.outputs.values()).find((input) => input.name === "monologue SOUND");
+    if (this.demoMode || parameter.isMisc || !channelOut) {
       return;
     }
     const midiValue = convertToMidiRange(sysexValue, parameter);
-    const channelOut = Array.from(WebMidi.outputs.values()).find((input) => input.name === "monologue SOUND");
     console.log(`setting parameter ${parameter.name}:${parameter.ID} to ${midiValue}, sending to ${channelOut.name}`);
     channelOut.sendControlChange(parameter.ID, midiValue);
   };
