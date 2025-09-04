@@ -1,10 +1,10 @@
-import { Misc } from "../types";
+import { Misc } from "../types/types";
 
 interface MiscParamsProps {
   miscParams: Misc;
 }
 
-const cutoffMap = {
+const cutoffMap: Record<number, string> = {
   0: "0%",
   1: "50%",
   2: "100%",

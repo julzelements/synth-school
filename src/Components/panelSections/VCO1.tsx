@@ -8,8 +8,8 @@ import Square from "@/assets/Square";
 interface VCO1Props {
   wave: number;
   shape: number;
-  onChangeWave: (value: any) => void;
-  onChangeShape: (value: any) => void;
+  onChangeWave: (value: number) => void;
+  onChangeShape: (value: number) => void;
 }
 
 export const VCO1 = (props: VCO1Props) => {
@@ -21,7 +21,7 @@ export const VCO1 = (props: VCO1Props) => {
           paramName="Wave"
           value={props.wave}
           onChange={props.onChangeWave}
-          labels={[<Saw />, <Triangle />, <Square />]}
+          labels={[<Saw key="saw" />, <Triangle key="triangle" />, <Square key="square" />]}
         />
       </div>
       <div className="control-group">

@@ -1,0 +1,1 @@
+- Switches are sending 0, 1, 2 to the monologue. They should be 0, 65, 127.

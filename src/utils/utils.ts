@@ -31,16 +31,16 @@ export const rangeMap = (valueMin: number, valueMax: number, rangeMin: number, r
 // |    INVERTED   ||  NON-INVERTED | inverted?|
 // |-------|-------||-------|-------|----------|
 
-export const getInvertedState = (invertable: boolean, value: number) => {
-  return true;
-};
+// export const getInvertedState = (invertable: boolean, value: number) => {
+//   return true;
+// };
 
-export const invertedRangeMap = (inverted: boolean, value: number) => {};
+// export const invertedRangeMap = (inverted: boolean, value: number) => {};
 
 export const cursorCoordsToDegrees = (
   cX: number,
   cY: number,
-  pts: { x: any; y: any },
+  pts: { x: number; y: number },
   startAngle: number,
   endAngle: number
 ) => {
@@ -52,6 +52,6 @@ export const cursorCoordsToDegrees = (
   } else {
     deg += 270;
   }
-  let finalDeg = Math.min(Math.max(startAngle, deg), endAngle);
+  const finalDeg = Math.min(Math.max(startAngle, deg), endAngle);
   return finalDeg;
 };

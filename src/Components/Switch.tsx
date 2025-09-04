@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, memo } from "react";
+import { useEffect, useRef, memo, useCallback } from "react";
 import "./Switch.css";
 
 interface SwitchProps {
@@ -11,30 +11,58 @@ interface SwitchProps {
 }
 
 const Switch = memo((props: SwitchProps) => {
-  var rangeEl;
-  var valueEl;
+  Switch.displayName = "Switch";
+  const rangeEl = useRef<HTMLDivElement | null>(null);
+  const valueEl = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => updateValueElement(props.value));
+  const updateValueElement = useCallback(
+    (value: number) => {
+      if (!rangeEl.current || !valueEl.current) return;
 
-  const updateValueElement = (value: number) => {
-    // Calculate the top offset
-    const { height: rangeHeight, width: rangeWidth } = rangeEl.getBoundingClientRect();
-    const { height: valueHeight, width: valueWidth } = valueEl.getBoundingClientRect();
-    const rangeSize = props.vertical ? rangeHeight : rangeWidth;
-    const valueSize = props.vertical ? valueHeight : valueWidth;
-    const stepSize = (rangeSize - valueSize) / (props.numPositions - 1);
-    const offset = value * stepSize;
-    const styleProperty = props.vertical ? "bottom" : "left";
-    valueEl.style[styleProperty] = `${offset}px`;
+      const rangeRect = rangeEl.current.getBoundingClientRect();
+      const valueRect = valueEl.current.getBoundingClientRect();
+
+      const rangeSize = props.vertical ? rangeRect.height : rangeRect.width;
+      const valueSize = props.vertical ? valueRect.height : valueRect.width;
+
+      const stepSize = (rangeSize - valueSize) / (props.numPositions - 1);
+      const offset = value * stepSize;
+
+      const styleProperty: "left" | "bottom" = props.vertical ? "bottom" : "left";
+      valueEl.current!.style[styleProperty] = `${offset}px`;
+    },
+    [props.numPositions, props.vertical]
+  );
+
+  useEffect(() => {
+    if (rangeEl.current && valueEl.current) {
+      updateValueElement(props.value);
+    }
+  }, [props.value, updateValueElement]);
+
+  const handleMousePosition = (event: MouseEvent | React.MouseEvent<HTMLDivElement>) => {
+    if (!rangeEl.current) return;
+
+    const { clientX, clientY } = event;
+    const { height, width, bottom, left } = rangeEl.current.getBoundingClientRect();
+
+    const size = props.vertical ? height : width;
+    const positionSize = size / props.numPositions;
+    const relativePosition = props.vertical ? bottom - clientY : clientX - left;
+
+    const positionIndex = Math.max(0, Math.min(Math.floor(relativePosition / positionSize), props.numPositions - 1));
+
+    props.onChange(positionIndex);
+    updateValueElement(positionIndex);
   };
 
-  const onMouseMove = (event) => {
+  const onMouseMove = (event: MouseEvent) => {
     handleMousePosition(event);
   };
 
-  const onMouseDown = (event) => {
-    onMouseMove(event);
+  const onMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
+    handleMousePosition(event.nativeEvent);
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
   };
@@ -44,18 +72,7 @@ const Switch = memo((props: SwitchProps) => {
     document.removeEventListener("mouseup", onMouseUp);
   };
 
-  const handleMousePosition = (event) => {
-    const { clientX, clientY } = event;
-    const { height, width, bottom, left } = rangeEl.getBoundingClientRect();
-    const size = props.vertical ? height : width;
-    const positionSize = size / props.numPositions;
-    const relativePosition = props.vertical ? bottom - clientY : clientX - left;
-    const positionIndex = Math.max(0, Math.min(Math.floor(relativePosition / positionSize), props.numPositions - 1));
-    props.onChange(positionIndex);
-    updateValueElement(positionIndex);
-  };
-
-  const onRangeClick = (event) => {
+  const onRangeClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     handleMousePosition(event);
   };
@@ -63,18 +80,10 @@ const Switch = memo((props: SwitchProps) => {
   return (
     <div
       className={`switch-range ${props.vertical ? "switch-range-vertical" : "switch-range-horizontal"}`}
-      ref={(element) => {
-        rangeEl = element;
-      }}
+      ref={rangeEl}
       onClick={onRangeClick}
     >
-      <div
-        className="switch-value"
-        ref={(element) => {
-          valueEl = element;
-        }}
-        onMouseDown={onMouseDown}
-      />
+      <div className="switch-value" ref={valueEl} onMouseDown={onMouseDown} />
     </div>
   );
 });

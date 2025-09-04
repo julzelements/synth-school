@@ -2,11 +2,7 @@ import Switch from "../Switch";
 
 const OscOctaveLeds = (props: { octave: number }) => {
   const leds = Array.from(Array(4).keys())
-    .map((value, index) =>
-      index === props.octave
-        ? "led-array-light led-array-light-active"
-        : "led-array-light"
-    )
+    .map((value, index) => (index === props.octave ? "led-array-light led-array-light-active" : "led-array-light"))
     .map((spanStyle, index) => (
       <li key={index} className="led-array-value">
         <span className={spanStyle}></span>
@@ -20,13 +16,13 @@ const OscOctaveLeds = (props: { octave: number }) => {
 interface WaveProps {
   paramName?: string;
   value: number;
-  onChange?: (value) => void;
+  onChange: (value: number) => void;
   half?: boolean;
 }
 
 const VCO2Octave = (props: WaveProps) => {
   let transposedValue;
-  switch(props.value) {
+  switch (props.value) {
     case 127:
       transposedValue = 3;
       break;
@@ -44,18 +40,9 @@ const VCO2Octave = (props: WaveProps) => {
   }
 
   return (
-    <div
-      className={`control-group${
-        props.half ? " control-group-half-width" : ""
-      }`}
-    >
+    <div className={`control-group${props.half ? " control-group-half-width" : ""}`}>
       <div className="control-wrapper">
-        <Switch
-          value={transposedValue}
-          numPositions={4}
-          vertical
-          onChange={props.onChange}
-        />
+        <Switch value={transposedValue} numPositions={4} vertical onChange={props.onChange} />
       </div>
       <p className="control-label label">{props.paramName}</p>
       <OscOctaveLeds octave={transposedValue} />

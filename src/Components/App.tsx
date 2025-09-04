@@ -6,8 +6,11 @@ import { initialiseParamState, ParamState, ParameterStateMap } from "../types/pa
 import MonologueController from "../utils/midi";
 import Panel from "./Panel";
 import { cleanName } from "../utils/utils";
-import LoadPatches from "./LoadPatches";
 import MiscParams from "./MiscParams";
+
+import fake30SC from "../../public/patches/Fake3OSC.json";
+import afxAcid from "../../public/patches/afx acid3.json";
+import injection from "../../public/patches/Injection.json";
 
 const getMergedParamState =
   (state: ParamState, setParamState: Dispatch<SetStateAction<ParamState>>) =>
@@ -42,15 +45,13 @@ const getMergedParamStateForCallback =
 const flushStateToMonologue = (state: ParamState, monologueController: MonologueController) => {
   console.log("🎹", state);
   Object.keys(state).forEach((key) => {
-    const { parameter, value } = state[key];
+    const { parameter, value } = state[key as keyof ParamState];
     console.log(`Setting ${parameter.name} to ${value}`);
     monologueController.setParameter(parameter, value);
   });
 };
 
 const App = (props: AppProps) => {
-  const [opened, setOpened] = useState(false);
-
   const { korgProgramDump, monologueController } = props;
 
   const selectPatch = (patch: KorgProgramDump) => {
@@ -60,7 +61,6 @@ const App = (props: AppProps) => {
     const state = initialiseParamState(patch);
     setParamState(state);
     flushStateToMonologue(state, monologueController);
-    setOpened(false);
   };
 
   const connectMidi = async () => {
@@ -117,8 +117,15 @@ const App = (props: AppProps) => {
         <button className="menu-button" onClick={() => connectMidi()} color="dark">
           🎹 Connect Midi
         </button>
-        {/* <Recorder patchName={patchName} /> */}
-        {/* <LoadPatches patchName={patchName} /> */}
+        <button className="menu-button" onClick={() => selectPatch(afxAcid)}>
+          afxAcid
+        </button>
+        <button className="menu-button" onClick={() => selectPatch(injection)}>
+          injection
+        </button>
+        <button className="menu-button" onClick={() => selectPatch(fake30SC)}>
+          fake30SC
+        </button>
       </div>
     </div>
   );

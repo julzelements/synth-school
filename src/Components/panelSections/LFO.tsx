@@ -7,11 +7,11 @@ interface LFOProps {
   rate: number;
   intensity: number;
   target: number;
-  onChangeWave: (value) => void;
-  onChangeMode: (value) => void;
-  onChangeRate: (value) => void;
-  onChangeIntensity: (value) => void;
-  onChangeTarget: (value) => void;
+  onChangeWave: (value: number) => void;
+  onChangeMode: (value: number) => void;
+  onChangeRate: (value: number) => void;
+  onChangeIntensity: (value: number) => void;
+  onChangeTarget: (value: number) => void;
 }
 
 export const LFO = (props: LFOProps) => {
@@ -23,7 +23,7 @@ export const LFO = (props: LFOProps) => {
         paramName="Mode"
         value={props.mode}
         onChange={props.onChangeMode}
-        labels={[<div>Fast</div>, <div>Slow</div>, <div>1Shot</div>]}
+        labels={[<div key="fast">Fast</div>, <div key="slow">Slow</div>, <div key="1shot">1Shot</div>]}
       />
       <Knob color="green" paramName="Rate" value={props.rate} onChange={props.onChangeRate} />
       <Knob
@@ -38,7 +38,7 @@ export const LFO = (props: LFOProps) => {
         paramName="Target"
         value={props.target}
         onChange={props.onChangeTarget}
-        labels={[<div>Pitch</div>, <div>Shape</div>, <div>Cutoff</div>]}
+        labels={[<div key="pitch">Pitch</div>, <div key="shape">Shape</div>, <div key="cutoff">Cutoff</div>]}
       />
     </div>
   );

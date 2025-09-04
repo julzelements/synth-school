@@ -4,8 +4,8 @@ import Switch from "../Switch";
 
 interface MasterProps {
   drive: number;
-  onChangeDrive: (value) => void;
-  onChangeOctave: (value) => void;
+  onChangeDrive: (value: number) => void;
+  onChangeOctave: (value: number) => void;
   octave: number;
 }
 
@@ -13,7 +13,7 @@ export const Master = (props: MasterProps) => {
   return (
     <div className="panel-section" id="master">
       <h2 className="panel-group-label label">Master</h2>
-      <Knob paramName="Volume" value={0} onChange={(value) => console.log(value)} />
+      <Knob paramName="Volume" value={0} onChange={(value: number) => console.log(value)} />
       <Knob paramName="Drive" value={props.drive} onChange={props.onChangeDrive} />
 
       <VCO1Octave octave={props.octave} />

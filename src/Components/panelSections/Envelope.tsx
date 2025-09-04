@@ -10,11 +10,11 @@ interface EnvelopeProps {
   decay: number;
   intensity: number;
   target: number;
-  onChangeType: (value) => void;
-  onChangeAttack: (value) => void;
-  onChangeDecay: (value) => void;
-  onChangeIntensity: (value) => void;
-  onChangeTarget: (value) => void;
+  onChangeType: (value: number) => void;
+  onChangeAttack: (value: number) => void;
+  onChangeDecay: (value: number) => void;
+  onChangeIntensity: (value: number) => void;
+  onChangeTarget: (value: number) => void;
 }
 
 export const Envelope = (props: EnvelopeProps) => {
@@ -25,7 +25,7 @@ export const Envelope = (props: EnvelopeProps) => {
         paramName="Type"
         value={props.type}
         onChange={props.onChangeType}
-        labels={[<AttackDecay />, <AttackGateDecay />, <Gate />]}
+        labels={[<AttackDecay key="attack-decay" />, <AttackGateDecay key="attack-gate-decay" />, <Gate key="gate" />]}
       />
       <Knob color="yellow" paramName="Attack" value={props.attack} onChange={props.onChangeAttack} />
       <Knob color="yellow" paramName="Decay" value={props.decay} onChange={props.onChangeDecay} />
@@ -41,7 +41,7 @@ export const Envelope = (props: EnvelopeProps) => {
         paramName="Target"
         value={props.target}
         onChange={props.onChangeTarget}
-        labels={[<div>Pitch</div>, <div>Pitch 2</div>, <div>Cutoff</div>]}
+        labels={[<div key="pitch">Pitch</div>, <div key="pitch2">Pitch 2</div>, <div key="cutoff">Cutoff</div>]}
       />
     </div>
   );

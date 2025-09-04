@@ -8,12 +8,12 @@ import Square from "@/assets/Square";
 interface WaveProps {
   paramName?: string;
   value?: number;
-  onChange?: (value) => void;
-  labels?: ReactElement<any, any>[];
+  onChange: (value: number) => void;
+  labels?: ReactElement[];
   half?: boolean;
 }
 const SwitchContainer = (props: WaveProps) => {
-  const labels = props.labels || [<Saw />, <Triangle />, <Square />];
+  const labels = props.labels || [<Saw key="saw" />, <Triangle key="triangle" />, <Square key="square" />];
 
   let transposedValue;
   switch (props.value) {
@@ -27,7 +27,7 @@ const SwitchContainer = (props: WaveProps) => {
       transposedValue = 0;
       break;
     default:
-      transposedValue = props.value;
+      transposedValue = 0;
   }
 
   return (

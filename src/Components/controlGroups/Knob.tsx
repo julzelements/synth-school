@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, memo } from "react";
+import { useEffect, useState, memo, useRef } from "react";
 import { rangeMap, cursorCoordsToDegrees } from "@/utils/utils";
 import { convertInvertibleSysexToDegrees, sysexRangeMax } from "@/utils/conversions";
 
@@ -16,6 +16,7 @@ interface KnobProps {
 }
 
 const Knob = memo((props: KnobProps) => {
+  Knob.displayName = "Knob";
   const paramMin = props.paramMin || 0;
   const paramMax = props.paramMax || sysexRangeMax;
   const fullAngle = props.fullAngle || 260;
@@ -30,17 +31,17 @@ const Knob = memo((props: KnobProps) => {
   const degreesToSysex = (degrees: number) => Math.floor(rangeMap(startAngle, endAngle, paramMin, paramMax, degrees));
 
   const degrees: number = props.invertible ? invertibleSysexToDegrees(props.value) : sysexToDegrees(props.value);
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
-  const [timer, setTimer] = useState(() => null);
   const [active, setActive] = useState(() => false);
   useEffect(() => {
-    clearTimeout(timer);
+    if (timer.current) {
+      clearTimeout(timer.current);
+    }
     setActive(true);
-    setTimer(
-      setTimeout(() => {
-        setActive(false);
-      }, 1500)
-    );
+    timer.current = setTimeout(() => {
+      setActive(false);
+    }, 1500);
   }, [props.value]);
 
   const startDrag = (e: React.MouseEvent<HTMLElement>) => {
@@ -55,7 +56,7 @@ const Knob = memo((props: KnobProps) => {
       props.onChange(degreesToSysex(degrees));
     };
     document.addEventListener("mousemove", moveHandler);
-    document.addEventListener("mouseup", (e) => {
+    document.addEventListener("mouseup", () => {
       document.removeEventListener("mousemove", moveHandler);
     });
   };
@@ -66,7 +67,7 @@ const Knob = memo((props: KnobProps) => {
   };
 
   const knobInnerStyle = {
-    background: props.color ? "black" : null,
+    background: props.color ? "black" : undefined,
   };
 
   return (

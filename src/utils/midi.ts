@@ -1,9 +1,15 @@
 import { WebMidi } from "webmidi";
-import { Parameter } from "../ParameterHash";
+import { Parameter } from "@/types/ParameterHash";
 import { convertToMidiRange, convertToSysexRange } from "./conversions";
 
 const PARAM_CHANGE_MESSAGE = 176;
 
+type ParameterChangeCallback = (parameter: Parameter, finalValue: number) => void;
+
+interface RegisteredParameter {
+  parameter: Parameter;
+  callback: ParameterChangeCallback;
+}
 export default class MonologueController {
   constructor() {
     console.log("monologue controller is initialised");
@@ -11,22 +17,22 @@ export default class MonologueController {
 
   demoMode = false;
 
-  registeredParameters = {};
-  onParameterChange = (parameter: Parameter, callback: Function) => {
+  registeredParameters: Record<string, RegisteredParameter> = {};
+  onParameterChange = (parameter: Parameter, callback: ParameterChangeCallback) => {
     this.registeredParameters[parameter.ID] = {
       parameter,
       callback,
     };
   };
 
-  handleParameterChange = (e: any) => {
+  handleParameterChange = (e: { data: Uint8Array<ArrayBufferLike> }) => {
     if (this.demoMode) {
       return;
     }
 
     Object.keys(this.registeredParameters).map((id) => {
       const { parameter, callback } = this.registeredParameters[id];
-      const [message, messageParameter, midiValue] = e.data; // eslint-disable-line @typescript-eslint/no-unused-vars
+      const [message, messageParameter, midiValue] = e.data;
       // We only want to listen to param change messages
       if (message !== PARAM_CHANGE_MESSAGE) return null;
       if (messageParameter !== parameter.ID) {
