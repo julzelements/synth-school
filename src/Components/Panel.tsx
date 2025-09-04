@@ -5,8 +5,8 @@ import { Filter } from "./panelSections/Filter";
 import { VCO2 } from "./panelSections/VCO2";
 import { Envelope } from "./panelSections/Envelope";
 import { LFO } from "./panelSections/LFO";
-import { ParamState } from "@/types/paramState";
-import { Parameters as KorgParameters, Parameter } from "@/types/ParameterHash";
+import { Parameters as KorgParameters, Parameter } from "types/ParameterHash";
+import { ParamState } from "types/paramState";
 
 const Panel = ({
   setParamViaCallback,

@@ -1,7 +1,7 @@
 // There are three types of units dealt with in this app
 
-import { Parameter, ParameterType } from "@/types/ParameterHash";
-import { rangeMap } from "@/utils/utils";
+import { Parameter, ParameterType } from "types/ParameterHash";
+import { rangeMap } from "./utils";
 
 // MIDI
 // sent in realtime, from or to the monologue

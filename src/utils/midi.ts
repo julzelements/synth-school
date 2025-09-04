@@ -1,6 +1,7 @@
 import { WebMidi } from "webmidi";
-import { Parameter } from "@/types/ParameterHash";
+
 import { convertToMidiRange, convertToSysexRange } from "./conversions";
+import { Parameter } from "types/ParameterHash";
 
 const PARAM_CHANGE_MESSAGE = 176;
 

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, memo, useRef } from "react";
-import { rangeMap, cursorCoordsToDegrees } from "@/utils/utils";
-import { convertInvertibleSysexToDegrees, sysexRangeMax } from "@/utils/conversions";
+import { sysexRangeMax, convertInvertibleSysexToDegrees } from "utils/conversions";
+import { rangeMap, cursorCoordsToDegrees } from "utils/utils";
 
 interface KnobProps {
   paramMin?: number;
