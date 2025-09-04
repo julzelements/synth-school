@@ -8,9 +8,9 @@ import Panel from "./Panel";
 import { cleanName } from "../utils/utils";
 import MiscParams from "./MiscParams";
 
-import fake30SC from "../../public/patches/Fake3OSC.json";
-import afxAcid from "../../public/patches/afx acid3.json";
-import injection from "../../public/patches/Injection.json";
+import fake30SC from "../assets/patches/Fake3OSC.json";
+import afxAcid from "../assets/patches/afx acid3.json";
+import injection from "../assets/patches/Injection.json";
 
 const getMergedParamState =
   (state: ParamState, setParamState: Dispatch<SetStateAction<ParamState>>) =>
