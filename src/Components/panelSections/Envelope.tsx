@@ -1,8 +1,8 @@
-import SwitchContainer from "../controlGroups/SwitchContainer";
-import Knob from "../controlGroups/Knob";
-import AttackDecay from "assets/AttackDecay";
-import AttackGateDecay from "assets/AttackGateDecay";
-import Gate from "assets/Gate";
+import SwitchContainer from "@/components/controlGroups/SwitchContainer";
+import Knob from "@/components/controlGroups/Knob";
+import AttackDecay from "@/assets/AttackDecay";
+import AttackGateDecay from "@/assets/AttackGateDecay";
+import Gate from "@/assets/Gate";
 
 interface EnvelopeProps {
   type: number;

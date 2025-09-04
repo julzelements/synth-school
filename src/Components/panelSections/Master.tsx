@@ -1,6 +1,6 @@
-import { VCO1Octave } from "../controlGroups/VCO1Octave";
-import Knob from "../controlGroups/Knob";
-import Switch from "../Switch";
+import { VCO1Octave } from "@/components/controlGroups/VCO1Octave";
+import Knob from "@/components/controlGroups/Knob";
+import Switch from "@/components/Switch";
 
 interface MasterProps {
   drive: number;

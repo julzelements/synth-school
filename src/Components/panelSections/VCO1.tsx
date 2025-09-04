@@ -1,9 +1,9 @@
-import SwitchContainer from "../controlGroups/SwitchContainer";
+import SwitchContainer from "@/components/controlGroups/SwitchContainer";
 
-import Knob from "../controlGroups/Knob";
-import Saw from "assets/Saw";
-import Square from "assets/Square";
-import Triangle from "assets/Triangle";
+import Knob from "@/components/controlGroups/Knob";
+import Saw from "@/assets/Saw";
+import Square from "@/assets/Square";
+import Triangle from "@/assets/Triangle";
 
 interface VCO1Props {
   wave: number;

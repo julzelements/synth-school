@@ -1,4 +1,4 @@
-import Knob from "../controlGroups/Knob";
+import Knob from "@/components/controlGroups/Knob";
 
 interface MixerProps {
   vco1Level: number;

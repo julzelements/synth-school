@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import Switch from "../Switch";
+import Switch from "@/components/Switch";
 import Saw from "@/assets/Saw";
 import Square from "@/assets/Square";
 import Triangle from "@/assets/Triangle";

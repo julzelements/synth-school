@@ -1,6 +1,6 @@
 // import { constants } from "buffer";
-import { Parameters, Parameter } from "./ParameterHash";
-import { KorgProgramDump } from "./types";
+import { Parameters, Parameter } from "@/types/ParameterHash";
+import { KorgProgramDump } from "@/types/types";
 
 export interface ParameterStateMap {
   parameter: Parameter;

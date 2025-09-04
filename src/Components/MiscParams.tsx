@@ -1,4 +1,4 @@
-import { Misc } from "../types/types";
+import { Misc } from "@/types/types";
 
 interface MiscParamsProps {
   miscParams: Misc;

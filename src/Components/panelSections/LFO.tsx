@@ -1,5 +1,5 @@
-import SwitchContainer from "../controlGroups/SwitchContainer";
-import Knob from "../controlGroups/Knob";
+import SwitchContainer from "@/components/controlGroups/SwitchContainer";
+import Knob from "@/components/controlGroups/Knob";
 
 interface LFOProps {
   wave: number;

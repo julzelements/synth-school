@@ -1,16 +1,16 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { AppProps, KorgProgramDump } from "../types/types";
-import { Parameter, Parameters } from "../types/ParameterHash";
+import { AppProps, KorgProgramDump } from "@/types/types";
+import { Parameter, Parameters } from "@/types/ParameterHash";
 
-import { initialiseParamState, ParamState, ParameterStateMap } from "../types/paramState";
-import MonologueController from "../utils/midi";
-import Panel from "./Panel";
-import { cleanName } from "../utils/utils";
-import MiscParams from "./MiscParams";
+import { initialiseParamState, ParamState, ParameterStateMap } from "@/types/paramState";
+import MonologueController from "@/utils/midi";
+import Panel from "@/components/Panel";
+import { cleanName } from "@/utils/utils";
+import MiscParams from "@/components/MiscParams";
 
-import fake30SC from "../assets/patches/Fake3OSC.json";
-import afxAcid from "../assets/patches/afx acid3.json";
-import injection from "../assets/patches/Injection.json";
+import fake30SC from "@/assets/patches/Fake3OSC.json";
+import afxAcid from "@/assets/patches/afx acid3.json";
+import injection from "@/assets/patches/Injection.json";
 
 const getMergedParamState =
   (state: ParamState, setParamState: Dispatch<SetStateAction<ParamState>>) =>

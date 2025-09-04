@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, memo, useCallback } from "react";
-import "./Switch.css";
+import "@/components/Switch.css";
 
 interface SwitchProps {
   value: number;

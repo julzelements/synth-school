@@ -1,4 +1,4 @@
-import MonologueController from "../utils/midi";
+import MonologueController from "@/utils/midi";
 
 export interface AppProps {
   korgProgramDump: KorgProgramDump;
