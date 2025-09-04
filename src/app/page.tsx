@@ -1,7 +1,7 @@
 "use client";
 
 import MonologueController from "utils/midi";
-import blob from "../assets/data.json";
+import blob from "assets/data.json";
 import App from "components/App";
 import { KorgProgramDump } from "types/types";
 
