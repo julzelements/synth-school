@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
-import { ReactComponent as Saw } from "../../assets/saw.svg";
-import { ReactComponent as Square } from "../../assets/square.svg";
-import { ReactComponent as Triangle } from "../../assets/triangle.svg";
+
 import Switch from "../Switch";
+import Saw from "@/assets/Saw";
+import Triangle from "@/assets/Triangle";
+import Square from "@/assets/Square";
 
 interface WaveProps {
   paramName?: string;

@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, memo } from "react";
-import "../Switch.css";
+import "./Switch.css";
 
 interface SwitchProps {
   value: number;

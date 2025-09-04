@@ -1,9 +1,10 @@
 import SwitchContainer from "../controlGroups/SwitchContainer";
 import Knob from "../controlGroups/Knob";
-import { ReactComponent as Saw } from "../../assets/saw.svg";
-import { ReactComponent as Triangle } from "../../assets/triangle.svg";
-import { ReactComponent as Noise } from "../../assets/noise.svg";
+
 import VCO2Octave from "../controlGroups/VCO2Octave";
+import Saw from "@/assets/Saw";
+import Triangle from "@/assets/Triangle";
+import Noise from "@/assets/Noise";
 
 interface VCO2Props {
   octave: number;
@@ -11,11 +12,11 @@ interface VCO2Props {
   wave: number;
   duty: number;
   shape: number;
-  onChangeOctave: (value) => void;
-  onChangeWave: (value) => void;
-  onChangeDuty: (value) => void;
-  onChangePitch: (value) => void;
-  onChangeShape: (value) => void;
+  onChangeOctave: (value: any) => void;
+  onChangeWave: (value: any) => void;
+  onChangeDuty: (value: any) => void;
+  onChangePitch: (value: any) => void;
+  onChangeShape: (value: any) => void;
 }
 
 export const VCO2 = (props: VCO2Props) => {

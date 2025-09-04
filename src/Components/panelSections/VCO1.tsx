@@ -1,14 +1,15 @@
 import SwitchContainer from "../controlGroups/SwitchContainer";
-import { ReactComponent as Saw } from "../../assets/saw.svg";
-import { ReactComponent as Triangle } from "../../assets/triangle.svg";
-import { ReactComponent as Square } from "../../assets/square.svg";
+
 import Knob from "../controlGroups/Knob";
+import Saw from "@/assets/Saw";
+import Triangle from "@/assets/Triangle";
+import Square from "@/assets/Square";
 
 interface VCO1Props {
   wave: number;
   shape: number;
-  onChangeWave: (value) => void;
-  onChangeShape: (value) => void;
+  onChangeWave: (value: any) => void;
+  onChangeShape: (value: any) => void;
 }
 
 export const VCO1 = (props: VCO1Props) => {
