@@ -1,4 +1,4 @@
-import Switch from "../Switch";
+import Switch from "@/components/Switch";
 
 const OscOctaveLeds = (props: { octave: number }) => {
   const leds = Array.from(Array(4).keys())
