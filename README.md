@@ -12,4 +12,4 @@ There is a broken demo here: https://synth-school.vercel.app/
 
 ## This Project is archived. 
 ## New project is called monologue-library
-## Can be found here [monologue-library]([URL](https://github.com/julzelements/monologue-library)
+## Can be found here [monologue-library](https://github.com/julzelements/monologue-library)
